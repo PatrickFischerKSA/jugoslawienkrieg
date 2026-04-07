@@ -487,6 +487,63 @@ a {
   margin: 0 0 10px;
 }
 
+.focus-gallery {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.78), rgba(213, 203, 188, 0.34));
+}
+
+.focus-gallery-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.focus-gallery-head h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.focus-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.focus-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.focus-card-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: rgba(28, 24, 21, 0.06);
+}
+
+.focus-card-copy {
+  padding: 16px;
+}
+
+.focus-card-copy h4 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+}
+
+.focus-card-caption {
+  margin: 0 0 8px;
+  color: var(--wire);
+  font-weight: 700;
+}
+
 .actor-panel {
   margin-top: 22px;
   padding: 20px;
@@ -1031,6 +1088,7 @@ summary {
   .module-title-row,
   .section-head,
   .question-topline,
+  .focus-gallery-head,
   .actor-panel-head {
     flex-direction: column;
   }
@@ -1059,6 +1117,7 @@ summary {
   .stats-grid,
   .resource-grid,
   .module-grid,
+  .focus-gallery-grid,
   .teacher-grid,
   .actor-grid {
     grid-template-columns: 1fr;

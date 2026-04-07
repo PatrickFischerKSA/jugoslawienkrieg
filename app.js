@@ -538,6 +538,7 @@ function renderModuleHeader(module) {
   const moduleScore = getModuleScore(module);
   const visual = module.visual;
   const actors = module.actors || [];
+  const visualDossier = module.visualDossier || [];
 
   elements.moduleHeader.innerHTML = `
     <div class="module-title-row">
@@ -592,6 +593,43 @@ function renderModuleHeader(module) {
         </p>
       </article>
     </div>
+
+    ${
+      visualDossier.length
+        ? `
+          <section class="focus-gallery">
+            <div class="focus-gallery-head">
+              <div>
+                <p class="eyebrow">Bilddossier</p>
+                <h3>${escapeHtml(module.visualDossierTitle || "Bilder, die diese Station tragen")}</h3>
+              </div>
+              <p class="module-copy">${escapeHtml(module.visualDossierIntro || "")}</p>
+            </div>
+            <div class="focus-gallery-grid">
+              ${visualDossier
+                .map(
+                  (entry) => `
+                    <article class="focus-card">
+                      <img
+                        class="focus-card-image"
+                        src="${escapeHtml(entry.src)}"
+                        alt="${escapeHtml(entry.alt || entry.title)}"
+                        loading="lazy"
+                      />
+                      <div class="focus-card-copy">
+                        <h4>${escapeHtml(entry.title)}</h4>
+                        <p class="focus-card-caption">${escapeHtml(entry.caption || "")}</p>
+                        <p>${escapeHtml(entry.whyItMatters || "")}</p>
+                      </div>
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          </section>
+        `
+        : ""
+    }
 
     ${
       actors.length

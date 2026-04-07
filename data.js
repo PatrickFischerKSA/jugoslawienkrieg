@@ -39,6 +39,43 @@ const MODULES = [
       alt: "Skyline von Sarajevo mit sichtbaren Kriegsschaeden im Mai 1996",
       sourceLabel: "Sarajevo_may_1996.png"
     },
+    visualDossierTitle: "Vier Bilder für die Vorgeschichte des Zerfalls",
+    visualDossierIntro:
+      "Die Bilder dieser Station sind nicht Dekoration, sondern historische Verdichtungen: Sie zeigen, welche Langzeitlinien später von Nationalisten wieder aktiviert wurden.",
+    visualDossier: [
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Assassination_at_Sarajevo.jpg?width=1200",
+        alt: "Historische Darstellung des Attentats von Sarajevo 1914",
+        title: "Sarajevo 1914",
+        caption: "Das Attentat ist hier nicht bloß Auftakt des Ersten Weltkriegs, sondern ein Symbol dafür, wie der Balkan früh als Krisenraum Europas gelesen wurde.",
+        whyItMatters:
+          "Das Bild gehört in diese Station, weil es zeigt, dass die Region lange vor 1991 mit Fragen von Nationalismus, Gewalt und internationaler Machtpolitik verknüpft war."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Jasenovac_prisoners_enter_the_camp.jpg?width=1200",
+        alt: "Historische Aufnahme aus dem Kontext des Lagers Jasenovac",
+        title: "Ustascha-Terror und Kriegsgewalt",
+        caption: "Das Foto steht für die Gewalt- und Opfererfahrungen des Zweiten Weltkriegs, die später politisch immer wieder aufgerufen wurden.",
+        whyItMatters:
+          "Es ist für die Station zentral, weil der Zerfall Jugoslawiens nicht verstanden werden kann, ohne diese traumatischen Erinnerungshorizonte mitzudenken."
+      },
+      {
+        src: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
+        alt: "Josip Broz Tito im Uniformporträt",
+        title: "Tito als Stabilisierungsmacht",
+        caption: "Das Porträt verdichtet den autoritären Kern des jugoslawischen Modells: Einheit wurde politisch organisiert und notfalls repressiv gesichert.",
+        whyItMatters:
+          "Das Bild ist hier sinnvoll, weil es die Leitfrage der Station bündelt: Warum wirkte Jugoslawien stabil, obwohl die Konflikte unter der Oberfläche fortbestanden?"
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Gazimestan_Monument.jpg?width=1200",
+        alt: "Gazimestan-Denkmal auf dem Amselfeld",
+        title: "Amselfeld als politischer Erinnerungsort",
+        caption: "Nicht das Denkmal selbst löste den Zerfall aus, sondern seine politische Aufladung in der späten Phase Jugoslawiens.",
+        whyItMatters:
+          "Das Bild zeigt, wie Geschichte als Ressource für gegenwärtige Mobilisierung benutzt wurde und damit direkt in die Zerfallsphase hineinragt."
+      }
+    ],
     actorFocus: {
       title: "Schlüsselfigur dieser Station",
       intro:
@@ -291,6 +328,59 @@ const MODULES = [
         ],
         modelAnswer:
           "Die Vorgeschichte machte Gewalt moeglich, aber nicht unausweichlich. Titos Staat hielt Konflikte durch Repression und Balancepolitik zusammen, ohne sie zu lösen. Erst als politische Akteure wie Milosevic historische Traumata und nationalistische Symbole bewusst mobilisierten, wurden alte Konfliktlinien in konkrete Kriegspolitik übersetzt."
+      },
+      {
+        id: "q-vorgeschichte-5",
+        type: "short-text",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Erkläre knapp, was das Beispiel Goli Otok über Titos Repressionsapparat zeigt.",
+        help:
+          "Gesucht ist keine Lagergeschichte im Detail, sondern die politische Aussage dieses Beispiels über Herrschaft und Abschreckung.",
+        placeholder: "Goli Otok zeigt, dass ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        conceptGroups: [
+          {
+            label: "politische Gegner oder Abweichler wurden verfolgt",
+            variants: ["abweichler", "gegner", "dissidenten", "opposition", "verfolgt", "stalinisten"]
+          },
+          {
+            label: "Repression diente der Abschreckung und Kontrolle",
+            variants: ["abschreckung", "kontrolle", "einschuechterung", "einschüchterung", "herrschaftssicherung", "angst"]
+          },
+          {
+            label: "Stabilität beruhte auch auf Gewalt oder Zwang",
+            variants: ["gewalt", "zwang", "repression", "nicht freiwillig", "unterdrueckung", "unterdrückung"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Goli Otok zeigt, dass Titos Staat politische Gegner und Abweichler hart verfolgte. Die Stabilität Jugoslawiens beruhte also nicht nur auf Ausgleich, sondern auch auf Abschreckung, Kontrolle und Zwang."
+      },
+      {
+        id: "q-vorgeschichte-6",
+        type: "open-analysis",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Warum war Titos Bruch mit Stalin 1948 weltpolitisch bedeutsam, und welche Folgen hatte er für Jugoslawiens Sonderstellung? Begründe mit Materialbezügen.",
+        help:
+          "Eine gute Antwort verbindet den Ost-West-Konflikt mit der besonderen internationalen Stellung Jugoslawiens.",
+        placeholder: "Der Bruch mit Stalin war weltpolitisch bedeutsam, weil ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1"],
+        minWords: 100,
+        structureExpectations: {
+          mandatory: ["thesis", "evidence", "nuance"],
+          targetHits: 4
+        },
+        sourceHints: ["stalin", "1948", "sonderfall", "ost und west", "jugoslawien"],
+        rubric: [
+          { concept: "Konflikt mit Stalin oder Sowjetunion", keywords: ["stalin", "sowjetunion", "bruch", "1948", "moskau"] },
+          { concept: "Sonderstellung zwischen Ost und West", keywords: ["sonderfall", "ost und west", "unabhaengig", "unabhängig", "blockfrei", "eigenständig"] },
+          { concept: "Folgen für internationale Politik", keywords: ["weltpolitisch", "internationale stellung", "hilfe", "westen", "kalter krieg"] },
+          { concept: "Folgen für Jugoslawiens Innenordnung", keywords: ["herrschaft", "repression", "kontrolle", "tito", "stabilisierung"] }
+        ],
+        modelAnswer:
+          "Der Bruch mit Stalin war weltpolitisch bedeutsam, weil Jugoslawien damit nicht einfach Teil des sowjetischen Blocks blieb, sondern eine Sonderstellung zwischen Ost und West einnahm. Das erhöhte seinen außenpolitischen Spielraum, stärkte Tito aber innenpolitisch auch als autoritäre Führungsfigur, die ihre Eigenständigkeit mit harter Kontrolle absicherte."
       }
     ]
   },
@@ -329,6 +419,43 @@ const MODULES = [
       extension:
         "Die Station laesst sich gut mit einer Kartenarbeit zu Slowenien, Kroatien und Bosnien verbinden."
     },
+    visualDossierTitle: "Bilder der politischen und militärischen Zuspitzung",
+    visualDossierIntro:
+      "Diese Auswahl zeigt, wie der Zerfall vom politischen Projekt in sichtbare Eskalation überging: Führungsfiguren, symbolische Schauplätze und zerstörte Städte gehören hier zusammen.",
+    visualDossier: [
+      {
+        src: "assets/module-images/milosevic-in-hague.jpg",
+        alt: "Slobodan Milošević im Gerichtssaal in Den Haag",
+        title: "Milošević als politische Zuspitzungsfigur",
+        caption: "Das Bild aus Den Haag verweist bewusst auf die spätere juristische Aufarbeitung und rahmt seine Rolle nicht neutral, sondern als historisch verantwortete Politik.",
+        whyItMatters:
+          "Es gehört hierher, weil diese Station erklärt, wie Nationalismus, Machtgewinn und Medienpolitik zusammenwirkten."
+      },
+      {
+        src: "assets/module-images/franjo-tudjman-1995.jpg",
+        alt: "Franjo Tuđman im Jahr 1995",
+        title: "Tuđman und das kroatische Staatsprojekt",
+        caption: "Das Porträt steht nicht einfach für Kroatien, sondern für die politische Logik einer nationalen Staatsgründung in der Zerfallskrise.",
+        whyItMatters:
+          "Es ist hier relevant, weil Lernende die Gegenüberstellung unterschiedlicher Führungsprojekte verstehen sollen, statt den Krieg als diffusen Ethnienkonflikt zu lesen."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=1200",
+        alt: "Stadion Maksimir in Zagreb",
+        title: "Maksimir als Erinnerungsort der Eskalation",
+        caption: "Das heutige Stadionbild steht für den symbolischen Ort, an dem gesellschaftliche Polarisierung 1990 in offene Gewalt umschlug.",
+        whyItMatters:
+          "Es hilft, den berüchtigten Fußballmoment als gesellschaftliches Warnsignal und nicht als isolierte Anekdote zu deuten."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Vukovar_water_tower.jpg?width=1200",
+        alt: "Wasserturm von Vukovar",
+        title: "Vukovar als Bild des Krieges",
+        caption: "Der Wasserturm wurde zum internationalen Symbol für Belagerung, Zerstörung und die Radikalisierung des Kroatienkriegs.",
+        whyItMatters:
+          "Dieses Bild verdichtet die Leitfrage der Station: Wann wird aus nationalistischer Politik ein Krieg, der international nicht mehr übersehen werden kann?"
+      }
+    ],
     actorFocus: {
       title: "Akteurskonstellation dieser Eskalationsphase",
       intro:
@@ -591,6 +718,59 @@ const MODULES = [
         ],
         modelAnswer:
           "Europa reagierte zunächst zu zögerlich und uneinheitlich auf die Zuspitzung. Zugleich wirkten einzelne Entscheidungen wie die Anerkennungspolitik nicht befriedend, sondern griffen in einen bereits eskalierenden Konflikt ein. Entscheidend ist deshalb weniger eine einfache Schuldzuweisung als die Einsicht, dass Unentschlossenheit und riskante Intervention nebeneinanderstanden."
+      },
+      {
+        id: "q-zerfall-5",
+        type: "short-text",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Warum blieb die europäische Staatengemeinschaft zu Beginn des Zerfalls zunächst weitgehend untätig?",
+        help:
+          "Gesucht sind politische Gründe, nicht bloß ein moralisches Urteil. Synonyme für Uneinigkeit, Fehleinschätzung und fehlende Eingriffsbereitschaft werden erkannt.",
+        placeholder: "Europa blieb zunächst untätig, weil ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
+        conceptGroups: [
+          {
+            label: "Uneinigkeit oder fehlende gemeinsame Linie",
+            variants: ["uneinigkeit", "uneinheitlich", "keine gemeinsame linie", "gespalten", "diplomatisch zerstritten", "europa uneins"]
+          },
+          {
+            label: "Konflikt wurde unterschätzt oder falsch gelesen",
+            variants: ["unterschaetzt", "unterschätzt", "fehleinschaetzung", "falsch eingeschätzt", "als innenproblem", "nicht ernst genug"]
+          },
+          {
+            label: "fehlende Bereitschaft zum entschlossenen Eingreifen",
+            variants: ["nicht eingreifen", "zoegern", "zögern", "keine intervention", "keine handlungsbereitschaft", "abwartend"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Europa blieb zunächst weitgehend untätig, weil die Staaten uneins waren, die Dynamik des Zerfalls unterschätzten und nicht bereit waren, früh entschlossen einzugreifen. Der Konflikt wurde lange eher verwaltet als politisch klar beantwortet."
+      },
+      {
+        id: "q-zerfall-6",
+        type: "open-analysis",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Warum wurde Vukovar zu einem internationalen Symbol des Kroatienkriegs, und was änderte dieses Bild an der Wahrnehmung des Konflikts? Begründe mit Materialbezügen.",
+        help:
+          "Verbinde militärische Gewalt, mediale Wirkung und internationale Wahrnehmung.",
+        placeholder: "Vukovar wurde zum Symbol, weil ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        minWords: 100,
+        structureExpectations: {
+          mandatory: ["thesis", "evidence", "nuance"],
+          targetHits: 4
+        },
+        sourceHints: ["vukovar", "belagerung", "zerstoerung", "medien", "kroatienkrieg"],
+        rubric: [
+          { concept: "Belagerung oder massive Zerstörung", keywords: ["belagerung", "zerstoerung", "artillerie", "stadt", "vukovar"] },
+          { concept: "mediale oder symbolische Wirkung", keywords: ["bild", "symbol", "medien", "wahrnehmung", "international"] },
+          { concept: "Veränderung der Konfliktwahrnehmung", keywords: ["eskalation", "brutalitaet", "brutalität", "nicht mehr ignorierbar", "sichtbar"] },
+          { concept: "historisches Urteil", keywords: ["deshalb", "entscheidend", "zeigt", "macht deutlich", "insgesamt"] }
+        ],
+        modelAnswer:
+          "Vukovar wurde zum Symbol, weil die Belagerung und Zerstörung der Stadt die Brutalität des Krieges sichtbar machten. In den Medien stand Vukovar für einen Konflikt, der nicht mehr als bloße Staatskrise gelesen werden konnte, sondern als offener Krieg mit massiver Gewalt gegen Städte und Bevölkerung."
       }
     ]
   },
@@ -634,6 +814,43 @@ const MODULES = [
       alt: "Zerstörte Gebäude im Sarajevoer Stadtteil Grbavica nach dem Krieg",
       sourceLabel: "Sarajevo_Grbavica.jpeg"
     },
+    visualDossierTitle: "Bosnienkrieg als Bild- und Gewaltraum",
+    visualDossierIntro:
+      "Die Bilder dieser Station zeigen nicht nur Zerstörung, sondern verschiedene Ebenen des Krieges: politische Führung, militärische Gewalt, Stadtraum und die Erinnerung an Srebrenica.",
+    visualDossier: [
+      {
+        src: "assets/module-images/alija-izetbegovic.jpg",
+        alt: "Alija Izetbegović im Porträt",
+        title: "Izetbegović und der bosnische Staat",
+        caption: "Das Porträt markiert die politische Perspektive des international anerkannten bosnischen Staates.",
+        whyItMatters:
+          "Es ist hier wichtig, weil der Bosnienkrieg nicht nur als Tätergeschichte erzählt werden darf, sondern auch als Verteidigung eines angegriffenen Staates."
+      },
+      {
+        src: "assets/module-images/ratko-mladic-1993.jpg",
+        alt: "Ratko Mladić im Jahr 1993",
+        title: "Militärische Gewaltlogik",
+        caption: "Mladić steht in dieser Station für die operative Umsetzung von Belagerung, Gewalt gegen Zivilisten und Srebrenica.",
+        whyItMatters:
+          "Das Bild gehört hierher, weil es die militärische Dimension des Krieges personifiziert, die in der Doku immer wieder sichtbar wird."
+      },
+      {
+        src: "assets/module-images/sarajevo-grbavica.jpeg",
+        alt: "Zerstörte Gebäude im Stadtteil Grbavica in Sarajevo",
+        title: "Sarajevo als zerstörter Stadtraum",
+        caption: "Dieses Foto zeigt Sarajevo nicht abstrakt, sondern als konkreten Lebensraum, in dem Krieg den Alltag eingeschrieben hat.",
+        whyItMatters:
+          "Es trägt die Station, weil Sarajevo zum globalen Symbol für Belagerung, Zivilopfer und die Zerstörung eines multiethnischen Stadtlebens wurde."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Srebrenica-memorial.jpg?width=1200",
+        alt: "Gedenkstätte von Srebrenica",
+        title: "Srebrenica als Erinnerungsort",
+        caption: "Das Bild verschiebt den Blick von der Ereignischronologie zur Frage, wie Genozid erinnert und politisch aufgearbeitet wird.",
+        whyItMatters:
+          "Es ist hier sinnvoll, weil diese Station zeigen soll, dass Srebrenica nicht nur Wendepunkt, sondern auch dauerhafte Erinnerung und offene Wunde ist."
+      }
+    ],
     actorFocus: {
       title: "Akteur*innen des Bosnienkriegs",
       intro:
@@ -941,6 +1158,59 @@ const MODULES = [
         ],
         modelAnswer:
           "Die Bilder zeigen Sarajevo als Stadt, in der die Belagerung noch lange nach dem Waffenstillstand sichtbar bleibt. Das Grbavica-Foto macht Zerstörung und Frontnähe sichtbar, während das Bild von 1996 die scheinbare Rückkehr des Alltags mit fortbestehenden Kriegsspuren kontrastiert. So wird Sarajevo zugleich als Symbol der Gewalt gegen Zivilisten und als Ort einer brüchigen Nachkriegswirklichkeit lesbar."
+      },
+      {
+        id: "q-bosnien-5",
+        type: "short-text",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Warum war das UN-Mandat in Bosnien strukturell zum Scheitern verurteilt?",
+        help:
+          "Gesucht ist eine knappe Strukturkritik: Auftrag, Mittel und reale Kriegslage müssen zusammenkommen.",
+        placeholder: "Das UN-Mandat scheiterte strukturell, weil ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki", "r-bosnien-pdf"],
+        conceptGroups: [
+          {
+            label: "Mandat und Mittel passten nicht zusammen",
+            variants: ["zu schwach", "zu wenig mittel", "mandat passte nicht", "unzureichend", "ohne durchsetzung", "keine machtmittel"]
+          },
+          {
+            label: "Friedenslogik traf auf realen Krieg",
+            variants: ["friedensmission", "kein frieden", "kriegsrealitaet", "bürgerkrieg", "gewaltlage", "realer krieg"]
+          },
+          {
+            label: "Schutzzonen oder Zivilbevölkerung konnten nicht wirksam geschützt werden",
+            variants: ["schutzzonen", "schutzversprechen", "zivilisten", "nicht schuetzen", "nicht schützen", "srebrenica"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Das UN-Mandat war strukturell überfordert, weil seine Friedenslogik nicht zur realen Kriegslage passte. Die Vereinten Nationen hatten zu wenig Mittel und konnten Schutzzonen und Zivilbevölkerung deshalb nicht wirksam schützen."
+      },
+      {
+        id: "q-bosnien-6",
+        type: "open-analysis",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Welche unterschiedliche Rolle spielten Karadžić und Mladić im Bosnienkrieg, besonders mit Blick auf Srebrenica? Begründe mit Materialbezügen.",
+        help:
+          "Unterscheide politische Führung und militärische Umsetzung. Eine gute Antwort verbindet beide Ebenen.",
+        placeholder: "Karadžić und Mladić wirkten zusammen, aber ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-pdf", "r-bosnien-wiki"],
+        minWords: 100,
+        structureExpectations: {
+          mandatory: ["thesis", "evidence", "comparison", "nuance"],
+          targetHits: 4
+        },
+        sourceHints: ["karadzic", "mladic", "srebrenica", "politisch", "militaerisch"],
+        rubric: [
+          { concept: "Karadžić als politische Führungsfigur", keywords: ["karadzic", "politisch", "fuehrung", "führung", "republika srpska", "planung"] },
+          { concept: "Mladić als militärischer Befehlshaber", keywords: ["mladic", "militaerisch", "militärisch", "armee", "kommandeur", "operation"] },
+          { concept: "Verbindung beider Ebenen bei Srebrenica", keywords: ["srebrenica", "zusammen", "politische und militaerische ebene", "umsetzung", "verantwortung"] },
+          { concept: "historisches Urteil", keywords: ["deshalb", "entscheidend", "zeigt", "macht deutlich", "insgesamt"] }
+        ],
+        modelAnswer:
+          "Karadžić stand eher für die politische Führung und ideologische Rahmung der bosnisch-serbischen Politik, Mladić für die militärische Durchführung. Mit Blick auf Srebrenica wird gerade an beiden sichtbar, dass politische Planung und militärische Umsetzung im Bosnienkrieg eng miteinander verbunden waren."
       }
     ]
   },
@@ -984,6 +1254,43 @@ const MODULES = [
       alt: "Sarajevo im Mai 1996 als Bild einer brüchigen Nachkriegsordnung",
       sourceLabel: "Sarajevo_may_1996.png"
     },
+    visualDossierTitle: "Bilder des schwierigen Friedens",
+    visualDossierIntro:
+      "Diese Bilder markieren den Übergang von Kriegsende zu ungelösten Nachkonflikten: Friedensvertrag, sichtbare Spuren des Krieges, Kosovo und die Gewalt der NATO-Intervention.",
+    visualDossier: [
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=1200",
+        alt: "Unterzeichnung des Dayton-Abkommens 1995",
+        title: "Dayton als notwendiger Friedensschluss",
+        caption: "Das Bild zeigt den diplomatischen Erfolg, der die Kämpfe beendete, aber noch nichts über die Qualität des Friedens sagt.",
+        whyItMatters:
+          "Es gehört hierher, weil diese Station klären soll, warum Dayton zugleich Lösung und Problem war."
+      },
+      {
+        src: "assets/module-images/ibrahim-rugova.jpg",
+        alt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
+        title: "Rugova und die nichtmilitärische Kosovo-Strategie",
+        caption: "Rugova steht in dieser Station für die oft übersehene politische Alternative zur späteren bewaffneten Eskalation.",
+        whyItMatters:
+          "Das Bild ist hier sinnvoll, weil es zeigt, dass der Kosovo-Konflikt vor der UÇK auch als Frage von Diplomatie, Parallelstrukturen und gewaltfreiem Widerstand gelesen werden kann."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/NATO_bombing_of_Yugoslavia_1999_(13810195285).jpg?width=1200",
+        alt: "Szene aus dem Kontext der NATO-Luftangriffe 1999",
+        title: "Intervention ohne UN-Mandat",
+        caption: "Die NATO-Luftangriffe markieren einen Wendepunkt, bleiben aber rechtlich und politisch hoch umstritten.",
+        whyItMatters:
+          "Dieses Bild gehört hierher, weil die Station eine Urteilsbildung verlangt, die Wirksamkeit und Problemkosten von Intervention zusammendenkt."
+      },
+      {
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Ruins_of_the_Radio_Television_of_Serbia,_destroyed_during_1999_NATO_aggression_2007.jpg?width=1200",
+        alt: "Ruinen der serbischen Rundfunkanstalt nach den NATO-Angriffen",
+        title: "Kosten des Eingriffs",
+        caption: "Das Bild hält fest, dass militärische Intervention nicht nur Entscheidungen auf Regierungsebene, sondern reale Zerstörung und zivile Folgen bedeutet.",
+        whyItMatters:
+          "Es ist didaktisch zentral, weil die Station nicht bei der Formel 'zu spät, aber nötig' stehen bleiben soll."
+      }
+    ],
     actorFocus: {
       title: "Akteure des schwierigen Friedens",
       intro:
@@ -1255,6 +1562,60 @@ const MODULES = [
         ],
         modelAnswer:
           "Die Intervention kam in Bosnien eindeutig zu spät, was sich am Scheitern der UN und an Srebrenica zeigt. Dennoch veraenderten NATO-Druck und Dayton die Kriegslogik entscheidend, weil sie die Kämpfe stoppten und neue Machtverhaeltnisse schufen. Das Ergebnis blieb aber ambivalent, da Frieden erreicht wurde, ohne ethnische Spaltung und langfristige Instabilitaet wirklich zu überwinden."
+      },
+      {
+        id: "q-nachkrieg-5",
+        type: "short-text",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Wie rechtfertigten die NATO-Staaten 1999 ihren Einsatz trotz fehlendem UN-Mandat?",
+        help:
+          "Gesucht ist die politische Begründung, nicht dein eigenes Urteil. Synonyme für humanitären Schutz, Verhinderung weiterer Gewalt und Intervention werden erkannt.",
+        placeholder: "Die NATO-Staaten rechtfertigten den Einsatz damit, dass ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        conceptGroups: [
+          {
+            label: "Schutz von Zivilisten oder humanitäre Begründung",
+            variants: ["humanitaer", "humanitär", "zivilisten schuetzen", "zivilisten schützen", "menschen schuetzen", "menschen schützen"]
+          },
+          {
+            label: "Verhinderung weiterer Gewalt oder Vertreibung",
+            variants: ["vertreibung stoppen", "gewalt verhindern", "eskalation stoppen", "massaker verhindern", "ethnische saeuberung", "ethnische säuberung"]
+          },
+          {
+            label: "Intervention wurde als notwendig dargestellt",
+            variants: ["notwendig", "letztes mittel", "eingreifen", "intervention", "ohne un mandat", "politisch gerechtfertigt"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Die NATO-Staaten rechtfertigten den Einsatz vor allem humanitär: Sie behaupteten, weitere Gewalt, Vertreibung und massive Menschenrechtsverletzungen verhindern zu müssen. Der Eingriff wurde also als politisch notwendig dargestellt, obwohl ein UN-Mandat fehlte."
+      },
+      {
+        id: "q-nachkrieg-6",
+        type: "open-analysis",
+        challenge: "Fragenheft integriert",
+        prompt:
+          "Welche langfristigen Herausforderungen bestehen für die Staaten des ehemaligen Jugoslawiens bis heute im Blick auf Erinnerung, Demokratie und internationale Anerkennung? Begründe mit Materialbezügen.",
+        help:
+          "Eine starke Antwort verbindet Nachkriegspolitik, Erinnerungskonflikte und Gegenwartsprobleme.",
+        placeholder: "Bis heute bestehen Herausforderungen, weil ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        minWords: 120,
+        structureExpectations: {
+          mandatory: ["thesis", "evidence", "comparison", "conclusion"],
+          targetHits: 5
+        },
+        sourceHints: ["erinnerung", "anerkennung", "demokratie", "kosovo", "dayton", "versöhnung"],
+        rubric: [
+          { concept: "Erinnerungskonflikte oder Deutungskämpfe", keywords: ["erinnerung", "gedenken", "deutung", "geschichtspolitik", "srebrenica", "vergangenheit"] },
+          { concept: "demokratische oder institutionelle Probleme", keywords: ["demokratie", "institutionen", "korruption", "staat", "dayton", "blockade"] },
+          { concept: "Fragen internationaler Anerkennung", keywords: ["anerkennung", "kosovo", "international", "eu", "völkerrecht", "status"] },
+          { concept: "Versöhnung als unvollendete Aufgabe", keywords: ["versöhnung", "trauma", "vertrauen", "gesellschaft", "nachwirkt", "konfliktfolgen"] },
+          { concept: "historisches Urteil", keywords: ["insgesamt", "deshalb", "entscheidend", "zeigt", "schlussendlich"] }
+        ],
+        modelAnswer:
+          "Die Nachfolgestaaten stehen bis heute vor Erinnerungskonflikten, institutionellen Problemen und offenen Fragen internationaler Anerkennung, besonders im Fall Kosovo. Zugleich bleibt Versöhnung schwierig, weil Kriegserfahrungen, konkurrierende Geschichtsbilder und politische Blockaden weiter nachwirken."
       }
     ]
   }
