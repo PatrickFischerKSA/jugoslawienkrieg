@@ -637,6 +637,22 @@ a {
   border: 1px solid var(--line);
 }
 
+.resource-image-link {
+  display: block;
+  margin: -2px -2px 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(28, 24, 21, 0.08);
+}
+
+.resource-image {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background: rgba(28, 24, 21, 0.06);
+}
+
 .resource-card h4 {
   margin: 0;
   font-size: 1.15rem;

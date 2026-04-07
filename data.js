@@ -305,7 +305,8 @@ const MODULES = [
       "Achte auf Unterschiede zwischen Milosevics und Tudjmans Politikzielen.",
       "Notiere Beispiele dafür, wie Fernsehen und Propaganda Feindbilder verdichteten.",
       "Unterscheide zwischen Slowenien, Kroatien und Bosnien: Nicht jeder Konflikt folgte derselben Logik.",
-      "Halte fest, wo europäische Diplomatie zögerte und wo sie durch Entscheidungen neue Folgen auslöste."
+      "Halte fest, wo europäische Diplomatie zögerte und wo sie durch Entscheidungen neue Folgen auslöste.",
+      "Nutze die Porträts von Milošević und Tuđman, um Führungsfiguren des Zerfalls konkreter zu verorten."
     ],
     resources: [
       {
@@ -343,6 +344,26 @@ const MODULES = [
         focus: "zusätzliche Perspektive auf Kriegsausbruch und internationale Politik",
         link: "https://www.youtube.com/watch?v=sT_09hb1kzQ&list=PL8991DFCF33730589&index=4",
         tags: ["YouTube", "Vertiefung"]
+      },
+      {
+        id: "r-zerfall-milosevic",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Slobodan Milošević in Den Haag",
+        focus: "Porträt des serbischen Machtpolitikers, dessen Nationalismus und Zentralisierungspolitik den Zerfall entscheidend zuspitzten; das Bild verweist zugleich auf spätere internationale Strafverfolgung.",
+        link: "assets/module-images/milosevic-in-hague.jpg",
+        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag",
+        tags: ["lokal", "Bildquelle", "Akteur"]
+      },
+      {
+        id: "r-zerfall-tudjman",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Franjo Tuđman 1995",
+        focus: "Porträt des kroatischen Präsidenten, dessen Politik der Staatsgründung und nationalen Symbolik den Zerfall Jugoslawiens auf kroatischer Seite prägte.",
+        link: "assets/module-images/franjo-tudjman-1995.jpg",
+        imageAlt: "Franjo Tuđman im Jahr 1995",
+        tags: ["lokal", "Bildquelle", "Akteur"]
       }
     ],
     questions: [
@@ -355,7 +376,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erwartet keine Biographien, sondern einen historischen Vergleich ihrer Politik.",
         placeholder: "Milosevic und Tudjman unterschieden sich vor allem darin, dass ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-milosevic", "r-zerfall-tudjman"],
         conceptGroups: [
           {
             label: "serbische Zentralisierung oder Großserbien bei Milosevic",
@@ -572,7 +593,8 @@ const MODULES = [
       "Achte auf die Verbindung von militärischer Strategie und Gewalt gegen Zivilisten.",
       "Notiere, warum Sarajevo weltweit zu einem Symbol des Bosnienkriegs wurde.",
       "Arbeite heraus, was mit ethnischer Säuberung konkret gemeint ist.",
-      "Halte fest, warum Srebrenica und das Scheitern der UN später politischen Druck auf die NATO erhoehten."
+      "Halte fest, warum Srebrenica und das Scheitern der UN später politischen Druck auf die NATO erhoehten.",
+      "Ordne die Akteur*innenporträts ihren politischen und militärischen Rollen im Bosnienkrieg zu."
     ],
     resources: [
       {
@@ -637,6 +659,46 @@ const MODULES = [
         focus: "Nachkriegssituation der Hauptstadt mit sichtbaren Einschlägen und Brüchen",
         link: "assets/module-images/sarajevo-may-1996.png",
         tags: ["lokal", "Bildquelle"]
+      },
+      {
+        id: "r-bosnien-izetbegovic",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Alija Izetbegović",
+        focus: "Porträt des Präsidenten von Bosnien-Herzegowina und zentralen politischen Vertreters des international anerkannten bosnischen Staates.",
+        link: "assets/module-images/alija-izetbegovic.jpg",
+        imageAlt: "Alija Izetbegović im Porträt",
+        tags: ["lokal", "Bildquelle", "Akteur"]
+      },
+      {
+        id: "r-bosnien-karadzic",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Radovan Karadžić, März 1994",
+        focus: "Porträt des politischen Führers der bosnischen Serben, der eng mit ethnischer Säuberung, Belagerungspolitik und Srebrenica verbunden ist.",
+        link: "assets/module-images/radovan-karadzic-1994.jpg",
+        imageAlt: "Radovan Karadžić im März 1994",
+        tags: ["lokal", "Bildquelle", "Akteur"]
+      },
+      {
+        id: "r-bosnien-mladic",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Ratko Mladić 1993",
+        focus: "Porträt des militärischen Kommandeurs der bosnisch-serbischen Kräfte, der für Belagerung, Kriegsverbrechen und Srebrenica zentral war.",
+        link: "assets/module-images/ratko-mladic-1993.jpg",
+        imageAlt: "Ratko Mladić im Jahr 1993",
+        tags: ["lokal", "Bildquelle", "Akteur"]
+      },
+      {
+        id: "r-bosnien-plavsic",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Biljana Plavšić",
+        focus: "Porträt der bosnisch-serbischen Politikerin, die zur politischen Führung der Republika Srpska gehörte und für die politische Dimension des Krieges steht.",
+        link: "assets/module-images/biljana-plavsic.jpeg",
+        imageAlt: "Biljana Plavšić im Porträt",
+        tags: ["lokal", "Bildquelle", "Akteur"]
       }
     ],
     questions: [
@@ -649,7 +711,15 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erkennt verschiedene Formulierungen. Entscheidend ist, dass du Ziel und Mittel nennst.",
         placeholder: "Mit ethnischer Säuberung ist gemeint, dass ...",
-        sourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki", "r-bosnien-pdf"],
+        sourceIds: [
+          "r-bosnien-doku-3",
+          "r-bosnien-wiki",
+          "r-bosnien-pdf",
+          "r-bosnien-izetbegovic",
+          "r-bosnien-karadzic",
+          "r-bosnien-mladic",
+          "r-bosnien-plavsic"
+        ],
         conceptGroups: [
           {
             label: "gewaltsame Vertreibung oder Entfernung von Bevölkerung",
@@ -866,7 +936,8 @@ const MODULES = [
       "Achte auf den Doppelcharakter von Dayton: Frieden schaffen und Spaltung verfestigen.",
       "Notiere, warum Kosovo nach 1995 nicht befriedet war.",
       "Unterscheide zwischen legaler, politischer und moralischer Bewertung internationaler Intervention.",
-      "Halte langfristige Herausforderungen fest: Erinnerung, Demokratie, Anerkennung und Versöhnung."
+      "Halte langfristige Herausforderungen fest: Erinnerung, Demokratie, Anerkennung und Versöhnung.",
+      "Nutze das Porträt Ibrahim Rugovas, um die Kosovo-Frage auch aus der Perspektive politischer und gewaltfreier Strategie zu betrachten."
     ],
     resources: [
       {
@@ -913,6 +984,16 @@ const MODULES = [
         focus: "Nachkriegsbild als Ausgangspunkt für die Frage nach Frieden mit sichtbaren Spuren des Krieges",
         link: "assets/module-images/sarajevo-may-1996.png",
         tags: ["lokal", "Bildquelle"]
+      },
+      {
+        id: "r-nachkrieg-rugova",
+        bucket: "Akteur*innen im Fokus",
+        type: "Bild",
+        title: "Dr. Ibrahim Rugova",
+        focus: "Porträt des kosovo-albanischen Politikers, der lange eine gewaltfreie und diplomatische Strategie gegen serbische Herrschaft vertrat.",
+        link: "assets/module-images/ibrahim-rugova.jpg",
+        imageAlt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
+        tags: ["lokal", "Bildquelle", "Akteur"]
       }
     ],
     questions: [
@@ -974,7 +1055,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erkennt verschiedene Formulierungen. Verbinde ungeloste politische Fragen mit Repression und Strategiewechsel.",
         placeholder: "Der Kosovo blieb ein Konfliktraum, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7", "r-nachkrieg-rugova"],
         conceptGroups: [
           {
             label: "Kosovo war in Dayton nicht wirklich gelöst",

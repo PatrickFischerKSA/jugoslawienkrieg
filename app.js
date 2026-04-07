@@ -714,9 +714,26 @@ function renderResources(module) {
           <div class="resource-grid">
             ${resources
               .map((resource) => {
-                const actionLabel = resource.type === "Video" ? "Video öffnen" : "Material öffnen";
+                let actionLabel = "Material öffnen";
+                if (resource.type === "Video") actionLabel = "Video öffnen";
+                if (resource.type === "Bild") actionLabel = "Bild öffnen";
+                if (resource.type === "Website") actionLabel = "Artikel öffnen";
                 return `
                   <article class="resource-card">
+                    ${
+                      resource.type === "Bild"
+                        ? `
+                          <a class="resource-image-link" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
+                            <img
+                              class="resource-image"
+                              src="${escapeHtml(resource.link)}"
+                              alt="${escapeHtml(resource.imageAlt || resource.title)}"
+                              loading="lazy"
+                            />
+                          </a>
+                        `
+                        : ""
+                    }
                     <h4>${escapeHtml(resource.title)}</h4>
                     <div class="resource-type-row">
                       <span class="tag">${escapeHtml(resource.type)}</span>
