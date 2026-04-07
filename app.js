@@ -13,6 +13,7 @@ const structureSpec = {
 const state = {
   activeModuleId: modules[0]?.id || null,
   activeMiniQuestionId: null,
+  sourceModalOpen: false,
   teacherAuthorized: false,
   teacherMode: false,
   teacherAccessOpen: false,
@@ -29,6 +30,7 @@ const elements = {
   resourceGroups: document.getElementById("resource-groups"),
   questionList: document.getElementById("question-list"),
   miniQuestionModal: document.getElementById("mini-question-modal"),
+  sourceModal: document.getElementById("source-modal"),
   startRouteButton: document.getElementById("start-route-button"),
   openFirstOpenButton: document.getElementById("open-first-open-button"),
   teacherModeButton: document.getElementById("teacher-mode-button")
@@ -212,6 +214,10 @@ function getMiniQuestions(module) {
 function getVisibleResources(module) {
   if (state.teacherMode) return module.resources;
   return module.resources.filter((resource) => resource.type !== "PDF");
+}
+
+function getIntegratedSources(module) {
+  return (module.resources || []).filter((resource) => resource.type !== "PDF");
 }
 
 function getResourceUsageMap(module) {
@@ -612,6 +618,7 @@ function renderModuleHeader(module) {
   const actors = module.actors || [];
   const visualDossier = module.visualDossier || [];
   const miniQuestions = getMiniQuestions(module);
+  const integratedSources = getIntegratedSources(module);
 
   elements.moduleHeader.innerHTML = `
     <div class="module-title-row">
@@ -663,6 +670,24 @@ function renderModuleHeader(module) {
           und einer offenen Transferfrage.
         </p>
       </article>
+      ${
+        integratedSources.length
+          ? `
+            <article class="module-box">
+              <h3>Filme und Quellen</h3>
+              <p class="module-copy">
+                Die ausgewählten Filme und Quellen dieser Station öffnen sich gesammelt im
+                Quellenfenster. Die PDF-Fragen sind in Hauptfragen und Zusatzchecks eingearbeitet.
+              </p>
+              <div class="question-actions">
+                <button class="btn ghost small" type="button" data-open-source-modal="true">
+                  Quellenfenster öffnen
+                </button>
+              </div>
+            </article>
+          `
+          : ""
+      }
       ${
         miniQuestions.length
           ? `
@@ -791,6 +816,10 @@ function renderModuleHeader(module) {
     button.addEventListener("click", () => {
       openMiniQuestion(button.dataset.openMiniQuestion);
     });
+  });
+
+  elements.moduleHeader.querySelector("[data-open-source-modal]")?.addEventListener("click", () => {
+    openSourceModal();
   });
 }
 
@@ -1396,6 +1425,102 @@ function renderMiniQuestionModal() {
   });
 }
 
+function getSourceActionLabel(resource) {
+  if (resource.type === "Video") return "Film öffnen";
+  if (resource.type === "Bild") return "Bild öffnen";
+  if (resource.type === "Website") return "Artikel öffnen";
+  return "Quelle öffnen";
+}
+
+function renderSourceModal() {
+  if (!elements.sourceModal) return;
+
+  const module = getActiveModule();
+  const integratedSources = getIntegratedSources(module);
+
+  if (!state.sourceModalOpen || !integratedSources.length) {
+    elements.sourceModal.classList.add("hidden");
+    elements.sourceModal.setAttribute("aria-hidden", "true");
+    elements.sourceModal.innerHTML = "";
+    return;
+  }
+
+  elements.sourceModal.classList.remove("hidden");
+  elements.sourceModal.setAttribute("aria-hidden", "false");
+  elements.sourceModal.innerHTML = `
+    <div class="source-modal-backdrop" data-close-source-modal="true"></div>
+    <div class="source-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="source-modal-title">
+      <div class="source-modal-header">
+        <div>
+          <p class="eyebrow">Quellenfenster</p>
+          <h3 id="source-modal-title">${escapeHtml(module.title)}: Filme und Quellen</h3>
+          <p class="module-copy">
+            Die Filme bleiben direkt zugänglich. Die Fragen aus dem Fragenreader sind bereits in
+            Hauptfragen und Zusatzchecks integriert und werden deshalb nicht separat angezeigt.
+          </p>
+        </div>
+        <button class="btn ghost small" type="button" data-close-source-modal="true">Schließen</button>
+      </div>
+      <div class="source-modal-body">
+        ${groupResources(integratedSources)
+          .map(
+            ([bucket, resources]) => `
+              <section class="source-modal-group">
+                <h4>${escapeHtml(bucket)}</h4>
+                <div class="source-modal-grid">
+                  ${resources
+                    .map(
+                      (resource) => `
+                        <article class="source-modal-card">
+                          <div class="resource-type-row">
+                            <span class="tag">${escapeHtml(resource.type)}</span>
+                            ${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
+                          </div>
+                          <h5>${escapeHtml(resource.title)}</h5>
+                          <p>${escapeHtml(resource.focus)}</p>
+                          ${
+                            resource.selectionNote
+                              ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
+                              : ""
+                          }
+                          ${
+                            resource.didacticUse
+                              ? `<p class="resource-note"><strong>Einbau:</strong> ${escapeHtml(resource.didacticUse)}</p>`
+                              : ""
+                          }
+                          <div class="resource-actions">
+                            <a class="btn ghost small" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
+                              ${getSourceActionLabel(resource)}
+                            </a>
+                          </div>
+                        </article>
+                      `
+                    )
+                    .join("")}
+                </div>
+              </section>
+            `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+
+  elements.sourceModal.querySelectorAll("[data-close-source-modal]").forEach((button) => {
+    button.addEventListener("click", closeSourceModal);
+  });
+}
+
+function openSourceModal() {
+  state.sourceModalOpen = true;
+  renderSourceModal();
+}
+
+function closeSourceModal() {
+  state.sourceModalOpen = false;
+  renderSourceModal();
+}
+
 function jumpToFirstOpenQuestion() {
   for (const module of modules) {
     const moduleIndex = modules.findIndex((entry) => entry.id === module.id);
@@ -1540,6 +1665,9 @@ function renderApp() {
   if (state.activeMiniQuestionId && !getMiniQuestions(module).some((question) => question.id === state.activeMiniQuestionId)) {
     state.activeMiniQuestionId = null;
   }
+  if (!getIntegratedSources(module).length) {
+    state.sourceModalOpen = false;
+  }
   if (!state.teacherAuthorized) {
     state.teacherMode = false;
   }
@@ -1557,6 +1685,7 @@ function renderApp() {
   renderResources(module);
   renderQuestions(module);
   renderMiniQuestionModal();
+  renderSourceModal();
 }
 
 elements.startRouteButton.addEventListener("click", () => {
@@ -1585,6 +1714,10 @@ elements.teacherModeButton.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && state.activeMiniQuestionId) {
     closeMiniQuestion();
+    return;
+  }
+  if (event.key === "Escape" && state.sourceModalOpen) {
+    closeSourceModal();
   }
 });
 

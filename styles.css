@@ -1206,6 +1206,77 @@ summary {
   flex-shrink: 0;
 }
 
+.source-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+}
+
+.source-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 24, 21, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.source-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(980px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: 16px auto;
+  overflow: auto;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  background: var(--paper-strong);
+  box-shadow: 0 36px 100px rgba(20, 14, 10, 0.3);
+}
+
+.source-modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 24px 24px 0;
+}
+
+.source-modal-header h3 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.source-modal-body {
+  display: grid;
+  gap: 18px;
+  padding: 0 24px 24px;
+}
+
+.source-modal-group {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.78), rgba(229, 221, 208, 0.4));
+}
+
+.source-modal-group h4,
+.source-modal-card h5 {
+  margin: 0;
+}
+
+.source-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.source-modal-card {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.84);
+}
+
 .audio-panel {
   margin-top: 22px;
 }
@@ -1259,7 +1330,8 @@ summary {
   .focus-gallery-head,
   .actor-panel-head,
   .mini-checks-head,
-  .mini-question-header {
+  .mini-question-header,
+  .source-modal-header {
     flex-direction: column;
   }
 }
@@ -1290,7 +1362,8 @@ summary {
   .focus-gallery-grid,
   .teacher-grid,
   .actor-grid,
-  .mini-check-grid {
+  .mini-check-grid,
+  .source-modal-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1345,8 +1418,16 @@ summary {
     margin: 10px auto;
   }
 
+  .source-modal-dialog {
+    width: min(980px, calc(100vw - 20px));
+    max-height: calc(100vh - 20px);
+    margin: 10px auto;
+  }
+
   .mini-question-header,
-  .mini-question-body {
+  .mini-question-body,
+  .source-modal-header,
+  .source-modal-body {
     padding-left: 18px;
     padding-right: 18px;
   }
