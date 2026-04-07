@@ -71,6 +71,44 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function getImageErrorAttributes(mode = "card") {
+  if (mode === "module") {
+    return 'onerror="handleImageError(this, \'module\')"';
+  }
+
+  if (mode === "resource") {
+    return 'onerror="handleImageError(this, \'resource\')"';
+  }
+
+  return 'onerror="handleImageError(this, \'card\')"';
+}
+
+function getImageStyleAttribute(config = {}) {
+  const styles = [];
+  if (config.imageFit) styles.push(`object-fit:${config.imageFit}`);
+  if (config.imagePosition) styles.push(`object-position:${config.imagePosition}`);
+  if (config.imageBackground) styles.push(`background:${config.imageBackground}`);
+  return styles.length ? `style="${escapeHtml(styles.join(";"))}"` : "";
+}
+
+function handleImageError(image, mode = "card") {
+  if (!(image instanceof HTMLElement)) return;
+
+  if (mode === "module") {
+    image.closest(".module-visual")?.remove();
+    return;
+  }
+
+  if (mode === "resource") {
+    image.closest(".resource-image-link")?.remove();
+    image.closest(".resource-card")?.classList.add("image-missing");
+    return;
+  }
+
+  image.closest(".drag-card, .focus-card, .actor-card")?.classList.add("image-missing");
+  image.remove();
+}
+
 function normalizeText(value = "") {
   return value
     .normalize("NFD")
@@ -160,6 +198,31 @@ function getQuestionById(questionId) {
 
 function getResourceMap(module) {
   return new Map(module.resources.map((resource) => [resource.id, resource]));
+}
+
+function getVisibleResources(module) {
+  if (state.teacherMode) return module.resources;
+  return module.resources.filter((resource) => resource.type !== "PDF");
+}
+
+function getResourceUsageMap(module) {
+  const usageMap = new Map();
+  module.questions.forEach((question, index) => {
+    (question.sourceIds || []).forEach((resourceId) => {
+      if (!usageMap.has(resourceId)) {
+        usageMap.set(resourceId, []);
+      }
+      usageMap.get(resourceId).push(index + 1);
+    });
+  });
+  return usageMap;
+}
+
+function formatQuestionTargets(targets = []) {
+  if (!targets.length) return "";
+  if (targets.length === 1) return `Frage ${targets[0]}`;
+  if (targets.length === 2) return `Frage ${targets[0]} und ${targets[1]}`;
+  return `Fragen ${targets.slice(0, -1).join(", ")} und ${targets.at(-1)}`;
 }
 
 function formatPercent(value) {
@@ -536,6 +599,7 @@ function renderModuleHeader(module) {
   const moduleIndex = modules.findIndex((entry) => entry.id === module.id);
   const unlocked = isModuleUnlocked(moduleIndex);
   const moduleScore = getModuleScore(module);
+  const visibleResources = getVisibleResources(module);
   const visual = module.visual;
   const actors = module.actors || [];
   const visualDossier = module.visualDossier || [];
@@ -548,7 +612,7 @@ function renderModuleHeader(module) {
         <p class="module-copy">${escapeHtml(module.intro)}</p>
         <div class="module-kicker">
           <span class="module-pill">${escapeHtml(module.era)}</span>
-          <span class="module-pill">${module.resources.length} Materialien</span>
+          <span class="module-pill">${visibleResources.length} Materialien</span>
           <span class="module-pill">${masteredCount}/${module.questions.length} Fragen gemeistert</span>
           <span class="module-pill">${formatPercent(moduleScore)} Modulscore</span>
           <span class="module-pill">${unlocked ? "freigeschaltet" : "gesperrt"}</span>
@@ -564,7 +628,12 @@ function renderModuleHeader(module) {
       visual
         ? `
           <figure class="module-visual">
-            <img src="${escapeHtml(visual.src)}" alt="${escapeHtml(visual.alt || module.title)}" />
+            <img
+              src="${escapeHtml(visual.src)}"
+              alt="${escapeHtml(visual.alt || module.title)}"
+              ${getImageErrorAttributes("module")}
+              ${getImageStyleAttribute(visual)}
+            />
           </figure>
         `
         : ""
@@ -615,11 +684,17 @@ function renderModuleHeader(module) {
                         src="${escapeHtml(entry.src)}"
                         alt="${escapeHtml(entry.alt || entry.title)}"
                         loading="lazy"
+                        ${getImageErrorAttributes("card")}
+                        ${getImageStyleAttribute(entry)}
                       />
                       <div class="focus-card-copy">
                         <h4>${escapeHtml(entry.title)}</h4>
                         <p class="focus-card-caption">${escapeHtml(entry.caption || "")}</p>
-                        <p>${escapeHtml(entry.whyItMatters || "")}</p>
+                        ${
+                          state.teacherMode && entry.whyItMatters
+                            ? `<p>${escapeHtml(entry.whyItMatters)}</p>`
+                            : ""
+                        }
                       </div>
                     </article>
                   `
@@ -652,12 +727,20 @@ function renderModuleHeader(module) {
                         src="${escapeHtml(actor.imageSrc)}"
                         alt="${escapeHtml(actor.imageAlt || actor.name)}"
                         loading="lazy"
+                        ${getImageErrorAttributes("card")}
+                        ${getImageStyleAttribute(actor)}
                       />
                       <div class="actor-copy">
                         <h4>${escapeHtml(actor.name)}</h4>
                         <p class="actor-role">${escapeHtml(actor.role)}</p>
-                        <p>${escapeHtml(actor.lens)}</p>
-                        <p>${escapeHtml(actor.whyHere)}</p>
+                        ${
+                          state.teacherMode
+                            ? `
+                              <p>${escapeHtml(actor.lens || "")}</p>
+                              <p>${escapeHtml(actor.whyHere || "")}</p>
+                            `
+                            : ""
+                        }
                       </div>
                     </article>
                   `
@@ -783,7 +866,22 @@ function renderResources(module) {
     return;
   }
 
-  elements.resourceGroups.innerHTML = groupResources(module.resources)
+  const usageMap = getResourceUsageMap(module);
+  const visibleResources = getVisibleResources(module);
+  if (!visibleResources.length) {
+    elements.resourceGroups.innerHTML = `
+      <section class="resource-group">
+        <h3>Materialien in Aufgaben eingearbeitet</h3>
+        <p class="module-copy">
+          Die relevanten Arbeitsaufträge stecken bereits in den Fragen dieser Station.
+          Zusätzliche PDF-Fragenhefte werden in der Lernendenansicht nicht separat angezeigt.
+        </p>
+      </section>
+    `;
+    return;
+  }
+
+  elements.resourceGroups.innerHTML = groupResources(visibleResources)
     .map(([bucket, resources]) => {
       return `
         <section class="resource-group">
@@ -795,6 +893,7 @@ function renderResources(module) {
                 if (resource.type === "Video") actionLabel = "Video öffnen";
                 if (resource.type === "Bild") actionLabel = "Bild öffnen";
                 if (resource.type === "Website") actionLabel = "Artikel öffnen";
+                const targets = usageMap.get(resource.id) || [];
                 return `
                   <article class="resource-card">
                     ${
@@ -806,6 +905,8 @@ function renderResources(module) {
                               src="${escapeHtml(resource.link)}"
                               alt="${escapeHtml(resource.imageAlt || resource.title)}"
                               loading="lazy"
+                              ${getImageErrorAttributes("resource")}
+                              ${getImageStyleAttribute(resource)}
                             />
                           </a>
                         `
@@ -817,6 +918,21 @@ function renderResources(module) {
                       ${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
                     </div>
                     <p>${escapeHtml(resource.focus)}</p>
+                    ${
+                      resource.selectionNote
+                        ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
+                        : ""
+                    }
+                    ${
+                      resource.didacticUse
+                        ? `<p class="resource-note"><strong>Einsatz:</strong> ${escapeHtml(resource.didacticUse)}</p>`
+                        : ""
+                    }
+                    ${
+                      targets.length
+                        ? `<p class="resource-note"><strong>Direkt verknüpft mit:</strong> ${escapeHtml(formatQuestionTargets(targets))}</p>`
+                        : ""
+                    }
                     <div class="resource-actions">
                       <a class="btn ghost small" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">${actionLabel}</a>
                     </div>
@@ -912,6 +1028,8 @@ function renderDragOrderField(question, answer) {
                       src="${escapeHtml(item.imageSrc)}"
                       alt="${escapeHtml(item.imageAlt || item.label)}"
                       loading="lazy"
+                      ${getImageErrorAttributes("card")}
+                      ${getImageStyleAttribute(item)}
                     />
                   `
                   : ""

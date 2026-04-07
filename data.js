@@ -41,39 +41,42 @@ const MODULES = [
     },
     visualDossierTitle: "Vier Bilder für die Vorgeschichte des Zerfalls",
     visualDossierIntro:
-      "Die Bilder dieser Station sind nicht Dekoration, sondern historische Verdichtungen: Sie zeigen, welche Langzeitlinien später von Nationalisten wieder aktiviert wurden.",
+      "Jedes Bild markiert einen konkreten historischen Bezugspunkt dieser Station: Sarajevo 1914, Kriegsgewalt im Zweiten Weltkrieg, Titos Herrschaft und Gazimestan 1989.",
     visualDossier: [
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Assassination_at_Sarajevo.jpg?width=1200",
+        src: "assets/module-images/assassination-at-sarajevo.jpg",
         alt: "Historische Darstellung des Attentats von Sarajevo 1914",
         title: "Sarajevo 1914",
-        caption: "Das Attentat ist hier nicht bloß Auftakt des Ersten Weltkriegs, sondern ein Symbol dafür, wie der Balkan früh als Krisenraum Europas gelesen wurde.",
+        caption: "Historienbild des Attentats auf Erzherzog Franz Ferdinand und Sophie am 28. Juni 1914 in Sarajevo.",
         whyItMatters:
-          "Das Bild gehört in diese Station, weil es zeigt, dass die Region lange vor 1991 mit Fragen von Nationalismus, Gewalt und internationaler Machtpolitik verknüpft war."
+          "Arbeitsnutzen: Das Bild markiert den frühesten Erinnerungsort der Station und gehört direkt zur Chronologiefrage."
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Jasenovac_prisoners_enter_the_camp.jpg?width=1200",
+        src: "assets/module-images/jasenovac-prisoners-enter-the-camp.jpg",
         alt: "Historische Aufnahme aus dem Kontext des Lagers Jasenovac",
         title: "Ustascha-Terror und Kriegsgewalt",
-        caption: "Das Foto steht für die Gewalt- und Opfererfahrungen des Zweiten Weltkriegs, die später politisch immer wieder aufgerufen wurden.",
+        caption: "Fotografie aus dem Umfeld des Ustascha-Lagers Jasenovac im Zweiten Weltkrieg.",
         whyItMatters:
-          "Es ist für die Station zentral, weil der Zerfall Jugoslawiens nicht verstanden werden kann, ohne diese traumatischen Erinnerungshorizonte mitzudenken."
+          "Arbeitsnutzen: Das Bild konkretisiert die Gewaltgeschichte, auf die sich spätere Nationalisten in Serbien, Kroatien und Bosnien immer wieder bezogen."
       },
       {
         src: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
         alt: "Josip Broz Tito im Uniformporträt",
         title: "Tito als Stabilisierungsmacht",
-        caption: "Das Porträt verdichtet den autoritären Kern des jugoslawischen Modells: Einheit wurde politisch organisiert und notfalls repressiv gesichert.",
+        caption: "Porträt von Josip Broz Tito als Staatschef des sozialistischen Jugoslawiens.",
         whyItMatters:
-          "Das Bild ist hier sinnvoll, weil es die Leitfrage der Station bündelt: Warum wirkte Jugoslawien stabil, obwohl die Konflikte unter der Oberfläche fortbestanden?"
+          "Arbeitsnutzen: Nutze das Porträt für Frage 1 und 5, also für Herrschaft, Partei, Repression und Stabilisierung.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Gazimestan_Monument.jpg?width=1200",
+        src: "assets/module-images/gazimestan-monument.jpg",
         alt: "Gazimestan-Denkmal auf dem Amselfeld",
         title: "Amselfeld als politischer Erinnerungsort",
-        caption: "Nicht das Denkmal selbst löste den Zerfall aus, sondern seine politische Aufladung in der späten Phase Jugoslawiens.",
+        caption: "Das Denkmal am Amselfeld wurde 1989 zum Schauplatz der Gazimestan-Rede von Slobodan Milošević.",
         whyItMatters:
-          "Das Bild zeigt, wie Geschichte als Ressource für gegenwärtige Mobilisierung benutzt wurde und damit direkt in die Zerfallsphase hineinragt."
+          "Arbeitsnutzen: Es verbindet Vorgeschichte und Zerfallsphase und hilft bei Frage 3, den Schritt von Erinnerung zu Mobilisierung zu erklären."
       }
     ],
     actorFocus: {
@@ -84,12 +87,13 @@ const MODULES = [
     actors: [
       {
         name: "Josip Broz Tito",
-        role: "kommunistischer Staatsführer Jugoslawiens",
-        lens: "Er verkörpert die autoritäre Einheitsformel des Staates.",
+        role: "Staats- und Parteichef Jugoslawiens, 1945 bis 1980",
+        lens: "Unter seiner Führung wurde Jugoslawien föderal organisiert, blockfrei positioniert und autoritär zusammengehalten.",
         whyHere:
-          "Diese Station fragt nach der Stabilität vor dem Zerfall. Tito ist deshalb zentral, weil seine Herrschaft Konflikte kontrollierte, aber nicht dauerhaft bearbeitete.",
+          "Für diese Station ist Tito zentral, weil sich an ihm Stabilisierung, Repression und ungelöste nationale Spannungen zugleich erklären lassen.",
         imageSrc: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
-        imageAlt: "Josip Broz Tito im Uniformporträt"
+        imageAlt: "Josip Broz Tito im Uniformporträt",
+        imagePosition: "center top"
       }
     ],
     prompts: [
@@ -101,39 +105,47 @@ const MODULES = [
     resources: [
       {
         id: "r-vorgeschichte-doku-1",
-        bucket: "Pflichtvideos",
+        bucket: "Pflichtquelle: zuerst bearbeiten",
         type: "Video",
         title: "Balkan in Flammen, Folge 1: Pulverfass Jugoslawien",
         focus: "Vorgeschichte, Tito, föderale Ordnung, Nationalismus und Aufstieg Milosevics",
         link: "https://www.dropbox.com/scl/fi/mbvt6nif4o3njrb2noijk/Balkan-in-Flammen-Pulverfass-Jugoslawien-Staffel-1-Folge-1.mp4?rlkey=5glwor40fqn3j8hcfpz0yzpwo&st=tj8dx0a7&dl=0",
-        tags: ["Dropbox", "Pflicht", "Dokumentation"]
+        tags: ["Dropbox", "Pflicht", "Dokumentation"],
+        selectionNote: "Diese Folge deckt die gesamte Station ab und ist die Hauptquelle.",
+        didacticUse: "Zuerst anschauen, dann mit ihr Frage 1 bis 4 bearbeiten."
       },
       {
         id: "r-vorgeschichte-pdf",
-        bucket: "Reader und Fragen",
+        bucket: "Arbeitsblatt: für Begriffe und Vertiefung",
         type: "PDF",
-        title: "Balkan in Flammen: Fragenheft",
+        title: "Arbeitsblatt Vorgeschichte",
         focus: "Dreiteiliger Fragenreader mit Leitfragen zu Vorgeschichte, Krieg und Nachordnung",
         link: "assets/materials/balkan-in-flammen-fragen.pdf",
-        tags: ["lokal", "Reader", "Fragen"]
+        tags: ["lokal", "Reader", "Fragen"],
+        selectionNote: "Hier stehen die Zusatzfragen, die in die Station eingebaut wurden.",
+        didacticUse: "Vor allem für Frage 5 und 6 sowie zum Nacharbeiten von Begriffen."
       },
       {
         id: "r-vorgeschichte-yt-1",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Chronologie und Kontext",
         type: "Video",
         title: "YouTube-Playlist, Video 1",
         focus: "zusätzlicher Impuls zur historischen Einordnung des Zerfalls",
         link: "https://www.youtube.com/watch?v=_HGCHTueg-Q&list=PL8991DFCF33730589",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Nur nötig, wenn die lange Vorgeschichte noch unscharf bleibt.",
+        didacticUse: "Besonders hilfreich für die Chronologiefrage und die Transferantwort."
       },
       {
         id: "r-vorgeschichte-yt-2",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Struktur des Vielvölkerstaats",
         type: "Video",
         title: "YouTube-Playlist, Video 2",
         focus: "ergänzende Perspektive auf Nationalismus, Krise und politische Radikalisierung",
         link: "https://www.youtube.com/watch?v=q8uG0o0b4wQ&list=PL8991DFCF33730589&index=2",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Ergänzung, wenn föderale Struktur und Nationalismus noch nicht klar genug sind.",
+        didacticUse: "Vor allem für Frage 2 und die Abwägung in Frage 4."
       },
     ],
     questions: [
@@ -249,14 +261,14 @@ const MODULES = [
             id: "sarajevo-1914",
             label: "Das Attentat von Sarajevo macht den Balkan zum Auslöser einer gesamteuropäischen Krise.",
             detail: "1914 wird die Region zum Schauplatz eines weltpolitischen Umbruchs.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Assassination_at_Sarajevo.jpg?width=900",
+            imageSrc: "assets/module-images/assassination-at-sarajevo.jpg",
             imageAlt: "Historische Aufnahme zum Attentat von Sarajevo 1914"
           },
           {
             id: "ustasa-ww2",
             label: "Im Zweiten Weltkrieg verstaerken Ustascha-Terror und Besatzung die interethnischen Traumata.",
             detail: "Gewalterfahrungen prägen das kollektive Gedächtnis über Jahrzehnte.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Jasenovac_prisoners_enter_the_camp.jpg?width=900",
+            imageSrc: "assets/module-images/jasenovac-prisoners-enter-the-camp.jpg",
             imageAlt: "Historische Aufnahme aus dem Kontext des Ustascha-Terrors"
           },
           {
@@ -277,14 +289,14 @@ const MODULES = [
             id: "amselfeld-1989",
             label: "Milosevic mobilisiert 1989 mit nationaler Symbolpolitik auf dem Amselfeld.",
             detail: "Geschichte wird offen für gegenwaertige Machtpolitik instrumentalisiert.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Gazimestan_Monument.jpg?width=900",
+            imageSrc: "assets/module-images/gazimestan-monument.jpg",
             imageAlt: "Gazimestan-Denkmal auf dem Amselfeld"
           },
           {
             id: "zagreb-1990",
             label: "Das Fussballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
             detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=900",
+            imageSrc: "assets/module-images/stadion-maksimir-2011.jpg",
             imageAlt: "Stadion Maksimir in Zagreb als Schauplatz des symbolischen Eskalationsmoments"
           }
         ],
@@ -332,7 +344,7 @@ const MODULES = [
       {
         id: "q-vorgeschichte-5",
         type: "short-text",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Erkläre knapp, was das Beispiel Goli Otok über Titos Repressionsapparat zeigt.",
         help:
@@ -360,7 +372,7 @@ const MODULES = [
       {
         id: "q-vorgeschichte-6",
         type: "open-analysis",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Warum war Titos Bruch mit Stalin 1948 weltpolitisch bedeutsam, und welche Folgen hatte er für Jugoslawiens Sonderstellung? Begründe mit Materialbezügen.",
         help:
@@ -421,39 +433,45 @@ const MODULES = [
     },
     visualDossierTitle: "Bilder der politischen und militärischen Zuspitzung",
     visualDossierIntro:
-      "Diese Auswahl zeigt, wie der Zerfall vom politischen Projekt in sichtbare Eskalation überging: Führungsfiguren, symbolische Schauplätze und zerstörte Städte gehören hier zusammen.",
+      "Die vier Bilder markieren die wichtigsten Ebenen dieser Station: politische Führung, konkurrierende Staatsprojekte, symbolische Eskalationsorte und sichtbare Kriegszerstörung.",
     visualDossier: [
       {
         src: "assets/module-images/milosevic-in-hague.jpg",
         alt: "Slobodan Milošević im Gerichtssaal in Den Haag",
         title: "Milošević als politische Zuspitzungsfigur",
-        caption: "Das Bild aus Den Haag verweist bewusst auf die spätere juristische Aufarbeitung und rahmt seine Rolle nicht neutral, sondern als historisch verantwortete Politik.",
+        caption: "Porträt Slobodan Miloševićs während seines Prozesses in Den Haag; gezeigt wird derselbe Politiker, der seit 1989 serbische Machtpolitik prägte.",
         whyItMatters:
-          "Es gehört hierher, weil diese Station erklärt, wie Nationalismus, Machtgewinn und Medienpolitik zusammenwirkten."
+          "Arbeitsnutzen: Nutze das Porträt für Frage 1 und 4, also für Machtziele, Nationalismus und politische Verantwortung.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
         src: "assets/module-images/franjo-tudjman-1995.jpg",
         alt: "Franjo Tuđman im Jahr 1995",
         title: "Tuđman und das kroatische Staatsprojekt",
-        caption: "Das Porträt steht nicht einfach für Kroatien, sondern für die politische Logik einer nationalen Staatsgründung in der Zerfallskrise.",
+        caption: "Porträt des kroatischen Präsidenten Franjo Tuđman aus dem Jahr 1995.",
         whyItMatters:
-          "Es ist hier relevant, weil Lernende die Gegenüberstellung unterschiedlicher Führungsprojekte verstehen sollen, statt den Krieg als diffusen Ethnienkonflikt zu lesen."
+          "Arbeitsnutzen: Zusammen mit dem Milošević-Porträt dient es dem direkten Vergleich der politischen Ziele in Frage 1.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=1200",
+        src: "assets/module-images/stadion-maksimir-2011.jpg",
         alt: "Stadion Maksimir in Zagreb",
         title: "Maksimir als Erinnerungsort der Eskalation",
-        caption: "Das heutige Stadionbild steht für den symbolischen Ort, an dem gesellschaftliche Polarisierung 1990 in offene Gewalt umschlug.",
+        caption: "Panorama des Stadions Maksimir in Zagreb, dem Ort der Ausschreitungen beim Spiel Dinamo Zagreb gegen Roter Stern Belgrad im Mai 1990.",
         whyItMatters:
-          "Es hilft, den berüchtigten Fußballmoment als gesellschaftliches Warnsignal und nicht als isolierte Anekdote zu deuten."
+          "Arbeitsnutzen: Das Bild gehört zur Chronologiefrage und markiert einen symbolischen Eskalationsort vor dem offenen Krieg."
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Vukovar_water_tower.jpg?width=1200",
+        src: "assets/module-images/vukovar-water-tower.jpg",
         alt: "Wasserturm von Vukovar",
         title: "Vukovar als Bild des Krieges",
-        caption: "Der Wasserturm wurde zum internationalen Symbol für Belagerung, Zerstörung und die Radikalisierung des Kroatienkriegs.",
+        caption: "Der beschädigte Wasserturm von Vukovar steht für die Belagerung und Zerstörung der Stadt im Herbst 1991.",
         whyItMatters:
-          "Dieses Bild verdichtet die Leitfrage der Station: Wann wird aus nationalistischer Politik ein Krieg, der international nicht mehr übersehen werden kann?"
+          "Arbeitsnutzen: Das Bild ist zentral für Frage 6, also für die internationale Wahrnehmung des Kroatienkriegs."
       }
     ],
     actorFocus: {
@@ -464,21 +482,23 @@ const MODULES = [
     actors: [
       {
         name: "Slobodan Milošević",
-        role: "serbischer Machtpolitiker und zentraler Akteur der Zentralisierungs- und Nationalismuspolitik",
-        lens: "Er steht in dieser Station für Machtgewinn durch serbische Mobilisierung und historische Symbolpolitik.",
+        role: "Präsident Serbiens von 1989 bis 1997, danach Präsident der Bundesrepublik Jugoslawien",
+        lens: "Er trieb die Beschneidung der Kosovo-Autonomie, die serbische Zentralisierung und eine nationalistische Medienpolitik voran.",
         whyHere:
-          "Sein Porträt gehört hierher, weil die Station erklärt, wie aus Staatskrise und Medienpropaganda konkrete Eskalationspolitik wurde.",
+          "Für diese Station ist er zentral, weil sich an ihm Machtgewinn, Symbolpolitik und Eskalationsstrategie konkret benennen lassen.",
         imageSrc: "assets/module-images/milosevic-in-hague.jpg",
-        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag"
+        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag",
+        imagePosition: "center top"
       },
       {
         name: "Franjo Tuđman",
-        role: "kroatischer Präsident und Führungsfigur des kroatischen Staatsprojekts",
-        lens: "Er steht für die Gegenlogik einer nationalen Staatsgründung auf kroatischer Seite.",
+        role: "Präsident Kroatiens ab 1990 und Führungsfigur des kroatischen Staatsprojekts",
+        lens: "Er verband die Unabhängigkeitsstrategie Kroatiens mit nationaler Symbolpolitik und staatlichem Machtaufbau.",
         whyHere:
-          "Sein Porträt ist in dieser Station sinnvoll, weil Lernende hier die politische Zuspitzung als Konkurrenz von Projekten und nicht als anonymen 'Ethnienkonflikt' verstehen sollen.",
+          "Er ist hier wichtig, weil der Zerfall 1990 bis 1992 als Konkurrenz politischer Projekte und nicht als anonymer 'Ethnienkonflikt' verstanden werden soll.",
         imageSrc: "assets/module-images/franjo-tudjman-1995.jpg",
-        imageAlt: "Franjo Tuđman im Jahr 1995"
+        imageAlt: "Franjo Tuđman im Jahr 1995",
+        imagePosition: "center top"
       }
     ],
     prompts: [
@@ -491,39 +511,47 @@ const MODULES = [
     resources: [
       {
         id: "r-zerfall-doku-2",
-        bucket: "Pflichtvideos",
+        bucket: "Pflichtquelle: zuerst bearbeiten",
         type: "Video",
         title: "Balkan in Flammen, Folge 2: Ein Land zerfaellt",
         focus: "Nationalismus, Propaganda, Kroatienkrieg, Bosnien und internationale Reaktionen",
         link: "https://www.dropbox.com/scl/fi/euklg1q25mcmsqurroa9n/Balkan-in-Flammen-Ein-Land-zerf-llt-Staffel-1-Folge-2.mp4?rlkey=480olq20vrdtf0g3a5fnomrmr&st=69p85xwk&dl=0",
-        tags: ["Dropbox", "Pflicht", "Dokumentation"]
+        tags: ["Dropbox", "Pflicht", "Dokumentation"],
+        selectionNote: "Die Folge ist die Hauptquelle für Politik, Propaganda und Kriegsbeginn.",
+        didacticUse: "Zuerst damit Frage 1 bis 4 bearbeiten."
       },
       {
         id: "r-zerfall-pdf",
-        bucket: "Reader und Fragen",
+        bucket: "Arbeitsblatt: für Vukovar und Europa",
         type: "PDF",
-        title: "Balkan in Flammen: Fragenheft",
+        title: "Arbeitsblatt Zerfall",
         focus: "Leitfragen zu Propaganda, Kriegsausbruch, Voelkerarmee, Vukovar und Bosnien",
         link: "assets/materials/balkan-in-flammen-fragen.pdf",
-        tags: ["lokal", "Reader"]
+        tags: ["lokal", "Reader"],
+        selectionNote: "Das Arbeitsblatt ergänzt die Doku um Leitfragen zu Vukovar und zur europäischen Reaktion.",
+        didacticUse: "Vor allem für Frage 5 und 6 sowie zur Absicherung der Chronologie."
       },
       {
         id: "r-zerfall-yt-3",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Chronologie 1990 bis 1992",
         type: "Video",
         title: "YouTube-Playlist, Video 3",
         focus: "ergänzender Erklärimpuls zur Staatskrise 1990/91",
         link: "https://www.youtube.com/watch?v=Fm-pdnVz8EY&list=PL8991DFCF33730589&index=3",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Nur nötig, wenn die Abfolge von Zagreb, Slowenien, Vukovar und Bosnien noch unscharf ist.",
+        didacticUse: "Besonders für die Chronologiefrage geeignet."
       },
       {
         id: "r-zerfall-yt-4",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Propaganda und Europa",
         type: "Video",
         title: "YouTube-Playlist, Video 4",
         focus: "zusätzliche Perspektive auf Kriegsausbruch und internationale Politik",
         link: "https://www.youtube.com/watch?v=sT_09hb1kzQ&list=PL8991DFCF33730589&index=4",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Ergänzung, wenn Propaganda und europäische Reaktionen genauer gewichtet werden sollen.",
+        didacticUse: "Hilft vor allem bei Frage 2, 4 und 5."
       },
     ],
     questions: [
@@ -639,21 +667,21 @@ const MODULES = [
             id: "zagreb-1990",
             label: "Das Fussballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
             detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=900",
+            imageSrc: "assets/module-images/stadion-maksimir-2011.jpg",
             imageAlt: "Stadion Maksimir in Zagreb"
           },
           {
             id: "slowenien-1991",
             label: "Der Zehn-Tage-Krieg in Slowenien zeigt 1991 die militärische Krise des Bundesstaats.",
             detail: "Der schnelle Konflikt legt Schwachstellen der jugoslawischen Volksarmee offen.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Slovenian_war_map_(cropped).jpg?width=900",
+            imageSrc: "assets/module-images/slovenian-war-map-cropped.jpg",
             imageAlt: "Darstellung des Zehn-Tage-Kriegs in Slowenien"
           },
           {
             id: "vukovar-1991",
             label: "Die Belagerung und Zerstörung Vukovars radikalisiert den Kroatienkrieg im Herbst 1991.",
             detail: "Das Bild des Krieges veraendert sich international deutlich.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Vukovar_water_tower.jpg?width=900",
+            imageSrc: "assets/module-images/vukovar-water-tower.jpg",
             imageAlt: "Wasserturm von Vukovar als Symbol der Zerstörung"
           },
           {
@@ -674,7 +702,7 @@ const MODULES = [
             id: "sarajevo-1992",
             label: "Mit dem Beginn der Belagerung Sarajevos wird der Bosnienkrieg weltweit sichtbar.",
             detail: "Der Krieg trifft nun eine multiethnische Hauptstadt mit voller Härte.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Sarajevo_Siege_ShellingDestruction.jpg?width=900",
+            imageSrc: "assets/module-images/sarajevo-siege-shelling-destruction.jpg",
             imageAlt: "Zerstörungen in Sarajevo während der Belagerung"
           }
         ],
@@ -722,7 +750,7 @@ const MODULES = [
       {
         id: "q-zerfall-5",
         type: "short-text",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Warum blieb die europäische Staatengemeinschaft zu Beginn des Zerfalls zunächst weitgehend untätig?",
         help:
@@ -750,7 +778,7 @@ const MODULES = [
       {
         id: "q-zerfall-6",
         type: "open-analysis",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Warum wurde Vukovar zu einem internationalen Symbol des Kroatienkriegs, und was änderte dieses Bild an der Wahrnehmung des Konflikts? Begründe mit Materialbezügen.",
         help:
@@ -816,39 +844,45 @@ const MODULES = [
     },
     visualDossierTitle: "Bosnienkrieg als Bild- und Gewaltraum",
     visualDossierIntro:
-      "Die Bilder dieser Station zeigen nicht nur Zerstörung, sondern verschiedene Ebenen des Krieges: politische Führung, militärische Gewalt, Stadtraum und die Erinnerung an Srebrenica.",
+      "Die Bildauswahl deckt die vier Ebenen der Station ab: angegriffener Staat, militärische Führung, zerstörter Stadtraum und spätere Erinnerung an Srebrenica.",
     visualDossier: [
       {
         src: "assets/module-images/alija-izetbegovic.jpg",
         alt: "Alija Izetbegović im Porträt",
         title: "Izetbegović und der bosnische Staat",
-        caption: "Das Porträt markiert die politische Perspektive des international anerkannten bosnischen Staates.",
+        caption: "Porträt von Alija Izetbegović, dem Vorsitzenden des Staatspräsidiums von Bosnien-Herzegowina.",
         whyItMatters:
-          "Es ist hier wichtig, weil der Bosnienkrieg nicht nur als Tätergeschichte erzählt werden darf, sondern auch als Verteidigung eines angegriffenen Staates."
+          "Arbeitsnutzen: Das Bild hilft bei der Zuordnung der politischen Führung des international anerkannten bosnischen Staates.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
         src: "assets/module-images/ratko-mladic-1993.jpg",
         alt: "Ratko Mladić im Jahr 1993",
         title: "Militärische Gewaltlogik",
-        caption: "Mladić steht in dieser Station für die operative Umsetzung von Belagerung, Gewalt gegen Zivilisten und Srebrenica.",
+        caption: "Porträt von Ratko Mladić, dem militärischen Kommandeur der Armee der Republika Srpska.",
         whyItMatters:
-          "Das Bild gehört hierher, weil es die militärische Dimension des Krieges personifiziert, die in der Doku immer wieder sichtbar wird."
+          "Arbeitsnutzen: Das Porträt wird für die Unterscheidung von politischer Führung und militärischer Umsetzung gebraucht.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
         src: "assets/module-images/sarajevo-grbavica.jpeg",
         alt: "Zerstörte Gebäude im Stadtteil Grbavica in Sarajevo",
         title: "Sarajevo als zerstörter Stadtraum",
-        caption: "Dieses Foto zeigt Sarajevo nicht abstrakt, sondern als konkreten Lebensraum, in dem Krieg den Alltag eingeschrieben hat.",
+        caption: "Fotografie zerstörter Wohnhäuser im Sarajevoer Stadtteil Grbavica nach der Belagerung.",
         whyItMatters:
-          "Es trägt die Station, weil Sarajevo zum globalen Symbol für Belagerung, Zivilopfer und die Zerstörung eines multiethnischen Stadtlebens wurde."
+          "Arbeitsnutzen: Das Bild dient direkt der Bildanalysefrage zu Belagerung, Zivilbevölkerung und Nachkriegsspuren."
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Srebrenica-memorial.jpg?width=1200",
+        src: "assets/module-images/srebrenica-memorial.jpg",
         alt: "Gedenkstätte von Srebrenica",
         title: "Srebrenica als Erinnerungsort",
-        caption: "Das Bild verschiebt den Blick von der Ereignischronologie zur Frage, wie Genozid erinnert und politisch aufgearbeitet wird.",
+        caption: "Aufnahme der Gedenkstätte Potočari bei Srebrenica, die an den Genozid von Juli 1995 erinnert.",
         whyItMatters:
-          "Es ist hier sinnvoll, weil diese Station zeigen soll, dass Srebrenica nicht nur Wendepunkt, sondern auch dauerhafte Erinnerung und offene Wunde ist."
+          "Arbeitsnutzen: Das Bild verbindet die Chronologiefrage mit der späteren Erinnerung an Srebrenica."
       }
     ],
     actorFocus: {
@@ -859,39 +893,43 @@ const MODULES = [
     actors: [
       {
         name: "Alija Izetbegović",
-        role: "Präsident von Bosnien-Herzegowina",
-        lens: "Er steht für den international anerkannten bosnischen Staat und seine politische Selbstbehauptung.",
+        role: "Vorsitzender des Staatspräsidiums von Bosnien-Herzegowina",
+        lens: "Er repräsentiert den international anerkannten bosnischen Staat während Belagerung, Krieg und Verhandlungen.",
         whyHere:
-          "Sein Porträt ist hier sinnvoll, weil diese Station nicht nur Täterperspektiven, sondern auch die politische Führung des angegriffenen Staates sichtbar machen muss.",
+          "Er gehört in diese Station, weil Bosnienkrieg und Sarajevo nicht nur aus Täter-, sondern auch aus Staatsperspektive erklärt werden müssen.",
         imageSrc: "assets/module-images/alija-izetbegovic.jpg",
-        imageAlt: "Alija Izetbegović im Porträt"
+        imageAlt: "Alija Izetbegović im Porträt",
+        imagePosition: "center top"
       },
       {
         name: "Radovan Karadžić",
-        role: "politischer Führer der bosnischen Serben",
-        lens: "Er steht für die politische Planung der Abspaltung und ethnischen Homogenisierung.",
+        role: "politischer Führer der bosnischen Serben und Präsident der Republika Srpska",
+        lens: "Er steht für die politische Planung der Abspaltung, der Belagerungspolitik und der ethnischen Homogenisierung.",
         whyHere:
-          "Karadžić gehört in diese Station, weil Lernende die Verbindung von politischer Programmatik, Belagerung und ethnischer Säuberung nachvollziehen sollen.",
+          "Er ist hier wichtig, weil an ihm die politische Ebene von Kriegführung, Separatismus und Srebrenica sichtbar wird.",
         imageSrc: "assets/module-images/radovan-karadzic-1994.jpg",
-        imageAlt: "Radovan Karadžić im März 1994"
+        imageAlt: "Radovan Karadžić im März 1994",
+        imagePosition: "center top"
       },
       {
         name: "Ratko Mladić",
-        role: "militärischer Kommandeur der bosnisch-serbischen Kräfte",
-        lens: "Er steht für die operative Gewaltlogik des Krieges, von der Belagerung bis zu Srebrenica.",
+        role: "militärischer Kommandeur der bosnisch-serbischen Streitkräfte",
+        lens: "Er steht für die operative Gewaltlogik des Krieges, von der Belagerung Sarajevos bis zu Srebrenica.",
         whyHere:
-          "Sein Bild ist hier didaktisch sinnvoll, weil die Station ausdrücklich nach militärischer Strategie, Gewalt gegen Zivilisten und der Rolle von Srebrenica fragt.",
+          "Er gehört in diese Station, weil Frage 6 ausdrücklich politische und militärische Verantwortung unterscheiden lässt.",
         imageSrc: "assets/module-images/ratko-mladic-1993.jpg",
-        imageAlt: "Ratko Mladić im Jahr 1993"
+        imageAlt: "Ratko Mladić im Jahr 1993",
+        imagePosition: "center top"
       },
       {
         name: "Biljana Plavšić",
-        role: "führende Politikerin der Republika Srpska",
-        lens: "Sie macht sichtbar, dass politische Radikalisierung und Kriegsführung nicht auf einzelne Männer reduziert werden dürfen.",
+        role: "führende Politikerin der Republika Srpska, später deren Präsidentin",
+        lens: "Sie steht für die politische Breite der bosnisch-serbischen Führung jenseits der bekannteren Figuren Karadžić und Mladić.",
         whyHere:
-          "Ihr Porträt bleibt hier, weil es die politische Breite der bosnisch-serbischen Führung zeigt und die Station dadurch differenzierter wird.",
+          "Sie bleibt in der Station, damit die politische Führung der Republika Srpska nicht auf zwei Einzelpersonen verkürzt wird.",
         imageSrc: "assets/module-images/biljana-plavsic.jpeg",
-        imageAlt: "Biljana Plavšić im Porträt"
+        imageAlt: "Biljana Plavšić im Porträt",
+        imagePosition: "center top"
       }
     ],
     prompts: [
@@ -904,66 +942,82 @@ const MODULES = [
     resources: [
       {
         id: "r-bosnien-doku-3",
-        bucket: "Pflichtvideos",
+        bucket: "Pflichtquelle: zuerst bearbeiten",
         type: "Video",
         title: "Balkan in Flammen, Folge 3: Jugoslawien in Trümmern",
         focus: "Bosnienkrieg, Srebrenica, NATO, Dayton, Kosovo und Langzeitfolgen",
         link: "https://www.dropbox.com/scl/fi/zsqgssv5j9utgjbosmyjb/Balkan-in-Flammen-Jugoslawien-in-Tr-mmern-Staffel-1-Folge-3.mp4?rlkey=xcgmhvo7qf3x0kx0u3zxpg1pu&st=txldgppw&dl=0",
-        tags: ["Dropbox", "Pflicht", "Dokumentation"]
+        tags: ["Dropbox", "Pflicht", "Dokumentation"],
+        selectionNote: "Diese Folge ist die Hauptquelle für Bosnienkrieg, Srebrenica und Dayton.",
+        didacticUse: "Zuerst für Frage 1 bis 3 und danach für die Transferaufgaben nutzen."
       },
       {
         id: "r-bosnien-wiki",
-        bucket: "Artikel und Referenz",
+        bucket: "Referenztext: für Daten und Begriffe",
         type: "Website",
         title: "Wikipedia: Bosnienkrieg",
         focus: "Daten, Kriegsparteien, Verlauf, Belagerung Sarajevos, Srebrenica und Dayton",
         link: "https://de.wikipedia.org/wiki/Bosnienkrieg",
-        tags: ["Wikipedia", "Referenz"]
+        tags: ["Wikipedia", "Referenz"],
+        selectionNote: "Die Seite dient hier als Nachschlagehilfe für Begriffe, Daten und Kriegsparteien, nicht als Lesetext am Stück.",
+        didacticUse: "Vor allem für Frage 1, 3, 5 und 6."
       },
       {
         id: "r-bosnien-pdf",
-        bucket: "Reader und Fragen",
+        bucket: "Arbeitsblatt: für Sarajevo und Srebrenica",
         type: "PDF",
-        title: "Balkan in Flammen: Fragenheft",
+        title: "Arbeitsblatt Bosnienkrieg",
         focus: "Fragen zu Sarajevo, Omarska, sexueller Gewalt, Srebrenica und internationaler Reaktion",
         link: "assets/materials/balkan-in-flammen-fragen.pdf",
-        tags: ["lokal", "Reader"]
+        tags: ["lokal", "Reader"],
+        selectionNote: "Das Arbeitsblatt wurde in die Station integriert und ergänzt die Doku um Leitfragen.",
+        didacticUse: "Besonders für Frage 4 bis 6."
       },
       {
         id: "r-bosnien-yt-5",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Gewaltformen und Lager",
         type: "Video",
         title: "YouTube-Playlist, Video 5",
         focus: "ergänzender Impuls zum Bosnienkrieg und seiner Gewaltlogik",
         link: "https://www.youtube.com/watch?v=Koy2LRZCT3Y&list=PL8991DFCF33730589&index=5",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Nur nötig, wenn Gewaltformen und Kriegslogik noch genauer ausgearbeitet werden sollen.",
+        didacticUse: "Hilft besonders bei Frage 1 und 5."
       },
       {
         id: "r-bosnien-yt-6",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Kriegswende 1995",
         type: "Video",
         title: "YouTube-Playlist, Video 6",
         focus: "zusätzliche Perspektive auf internationale Intervention und Kriegswende",
         link: "https://www.youtube.com/watch?v=2Imx42AjXj0&list=PL8991DFCF33730589&index=6",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Ergänzung für die Phase von Srebrenica über NATO bis Dayton.",
+        didacticUse: "Vor allem für Frage 3, 5 und 6."
       },
       {
         id: "r-bosnien-bild-1",
-        bucket: "Bildquellen",
+        bucket: "Bildquelle: für Frage 4",
         type: "Bild",
         title: "Sarajevo Grbavica",
         focus: "Zerstörter Stadtraum als Spur von Belagerung, Frontverlauf und Kriegsfolgen",
         link: "assets/module-images/sarajevo-grbavica.jpeg",
-        tags: ["lokal", "Bildquelle"]
+        tags: ["lokal", "Bildquelle"],
+        selectionNote: "Diese Bildquelle ist nur für die Bildanalyse ausgewählt, nicht als Zusatzdeko.",
+        didacticUse: "Direkt mit Frage 4 verknüpft.",
+        imagePosition: "center center"
       },
       {
         id: "r-bosnien-bild-2",
-        bucket: "Bildquellen",
+        bucket: "Bildquelle: für Frage 4",
         type: "Bild",
         title: "Sarajevo im Mai 1996",
         focus: "Nachkriegssituation der Hauptstadt mit sichtbaren Einschlägen und Brüchen",
         link: "assets/module-images/sarajevo-may-1996.png",
-        tags: ["lokal", "Bildquelle"]
+        tags: ["lokal", "Bildquelle"],
+        selectionNote: "Dieses Bild ergänzt Grbavica um die Nachkriegsperspektive von 1996.",
+        didacticUse: "Direkt mit Frage 4 verknüpft.",
+        imagePosition: "center center"
       },
     ],
     questions: [
@@ -1086,35 +1140,35 @@ const MODULES = [
             id: "sarajevo-beginn-1992",
             label: "Kurz darauf beginnt die Belagerung Sarajevos.",
             detail: "Der Krieg wird an einer Hauptstadt exemplarisch sichtbar.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Sarajevo_Siege_ShellingDestruction.jpg?width=900",
+            imageSrc: "assets/module-images/sarajevo-siege-shelling-destruction.jpg",
             imageAlt: "Zerstörungen in Sarajevo während der Belagerung"
           },
           {
             id: "washington-1994",
             label: "Das Washingtoner Abkommen von 1994 beendet den Krieg zwischen Bosniaken und Kroaten.",
             detail: "Ein Teilkonflikt wird damit neu geordnet.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Bosnian_President_Alija_Izetbegovic_and_Croatian_President_Franjo_Tudjman_sign_the_Croat-Muslim_Federation_Peace_Agreement_-_Flickr_-_The_Central_Intelligence_Agency.jpg?width=900",
+            imageSrc: "assets/module-images/washington-agreement-1994.jpg",
             imageAlt: "Unterzeichnung des Washingtoner Abkommens 1994"
           },
           {
             id: "srebrenica-1995",
             label: "Im Juli 1995 kommt es zum Massaker von Srebrenica.",
             detail: "Das UN-Schutzversprechen scheitert auf dramatische Weise.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Srebrenica-memorial.jpg?width=900",
+            imageSrc: "assets/module-images/srebrenica-memorial.jpg",
             imageAlt: "Gedenkstätte von Srebrenica"
           },
           {
             id: "nato-1995",
             label: "Die NATO greift 1995 mit Luftangriffen gegen bosnisch-serbische Ziele ein.",
             detail: "Erst jetzt veraendert sich die militärische Dynamik deutlich.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Bombing_republika_srpska.jpg?width=900",
+            imageSrc: "assets/module-images/bombing-republika-srpska.jpg",
             imageAlt: "Luftoperationen gegen bosnisch-serbische Stellungen 1995"
           },
           {
             id: "dayton-1995",
             label: "Das Dayton-Abkommen beendet Ende 1995 den Krieg.",
             detail: "Der Frieden stoppt die Kämpfe, schreibt aber ethnische Trennung fort.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=900",
+            imageSrc: "assets/module-images/dayton-agreement.jpg",
             imageAlt: "Unterzeichnung des Dayton-Abkommens 1995"
           }
         ],
@@ -1162,7 +1216,7 @@ const MODULES = [
       {
         id: "q-bosnien-5",
         type: "short-text",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Warum war das UN-Mandat in Bosnien strukturell zum Scheitern verurteilt?",
         help:
@@ -1190,7 +1244,7 @@ const MODULES = [
       {
         id: "q-bosnien-6",
         type: "open-analysis",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Welche unterschiedliche Rolle spielten Karadžić und Mladić im Bosnienkrieg, besonders mit Blick auf Srebrenica? Begründe mit Materialbezügen.",
         help:
@@ -1220,11 +1274,11 @@ const MODULES = [
     title: "Dayton, Kosovo und schwieriger Frieden",
     era: "1995 bis heute",
     intro:
-      "Die letzte Station fragt nach den Folgen des Krieges: Warum war Dayton zugleich notwendig und problematisch? Weshalb verlagerte sich die Gewalt später in den Kosovo? Und welche Herausforderungen prägen die Staaten des ehemaligen Jugoslawiens bis heute?",
+      "Die letzte Station fragt nach dem schwierigen Frieden nach 1995: Dayton beendete den Bosnienkrieg, ließ aber im Kosovo zentrale Konflikte offen. Dort trafen der seit 1989 entzogene Autonomiestatus, serbische Repression, Rugovas gewaltfreie Politik und später die UÇK aufeinander, bevor die NATO 1999 eingriff.",
     goal:
       "Du kannst Frieden als ambivalente Ordnung erklären, den Kosovo-Konflikt in die Zerfallsgeschichte einordnen und langfristige Probleme von Versöhnung, Demokratie und Anerkennung benennen.",
     route:
-      "Nutze die dritte Dokumentationsfolge für Dayton und Kosovo, sichere die Leitbegriffe mit den kurzen Antworten und ordne danach die späten Entwicklungen. Die Transferfrage verlangt ein historisches Urteil über internationale Intervention.",
+      "Arbeite zuerst die Kette Dayton - offener Kosovo - Rugova - UÇK - serbische Repression - NATO heraus. Sichere danach die Leitbegriffe mit den kurzen Antworten und bewerte erst am Schluss die internationale Intervention.",
     teacherNote:
       "Die Station ist besonders geeignet für Urteilsbildung: Frieden beenden, ohne Konflikte wirklich zu lösen, ist hier der zentrale Spannungsbogen.",
     teacherToolkit: {
@@ -1256,39 +1310,42 @@ const MODULES = [
     },
     visualDossierTitle: "Bilder des schwierigen Friedens",
     visualDossierIntro:
-      "Diese Bilder markieren den Übergang von Kriegsende zu ungelösten Nachkonflikten: Friedensvertrag, sichtbare Spuren des Krieges, Kosovo und die Gewalt der NATO-Intervention.",
+      "Die vier Bilder markieren die Stationen des Nachkriegs: Friedensvertrag, gewaltfreie Kosovo-Politik, Eskalation 1998/99 und die Folgen der NATO-Angriffe.",
     visualDossier: [
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=1200",
+        src: "assets/module-images/dayton-agreement.jpg",
         alt: "Unterzeichnung des Dayton-Abkommens 1995",
         title: "Dayton als notwendiger Friedensschluss",
-        caption: "Das Bild zeigt den diplomatischen Erfolg, der die Kämpfe beendete, aber noch nichts über die Qualität des Friedens sagt.",
+        caption: "Fotografie der Unterzeichnung des Dayton-Abkommens im November 1995.",
         whyItMatters:
-          "Es gehört hierher, weil diese Station klären soll, warum Dayton zugleich Lösung und Problem war."
+          "Arbeitsnutzen: Das Bild gehört zu Frage 1 und markiert den Ausgangspunkt der Nachkriegsphase."
       },
       {
         src: "assets/module-images/ibrahim-rugova.jpg",
         alt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
         title: "Rugova und die nichtmilitärische Kosovo-Strategie",
-        caption: "Rugova steht in dieser Station für die oft übersehene politische Alternative zur späteren bewaffneten Eskalation.",
+        caption: "Porträt von Ibrahim Rugova, dem wichtigsten Vertreter der gewaltfreien Kosovo-albanischen Politik in den 1990er Jahren.",
         whyItMatters:
-          "Das Bild ist hier sinnvoll, weil es zeigt, dass der Kosovo-Konflikt vor der UÇK auch als Frage von Diplomatie, Parallelstrukturen und gewaltfreiem Widerstand gelesen werden kann."
+          "Arbeitsnutzen: Das Bild wird für Frage 2 und 3 gebraucht, damit die NATO-Intervention nicht ohne Kosovo-Vorgeschichte erklärt wird.",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/NATO_bombing_of_Yugoslavia_1999_(13810195285).jpg?width=1200",
-        alt: "Szene aus dem Kontext der NATO-Luftangriffe 1999",
-        title: "Intervention ohne UN-Mandat",
-        caption: "Die NATO-Luftangriffe markieren einen Wendepunkt, bleiben aber rechtlich und politisch hoch umstritten.",
+        src: "assets/module-images/war-in-kosovo-1999-2.jpg",
+        alt: "Kriegsschäden im Kosovo 1999",
+        title: "Kriegsschäden im Kosovo 1999",
+        caption: "Fotografie von Kriegsschäden im Kosovo aus dem Jahr 1999.",
         whyItMatters:
-          "Dieses Bild gehört hierher, weil die Station eine Urteilsbildung verlangt, die Wirksamkeit und Problemkosten von Intervention zusammendenkt."
+          "Arbeitsnutzen: Das Bild liefert den Konfliktkontext für Frage 2, 3 und 5 und verhindert, dass die NATO nur als Luftkrieg ohne Vorgeschichte erscheint."
       },
       {
-        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Ruins_of_the_Radio_Television_of_Serbia,_destroyed_during_1999_NATO_aggression_2007.jpg?width=1200",
+        src: "assets/module-images/rts-belgrade-ruins-1999.jpg",
         alt: "Ruinen der serbischen Rundfunkanstalt nach den NATO-Angriffen",
         title: "Kosten des Eingriffs",
-        caption: "Das Bild hält fest, dass militärische Intervention nicht nur Entscheidungen auf Regierungsebene, sondern reale Zerstörung und zivile Folgen bedeutet.",
+        caption: "Ruinen der serbischen Rundfunkanstalt RTS nach den NATO-Angriffen von 1999 in Belgrad.",
         whyItMatters:
-          "Es ist didaktisch zentral, weil die Station nicht bei der Formel 'zu spät, aber nötig' stehen bleiben soll."
+          "Arbeitsnutzen: Das Bild wird für die Abwägung von Wirkung, Kosten und Legitimation der Intervention gebraucht."
       }
     ],
     actorFocus: {
@@ -1300,74 +1357,108 @@ const MODULES = [
       {
         name: "Ibrahim Rugova",
         role: "kosovo-albanischer Politiker und Vertreter einer gewaltfreien Strategie",
-        lens: "Er steht für den Versuch, den Kosovo-Konflikt politisch und diplomatisch statt militärisch zu führen.",
+        lens: "Er organisierte in den 1990er Jahren Parallelstrukturen und setzte auf internationale Diplomatie statt auf bewaffneten Widerstand.",
         whyHere:
-          "Rugova ist für diese Station sinnvoll, weil er zeigt, dass der Weg zur späteren Eskalation im Kosovo nicht von Anfang an militärisch festgelegt war.",
+          "Er ist hier zentral, weil die Kosovo-Eskalation ohne die vorausgehende gewaltfreie Strategie unverständlich bleibt.",
         imageSrc: "assets/module-images/ibrahim-rugova.jpg",
-        imageAlt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge"
+        imageAlt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
+        imagePosition: "center top"
       },
       {
         name: "Slobodan Milošević",
         role: "serbischer Machthaber in der späten Zerfallsphase",
-        lens: "Er steht hier nicht mehr für den Aufstieg, sondern für Repression, Kriegsausweitung und späteren Machtverlust.",
+        lens: "In dieser Station steht er konkret für die Kosovo-Politik Belgrads, die Repression gegen Kosovo-Albaner und den späteren Machtverlust nach 1999.",
         whyHere:
-          "Sein Bild taucht in dieser Station erneut auf, weil sich am Kosovo-Konflikt und an der NATO-Intervention die Spätphase seiner Politik besonders klar lesen lässt.",
+          "Er gehört in diese Station, weil sich am Kosovo-Konflikt die Spätphase seiner Politik besonders klar verfolgen lässt.",
         imageSrc: "assets/module-images/milosevic-in-hague.jpg",
-        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag"
+        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag",
+        imagePosition: "center top"
       }
     ],
     prompts: [
       "Achte auf den Doppelcharakter von Dayton: Frieden schaffen und Spaltung verfestigen.",
-      "Notiere, warum Kosovo nach 1995 nicht befriedet war.",
+      "Notiere die Kosovo-Kette: offene Statusfrage, Rugovas Parallelpolitik, UÇK, serbische Repression, NATO.",
       "Unterscheide zwischen legaler, politischer und moralischer Bewertung internationaler Intervention.",
       "Halte langfristige Herausforderungen fest: Erinnerung, Demokratie, Anerkennung und Versöhnung.",
-      "Nutze das Porträt Ibrahim Rugovas, um die Kosovo-Frage auch aus der Perspektive politischer und gewaltfreier Strategie zu betrachten."
+      "Nutze Rugovas Porträt ausdrücklich als Vorkontext der NATO-Intervention und nicht nur als spätere Randfigur."
     ],
     resources: [
       {
         id: "r-nachkrieg-doku-3",
-        bucket: "Pflichtvideos",
+        bucket: "Pflichtquelle: zuerst bearbeiten",
         type: "Video",
         title: "Balkan in Flammen, Folge 3: Jugoslawien in Trümmern",
         focus: "Dayton, Operation Sturm, Kosovo, NATO-Intervention und Langzeitfolgen",
         link: "https://www.dropbox.com/scl/fi/zsqgssv5j9utgjbosmyjb/Balkan-in-Flammen-Jugoslawien-in-Tr-mmern-Staffel-1-Folge-3.mp4?rlkey=xcgmhvo7qf3x0kx0u3zxpg1pu&st=txldgppw&dl=0",
-        tags: ["Dropbox", "Pflicht", "Dokumentation"]
+        tags: ["Dropbox", "Pflicht", "Dokumentation"],
+        selectionNote: "Diese Folge ist die Hauptquelle für Dayton, Kosovo und NATO 1999.",
+        didacticUse: "Zuerst für Frage 1 bis 5, danach für das Urteil in Frage 6."
       },
       {
         id: "r-nachkrieg-wiki",
-        bucket: "Artikel und Referenz",
+        bucket: "Referenztext: Kosovo-Kontext",
+        type: "Website",
+        title: "Wikipedia: Kosovokrieg",
+        focus: "Autonomieverlust, Rugova, UÇK, Vertreibung, NATO-Einsatz und umstrittenes Mandat",
+        link: "https://de.wikipedia.org/wiki/Kosovokrieg",
+        tags: ["Wikipedia", "Referenz"],
+        selectionNote: "Diese Referenz sichert den Kosovo-Kontext mit Daten, Begriffen und Verlauf.",
+        didacticUse: "Vor allem für Frage 2, 3 und 5."
+      },
+      {
+        id: "r-nachkrieg-wiki-bosnien",
+        bucket: "Referenztext: Dayton und Nachkriegsordnung",
         type: "Website",
         title: "Wikipedia: Bosnienkrieg",
-        focus: "Friedensschluss 1995, Folgen der Kriegsphase und Kontext für die Nachordnung",
+        focus: "Dayton-Abkommen, Kriegsende 1995 und Folgen der bosnischen Nachkriegsordnung",
         link: "https://de.wikipedia.org/wiki/Bosnienkrieg",
-        tags: ["Wikipedia", "Referenz"]
+        tags: ["Wikipedia", "Referenz"],
+        selectionNote: "Diese Referenz bleibt für Dayton, Bosnien und die Nachkriegsordnung wichtig.",
+        didacticUse: "Vor allem für Frage 1, 4 und 6."
       },
       {
         id: "r-nachkrieg-pdf",
-        bucket: "Reader und Fragen",
+        bucket: "Arbeitsblatt: Dayton, Kosovo, NATO",
         type: "PDF",
-        title: "Balkan in Flammen: Fragenheft",
+        title: "Arbeitsblatt Nachkrieg",
         focus: "Leitfragen zu Dayton, Kosovo, NATO und langfristigen Problemen der Nachfolgestaaten",
         link: "assets/materials/balkan-in-flammen-fragen.pdf",
-        tags: ["lokal", "Reader"]
+        tags: ["lokal", "Reader"],
+        selectionNote: "Das Arbeitsblatt ergänzt die Doku um Urteilsfragen und Langzeitfolgen.",
+        didacticUse: "Vor allem für Frage 4 bis 6."
       },
       {
         id: "r-nachkrieg-yt-7",
-        bucket: "Ergänzende Videos",
+        bucket: "Vertiefung: Nachgeschichte und Erinnerung",
         type: "Video",
         title: "YouTube-Playlist, Video 7",
         focus: "zusätzlicher Impuls zu Nachgeschichte, Erinnerung und offenen Konfliktfolgen",
         link: "https://www.youtube.com/watch?v=l1bSS3EkWyg&list=PL8991DFCF33730589&index=7",
-        tags: ["YouTube", "Vertiefung"]
+        tags: ["YouTube", "Vertiefung"],
+        selectionNote: "Ergänzung für Erinnerung, Anerkennung und Langzeitfolgen nach 1999.",
+        didacticUse: "Hilft vor allem bei Frage 4 und 6."
       },
       {
         id: "r-nachkrieg-bild",
-        bucket: "Bildquelle",
+        bucket: "Bildquelle: Frieden mit Kriegsfolgen",
         type: "Bild",
         title: "Sarajevo im Mai 1996",
         focus: "Nachkriegsbild als Ausgangspunkt für die Frage nach Frieden mit sichtbaren Spuren des Krieges",
         link: "assets/module-images/sarajevo-may-1996.png",
-        tags: ["lokal", "Bildquelle"]
+        tags: ["lokal", "Bildquelle"],
+        selectionNote: "Die Bildquelle macht sichtbar, dass Nachkrieg nicht gleich Konfliktlösung bedeutet.",
+        didacticUse: "Vor allem für Frage 1 und 4."
+      },
+      {
+        id: "r-nachkrieg-bild-kosovo",
+        bucket: "Bildquelle: Kosovo 1999",
+        type: "Bild",
+        title: "Kriegsschäden im Kosovo 1999",
+        focus: "Bildquelle zur Eskalation im Kosovo und zum Kontext der NATO-Intervention",
+        link: "assets/module-images/war-in-kosovo-1999-2.jpg",
+        tags: ["lokal", "Bildquelle"],
+        selectionNote: "Diese Bildquelle konkretisiert die Gewalt im Kosovo und verhindert, dass die NATO-Frage ohne Kontext bleibt.",
+        didacticUse: "Vor allem für Frage 2, 3 und 5."
       },
     ],
     questions: [
@@ -1380,7 +1471,7 @@ const MODULES = [
         help:
           "Nenne mindestens zwei Seiten des Abkommens. Synonyme für Kriegsende, Friedensschluss, Spaltung und Blockade werden erkannt.",
         placeholder: "Dayton war notwendig, weil ..., aber problematisch, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Dayton beendete den Krieg",
@@ -1425,11 +1516,11 @@ const MODULES = [
         type: "short-text",
         challenge: "Kontextualisierung",
         prompt:
-          "Warum blieb der Kosovo nach Dayton ein Konfliktraum?",
+          "Warum blieb der Kosovo nach Dayton trotz Rugovas gewaltfreier Strategie ein Konfliktraum?",
         help:
-          "Die Sofortkorrektur erkennt verschiedene Formulierungen. Verbinde ungeloste politische Fragen mit Repression und Strategiewechsel.",
+          "Die Sofortkorrektur erkennt verschiedene Formulierungen. Verbinde offene Statusfrage, serbische Repression, Rugovas Politik und den späteren Strategiewechsel.",
         placeholder: "Der Kosovo blieb ein Konfliktraum, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Kosovo war in Dayton nicht wirklich gelöst",
@@ -1440,6 +1531,17 @@ const MODULES = [
               "ungelöste frage",
               "ausgeklammert",
               "nicht befriedet"
+            ]
+          },
+          {
+            label: "Rugovas gewaltfreie oder diplomatische Strategie brachte keine politische Lösung",
+            variants: [
+              "rugova",
+              "gewaltfrei",
+              "parallelstrukturen",
+              "parallelstaat",
+              "diplomatie",
+              "friedliche strategie"
             ]
           },
           {
@@ -1467,71 +1569,77 @@ const MODULES = [
         ],
         successThreshold: 2,
         modelAnswer:
-          "Der Kosovo blieb offen, weil Dayton die Frage nicht löste. Serbische Repression und der Verlust von Autonomie steigerten den Druck, sodass sich Teile der albanischen Bevölkerung radikalisierten und die UCK an Bedeutung gewann."
+          "Der Kosovo blieb ein Konfliktraum, weil Dayton die Statusfrage offenließ und Rugovas gewaltfreie Strategie keine politische Lösung erreichte. Zugleich hielten serbische Repression und der seit 1989 beschnittene Autonomiestatus den Druck hoch, sodass sich Teile der Kosovo-Albaner radikalisierten und die UCK an Bedeutung gewann."
       },
       {
         id: "q-nachkrieg-3",
         type: "drag-order",
         challenge: "Chronologie",
         prompt:
-          "Ordne die spätere Zerfallsphase von Dayton bis zur Schwachstellung Milosevics.",
+          "Ordne die Kosovo-Eskalation von Dayton bis zur Schwächung Miloševićs.",
         help:
           "Beginne mit Dayton und ende mit den politischen Folgen nach dem NATO-Krieg.",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         items: [
           {
             id: "dayton-1995",
             label: "1995 beendet das Dayton-Abkommen den Bosnienkrieg.",
             detail: "Der Frieden schafft Sicherheit, aber keine einfache Lösung.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=900",
+            imageSrc: "assets/module-images/dayton-agreement.jpg",
             imageAlt: "Unterzeichnung des Dayton-Abkommens 1995"
           },
           {
-            id: "sarajevo-1996",
-            label: "1996 zeigt das Nachkriegsbild Sarajevos die sichtbaren Spuren eines formal beendeten Krieges.",
-            detail: "Frieden und Zerstörung existieren nebeneinander.",
-            imageSrc: "assets/module-images/sarajevo-may-1996.png",
-            imageAlt: "Sarajevo im Mai 1996"
+            id: "rugova-strategie",
+            label: "Nach Dayton setzt Rugova im Kosovo weiter auf Parallelstrukturen und gewaltfreie Politik.",
+            detail: "Die Statusfrage bleibt offen, obwohl die bewaffnete Eskalation zunächst vermieden werden soll.",
+            imageSrc: "assets/module-images/ibrahim-rugova.jpg",
+            imageAlt: "Ibrahim Rugova als Vertreter der gewaltfreien Kosovo-Politik",
+            imageFit: "contain",
+            imagePosition: "center top",
+            imageBackground: "rgba(241, 236, 228, 0.95)"
           },
           {
             id: "uck",
             label: "Im Kosovo gewinnt der bewaffnete Widerstand der UCK an Bedeutung.",
             detail: "Die Konfliktlogik verschiebt sich in einen neuen Raum.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Kosovo_Liberation_Army.png?width=900",
+            imageSrc: "assets/module-images/flag-kosovo-liberation-army.png",
             imageAlt: "Flagge der UCK als Symbol des bewaffneten Widerstands im Kosovo"
+          },
+          {
+            id: "serbische-repression-1998",
+            label: "1998/99 verschärfen serbische Sicherheitskräfte Repression, Vertreibung und Gewalt im Kosovo.",
+            detail: "Damit wird aus der offenen Statusfrage ein Krieg mit massiven Fluchtbewegungen.",
+            imageSrc: "assets/module-images/war-in-kosovo-1999-2.jpg",
+            imageAlt: "Kriegsschäden im Kosovo 1999"
           },
           {
             id: "nato-1999",
             label: "1999 greift die NATO Serbien und Montenegro ohne UN-Mandat militärisch an.",
-            detail: "Die Intervention bleibt bis heute rechtlich und politisch umstritten.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/NATO_bombing_of_Yugoslavia_1999_(13810195285).jpg?width=900",
+            detail: "Die NATO erklärt den Einsatz mit dem Schutz der Kosovo-Albaner vor weiterer Gewalt und Vertreibung.",
+            imageSrc: "assets/module-images/nato-bombing-yugoslavia-1999.jpg",
             imageAlt: "Szene aus dem Kontext der NATO-Luftangriffe 1999"
-          },
-          {
-            id: "zivile-opfer",
-            label: "Die Bombardierung verursacht zivile Opfer und schwere gesellschaftliche Schaeden.",
-            detail: "Intervention bedeutet keinen konfliktfreien Eingriff.",
-            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Ruins_of_the_Radio_Television_of_Serbia,_destroyed_during_1999_NATO_aggression_2007.jpg?width=900",
-            imageAlt: "Zerstörungen an der serbischen Rundfunkanstalt nach den NATO-Angriffen"
           },
           {
             id: "milosevic-geschwaecht",
             label: "Trotz nationalistischer Mobilisierung wird Milosevic durch Krieg und Bombardierung langfristig geschwaecht.",
             detail: "Die Herrschaft verliert innenpolitisch an Stabilitaet.",
             imageSrc: "assets/module-images/milosevic-in-hague.jpg",
-            imageAlt: "Slobodan Milošević in Den Haag als Symbol seines späteren Machtverlusts"
+            imageAlt: "Slobodan Milošević in Den Haag als Symbol seines späteren Machtverlusts",
+            imageFit: "contain",
+            imagePosition: "center top",
+            imageBackground: "rgba(241, 236, 228, 0.95)"
           }
         ],
         correctOrder: [
           "dayton-1995",
-          "sarajevo-1996",
+          "rugova-strategie",
           "uck",
+          "serbische-repression-1998",
           "nato-1999",
-          "zivile-opfer",
           "milosevic-geschwaecht"
         ],
         explanation:
-          "Die Reihenfolge zeigt, dass Dayton den Zerfall nicht abschloss. Der Kosovo-Konflikt, die NATO-Intervention und ihre Folgen gehoeren zur späten, aber entscheidenden Phase der Jugoslawienkriege."
+          "Die Reihenfolge zeigt, dass Dayton den Zerfall nicht abschloss. Im Kosovo führte die offene Statusfrage von Rugovas gewaltfreier Politik über UCK und serbische Repression zur NATO-Intervention und zu einer neuen Schwächung Miloševićs."
       },
       {
         id: "q-nachkrieg-4",
@@ -1546,7 +1654,7 @@ const MODULES = [
           "Achte darauf, dass die Lernenden ein begründetes Urteil formulieren und nicht bei moralischer Zustimmung oder Ablehnung stehen bleiben.",
         commonPitfall:
           "Oft wird entweder nur die Verspätung betont oder nur die Wirksamkeit später Intervention. Historisch relevant ist gerade die Spannung zwischen beidem.",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         minWords: 140,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "nuance", "conclusion"],
@@ -1566,14 +1674,18 @@ const MODULES = [
       {
         id: "q-nachkrieg-5",
         type: "short-text",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
-          "Wie rechtfertigten die NATO-Staaten 1999 ihren Einsatz trotz fehlendem UN-Mandat?",
+          "Warum griff die NATO 1999 im Kosovokonflikt ein, und wie rechtfertigten die NATO-Staaten das trotz fehlendem UN-Mandat?",
         help:
-          "Gesucht ist die politische Begründung, nicht dein eigenes Urteil. Synonyme für humanitären Schutz, Verhinderung weiterer Gewalt und Intervention werden erkannt.",
+          "Gesucht ist der Zusammenhang aus Kosovo-Gewalt und politischer Begründung, nicht dein eigenes Urteil. Synonyme für Repression, Vertreibung, humanitären Schutz und fehlendes Mandat werden erkannt.",
         placeholder: "Die NATO-Staaten rechtfertigten den Einsatz damit, dass ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         conceptGroups: [
+          {
+            label: "Gewalt, Repression oder Vertreibung im Kosovo",
+            variants: ["kosovo", "vertreibung", "repression", "gewalt gegen albaner", "flucht", "menschenrechtsverletzungen"]
+          },
           {
             label: "Schutz von Zivilisten oder humanitäre Begründung",
             variants: ["humanitaer", "humanitär", "zivilisten schuetzen", "zivilisten schützen", "menschen schuetzen", "menschen schützen"]
@@ -1589,18 +1701,18 @@ const MODULES = [
         ],
         successThreshold: 2,
         modelAnswer:
-          "Die NATO-Staaten rechtfertigten den Einsatz vor allem humanitär: Sie behaupteten, weitere Gewalt, Vertreibung und massive Menschenrechtsverletzungen verhindern zu müssen. Der Eingriff wurde also als politisch notwendig dargestellt, obwohl ein UN-Mandat fehlte."
+          "Die NATO griff 1999 vor dem Hintergrund von Repression, Vertreibung und eskalierender Gewalt im Kosovo ein. Die NATO-Staaten rechtfertigten den Einsatz vor allem humanitär: Sie behaupteten, weitere Gewalt und massive Menschenrechtsverletzungen verhindern zu müssen, obwohl ein UN-Mandat fehlte."
       },
       {
         id: "q-nachkrieg-6",
         type: "open-analysis",
-        challenge: "Fragenheft integriert",
+        challenge: "Vertiefung",
         prompt:
           "Welche langfristigen Herausforderungen bestehen für die Staaten des ehemaligen Jugoslawiens bis heute im Blick auf Erinnerung, Demokratie und internationale Anerkennung? Begründe mit Materialbezügen.",
         help:
           "Eine starke Antwort verbindet Nachkriegspolitik, Erinnerungskonflikte und Gegenwartsprobleme.",
         placeholder: "Bis heute bestehen Herausforderungen, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         minWords: 120,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "conclusion"],
