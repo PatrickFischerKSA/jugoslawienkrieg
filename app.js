@@ -710,43 +710,6 @@ function renderModuleHeader(module) {
         </p>
       </article>
       ${
-        miniQuestions.length
-          ? `
-            <article class="module-box module-box-wide mini-checks-box">
-              <div class="mini-checks-head">
-                <div>
-                  <h3>Zusatzchecks zur Station</h3>
-                  <p class="module-copy">
-                    Die eingebetteten Arbeitsimpulse liegen hier als kurze prüfbare Mini-Fragen
-                    mit Sofortkorrektur vor.
-                  </p>
-                </div>
-                <p class="mini-checks-status">${miniQuestions.filter((question) => isMastered(question.id)).length}/${miniQuestions.length} Zusatzchecks gemeistert</p>
-              </div>
-              <div class="mini-check-grid">
-                ${miniQuestions
-                  .map(
-                    (question, index) => `
-                      <button
-                        class="mini-check-button${isMastered(question.id) ? " is-solved" : ""}"
-                        type="button"
-                        data-open-mini-question="${escapeHtml(question.id)}"
-                      >
-                        <span class="mini-check-index">${index + 1}</span>
-                        <span class="mini-check-copy">
-                          <strong>${escapeHtml(question.title || `Zusatzcheck ${index + 1}`)}</strong>
-                          <span>${isMastered(question.id) ? "gemeistert" : "öffnen"}</span>
-                        </span>
-                      </button>
-                    `
-                  )
-                  .join("")}
-              </div>
-            </article>
-          `
-          : ""
-      }
-      ${
         videoSources.length
           ? `
             <article class="module-box module-box-wide film-module-box">
@@ -799,6 +762,43 @@ function renderModuleHeader(module) {
               </article>
             `
             : ""
+      }
+      ${
+        miniQuestions.length
+          ? `
+            <article class="module-box module-box-wide mini-checks-box">
+              <div class="mini-checks-head">
+                <div>
+                  <h3>Zusatzchecks zur Station</h3>
+                  <p class="module-copy">
+                    Die eingebetteten Arbeitsimpulse liegen hier als kurze prüfbare Mini-Fragen
+                    mit Sofortkorrektur vor.
+                  </p>
+                </div>
+                <p class="mini-checks-status">${miniQuestions.filter((question) => isMastered(question.id)).length}/${miniQuestions.length} Zusatzchecks gemeistert</p>
+              </div>
+              <div class="mini-check-grid">
+                ${miniQuestions
+                  .map(
+                    (question, index) => `
+                      <button
+                        class="mini-check-button${isMastered(question.id) ? " is-solved" : ""}"
+                        type="button"
+                        data-open-mini-question="${escapeHtml(question.id)}"
+                      >
+                        <span class="mini-check-index">${index + 1}</span>
+                        <span class="mini-check-copy">
+                          <strong>${escapeHtml(question.title || `Zusatzcheck ${index + 1}`)}</strong>
+                          <span>${isMastered(question.id) ? "gemeistert" : "öffnen"}</span>
+                        </span>
+                      </button>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </article>
+          `
+          : ""
       }
     </div>
 
