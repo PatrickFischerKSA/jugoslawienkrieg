@@ -282,7 +282,7 @@ const MODULES = [
             id: "stalin-1948",
             label: "Der Bruch mit Stalin macht Jugoslawien zu einem Sonderfall zwischen Ost und West.",
             detail: "1948 veraendert sich die internationale Stellung des Staates grundlegend.",
-            imageSrc: "assets/module-images/joseph-stalin-1943.jpg",
+            imageSrc: "assets/module-images/joseph-stalin-1943-v2.jpg",
             imageAlt: "Porträt von Josef Stalin als Bezugspunkt für den Bruch von 1948",
             imageFit: "contain",
             imagePosition: "center top",
@@ -299,7 +299,7 @@ const MODULES = [
             id: "zagreb-1990",
             label: "Das Fussballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
             detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um.",
-            imageSrc: "assets/module-images/stadion-maksimir-zagreb.jpg",
+            imageSrc: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
             imageAlt: "Stadion Maksimir in Zagreb als Schauplatz des symbolischen Eskalationsmoments"
           }
         ],
@@ -461,7 +461,7 @@ const MODULES = [
         imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
-        src: "assets/module-images/stadion-maksimir-zagreb.jpg",
+        src: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
         alt: "Stadion Maksimir in Zagreb",
         title: "Maksimir als Erinnerungsort der Eskalation",
         caption: "Panorama des Stadions Maksimir in Zagreb, dem Ort der Ausschreitungen beim Spiel Dinamo Zagreb gegen Roter Stern Belgrad im Mai 1990.",
@@ -670,7 +670,7 @@ const MODULES = [
             id: "zagreb-1990",
             label: "Das Fussballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
             detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar.",
-            imageSrc: "assets/module-images/stadion-maksimir-zagreb.jpg",
+            imageSrc: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
             imageAlt: "Stadion Maksimir in Zagreb"
           },
           {
