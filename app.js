@@ -224,6 +224,17 @@ function getVideoSources(module) {
   return getIntegratedSources(module).filter((resource) => resource.type === "Video");
 }
 
+function getAllVideoResources() {
+  return modules.flatMap((module) =>
+    getVideoSources(module).map((resource) => ({
+      ...resource,
+      moduleId: module.id,
+      moduleStep: module.step,
+      moduleTitle: module.title
+    }))
+  );
+}
+
 function getResourceUsageMap(module) {
   const usageMap = new Map();
   module.questions.forEach((question, index) => {
@@ -1514,6 +1525,8 @@ function renderSourceModal() {
   const integratedSources = getIntegratedSources(module);
   const videoSources = integratedSources.filter((resource) => resource.type === "Video");
   const otherSources = integratedSources.filter((resource) => resource.type !== "Video");
+  const currentVideoIds = new Set(videoSources.map((resource) => resource.id));
+  const otherUnitVideos = getAllVideoResources().filter((resource) => !currentVideoIds.has(resource.id));
 
   if (!state.sourceModalOpen || !integratedSources.length) {
     elements.sourceModal.classList.add("hidden");
@@ -1548,6 +1561,20 @@ function renderSourceModal() {
                 <div class="film-modal-grid">
                   ${videoSources
                     .map((resource) => renderSourceModalCard(module, resource))
+                    .join("")}
+                </div>
+              </section>
+            `
+            : ""
+        }
+        ${
+          otherUnitVideos.length
+            ? `
+              <section class="source-modal-group">
+                <h4>Weitere Filme der gesamten Einheit</h4>
+                <div class="film-modal-grid">
+                  ${otherUnitVideos
+                    .map((resource) => renderSourceModalCard(module, resource, { showModuleMeta: true }))
                     .join("")}
                 </div>
               </section>
@@ -1596,10 +1623,20 @@ function renderSourceModal() {
       openMiniQuestion(questionId);
     });
   });
+
+  elements.sourceModal.querySelectorAll("[data-open-resource-module]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeModuleId = button.dataset.openResourceModule;
+      state.activeMiniQuestionId = null;
+      state.sourceModalOpen = true;
+      renderApp();
+    });
+  });
 }
 
-function renderSourceModalCard(module, resource) {
-  const linkedQuestions = getQuestionsForResource(module, resource.id);
+function renderSourceModalCard(module, resource, options = {}) {
+  const homeModule = resource.moduleId ? getModuleById(resource.moduleId) : module;
+  const linkedQuestions = homeModule?.id === module.id ? getQuestionsForResource(module, resource.id) : [];
   return `
     <article class="source-modal-card${resource.type === "Video" ? " film-modal-card" : ""}">
       <div class="resource-type-row">
@@ -1607,6 +1644,11 @@ function renderSourceModalCard(module, resource) {
         ${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
       </div>
       <h5>${escapeHtml(resource.title)}</h5>
+      ${
+        options.showModuleMeta && homeModule
+          ? `<p class="resource-note"><strong>Station:</strong> ${escapeHtml(homeModule.step)} - ${escapeHtml(homeModule.title)}</p>`
+          : ""
+      }
       <p>${escapeHtml(resource.focus)}</p>
       ${
         resource.selectionNote
@@ -1622,6 +1664,15 @@ function renderSourceModalCard(module, resource) {
         <a class="btn ${resource.type === "Video" ? "primary" : "ghost"} small" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
           ${getSourceActionLabel(resource)}
         </a>
+        ${
+          options.showModuleMeta && homeModule?.id !== module.id
+            ? `
+              <button class="btn ghost small" type="button" data-open-resource-module="${escapeHtml(homeModule.id)}">
+                Zu Station ${escapeHtml(homeModule.step)}
+              </button>
+            `
+            : ""
+        }
       </div>
       ${
         resource.type === "Video" && linkedQuestions.length
