@@ -12,6 +12,7 @@ const structureSpec = {
 
 const state = {
   activeModuleId: modules[0]?.id || null,
+  activeMiniQuestionId: null,
   teacherAuthorized: false,
   teacherMode: false,
   teacherAccessOpen: false,
@@ -24,8 +25,10 @@ const elements = {
   moduleHeader: document.getElementById("module-header"),
   teacherAccessPanel: document.getElementById("teacher-access-panel"),
   teacherPanel: document.getElementById("teacher-panel"),
+  resourcePanel: document.getElementById("resource-panel"),
   resourceGroups: document.getElementById("resource-groups"),
   questionList: document.getElementById("question-list"),
+  miniQuestionModal: document.getElementById("mini-question-modal"),
   startRouteButton: document.getElementById("start-route-button"),
   openFirstOpenButton: document.getElementById("open-first-open-button"),
   teacherModeButton: document.getElementById("teacher-mode-button")
@@ -192,12 +195,18 @@ function getQuestionById(questionId) {
   for (const module of modules) {
     const question = module.questions.find((entry) => entry.id === questionId);
     if (question) return question;
+    const miniQuestion = (module.miniQuestions || []).find((entry) => entry.id === questionId);
+    if (miniQuestion) return miniQuestion;
   }
   return null;
 }
 
 function getResourceMap(module) {
   return new Map(module.resources.map((resource) => [resource.id, resource]));
+}
+
+function getMiniQuestions(module) {
+  return module.miniQuestions || [];
 }
 
 function getVisibleResources(module) {
@@ -599,10 +608,10 @@ function renderModuleHeader(module) {
   const moduleIndex = modules.findIndex((entry) => entry.id === module.id);
   const unlocked = isModuleUnlocked(moduleIndex);
   const moduleScore = getModuleScore(module);
-  const visibleResources = getVisibleResources(module);
   const visual = module.visual;
   const actors = module.actors || [];
   const visualDossier = module.visualDossier || [];
+  const miniQuestions = getMiniQuestions(module);
 
   elements.moduleHeader.innerHTML = `
     <div class="module-title-row">
@@ -612,7 +621,6 @@ function renderModuleHeader(module) {
         <p class="module-copy">${escapeHtml(module.intro)}</p>
         <div class="module-kicker">
           <span class="module-pill">${escapeHtml(module.era)}</span>
-          <span class="module-pill">${visibleResources.length} Materialien</span>
           <span class="module-pill">${masteredCount}/${module.questions.length} Fragen gemeistert</span>
           <span class="module-pill">${formatPercent(moduleScore)} Modulscore</span>
           <span class="module-pill">${unlocked ? "freigeschaltet" : "gesperrt"}</span>
@@ -649,18 +657,49 @@ function renderModuleHeader(module) {
         <p class="module-copy">${escapeHtml(state.teacherMode ? module.teacherNote : module.goal)}</p>
       </article>
       <article class="module-box">
-        <h3>Arbeitsaufträge</h3>
-        <ul class="module-list">
-          ${module.prompts.map((prompt) => `<li>${escapeHtml(prompt)}</li>`).join("")}
-        </ul>
-      </article>
-      <article class="module-box">
         <h3>Didaktischer Fokus</h3>
         <p class="module-copy">
           Diese Station verbindet Materialerschließung mit sofort rückgemeldeter Begriffsarbeit
           und einer offenen Transferfrage.
         </p>
       </article>
+      ${
+        miniQuestions.length
+          ? `
+            <article class="module-box module-box-wide mini-checks-box">
+              <div class="mini-checks-head">
+                <div>
+                  <h3>Zusatzchecks zur Station</h3>
+                  <p class="module-copy">
+                    Die eingebetteten Arbeitsimpulse liegen hier als kurze prüfbare Mini-Fragen
+                    mit Sofortkorrektur vor.
+                  </p>
+                </div>
+                <p class="mini-checks-status">${miniQuestions.filter((question) => isMastered(question.id)).length}/${miniQuestions.length} Zusatzchecks gemeistert</p>
+              </div>
+              <div class="mini-check-grid">
+                ${miniQuestions
+                  .map(
+                    (question, index) => `
+                      <button
+                        class="mini-check-button${isMastered(question.id) ? " is-solved" : ""}"
+                        type="button"
+                        data-open-mini-question="${escapeHtml(question.id)}"
+                      >
+                        <span class="mini-check-index">${index + 1}</span>
+                        <span class="mini-check-copy">
+                          <strong>${escapeHtml(question.title || `Zusatzcheck ${index + 1}`)}</strong>
+                          <span>${isMastered(question.id) ? "gemeistert" : "öffnen"}</span>
+                        </span>
+                      </button>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </article>
+          `
+          : ""
+      }
     </div>
 
     ${
@@ -690,11 +729,6 @@ function renderModuleHeader(module) {
                       <div class="focus-card-copy">
                         <h4>${escapeHtml(entry.title)}</h4>
                         <p class="focus-card-caption">${escapeHtml(entry.caption || "")}</p>
-                        ${
-                          state.teacherMode && entry.whyItMatters
-                            ? `<p>${escapeHtml(entry.whyItMatters)}</p>`
-                            : ""
-                        }
                       </div>
                     </article>
                   `
@@ -752,6 +786,12 @@ function renderModuleHeader(module) {
         : ""
     }
   `;
+
+  elements.moduleHeader.querySelectorAll("[data-open-mini-question]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openMiniQuestion(button.dataset.openMiniQuestion);
+    });
+  });
 }
 
 function renderTeacherPanel(module) {
@@ -849,6 +889,15 @@ function groupResources(resources) {
 }
 
 function renderResources(module) {
+  if (elements.resourcePanel) {
+    elements.resourcePanel.classList.add("hidden");
+    elements.resourcePanel.setAttribute("aria-hidden", "true");
+  }
+  if (elements.resourceGroups) {
+    elements.resourceGroups.innerHTML = "";
+  }
+  return;
+
   const moduleIndex = modules.findIndex((entry) => entry.id === module.id);
   const unlocked = isModuleUnlocked(moduleIndex);
   if (!unlocked) {
@@ -1050,57 +1099,7 @@ function renderDragOrderField(question, answer) {
 function renderQuestionCard(question, index, resourceMap) {
   const answer = getAnswer(question.id);
   const sourceChips = renderSourceChips(question, resourceMap);
-  let answerField = "";
-
-  if (question.type === "single-choice") {
-    const savedValue = answer?.userInput?.answerValue || "";
-    answerField = `
-      <div class="option-list">
-        ${question.options
-          .map(
-            (option) => `
-              <label class="option-item">
-                <input type="radio" name="${escapeHtml(question.id)}" value="${escapeHtml(option.id)}" ${
-                  savedValue === option.id ? "checked" : ""
-                } />
-                <span>${escapeHtml(option.text)}</span>
-              </label>
-            `
-          )
-          .join("")}
-      </div>
-    `;
-  } else if (question.type === "multi-select") {
-    const savedIds = new Set(answer?.userInput?.selectedIds || []);
-    answerField = `
-      <div class="option-list">
-        ${question.options
-          .map(
-            (option) => `
-              <label class="option-item">
-                <input type="checkbox" value="${escapeHtml(option.id)}" ${
-                  savedIds.has(option.id) ? "checked" : ""
-                } data-question-checkbox="${escapeHtml(question.id)}" />
-                <span>${escapeHtml(option.text)}</span>
-              </label>
-            `
-          )
-          .join("")}
-      </div>
-    `;
-  } else if (question.type === "drag-order") {
-    answerField = renderDragOrderField(question, answer);
-  } else {
-    const savedText = answer?.userInput?.answerText || "";
-    const fieldClass = question.type === "open-analysis" ? "answer-field large" : "answer-field";
-    answerField = `
-      <textarea
-        class="${fieldClass}"
-        data-question-text="${escapeHtml(question.id)}"
-        placeholder="${escapeHtml(question.placeholder || "")}"
-      >${escapeHtml(savedText)}</textarea>
-    `;
-  }
+  const answerField = renderAnswerField(question, answer);
 
   return `
     <article class="question-card${isMastered(question.id) ? " mastered" : ""}" id="${escapeHtml(question.id)}">
@@ -1140,6 +1139,62 @@ function renderQuestionCard(question, index, resourceMap) {
         <div class="model-answer">${escapeHtml(question.modelAnswer)}</div>
       </details>
     </article>
+  `;
+}
+
+function renderAnswerField(question, answer) {
+  if (question.type === "single-choice") {
+    const savedValue = answer?.userInput?.answerValue || "";
+    return `
+      <div class="option-list">
+        ${question.options
+          .map(
+            (option) => `
+              <label class="option-item">
+                <input type="radio" name="${escapeHtml(question.id)}" value="${escapeHtml(option.id)}" ${
+                  savedValue === option.id ? "checked" : ""
+                } />
+                <span>${escapeHtml(option.text)}</span>
+              </label>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  if (question.type === "multi-select") {
+    const savedIds = new Set(answer?.userInput?.selectedIds || []);
+    return `
+      <div class="option-list">
+        ${question.options
+          .map(
+            (option) => `
+              <label class="option-item">
+                <input type="checkbox" value="${escapeHtml(option.id)}" ${
+                  savedIds.has(option.id) ? "checked" : ""
+                } data-question-checkbox="${escapeHtml(question.id)}" />
+                <span>${escapeHtml(option.text)}</span>
+              </label>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  if (question.type === "drag-order") {
+    return renderDragOrderField(question, answer);
+  }
+
+  const savedText = answer?.userInput?.answerText || "";
+  const fieldClass = question.type === "open-analysis" ? "answer-field large" : "answer-field";
+  return `
+    <textarea
+      class="${fieldClass}"
+      data-question-text="${escapeHtml(question.id)}"
+      placeholder="${escapeHtml(question.placeholder || "")}"
+    >${escapeHtml(savedText)}</textarea>
   `;
 }
 
@@ -1224,7 +1279,7 @@ function renderQuestions(module) {
   elements.questionList.querySelectorAll("[data-evaluate-question]").forEach((button) => {
     button.addEventListener("click", () => {
       const questionId = button.dataset.evaluateQuestion;
-      evaluateAndStore(questionId);
+      evaluateAndStore(questionId, elements.questionList);
       renderApp();
       const target = document.getElementById(questionId);
       if (target) target.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1234,14 +1289,14 @@ function renderQuestions(module) {
   activateDragAndDrop();
 }
 
-function collectUserInput(question) {
+function collectUserInput(question, root = document) {
   if (question.type === "single-choice") {
-    const selected = document.querySelector(`input[name="${question.id}"]:checked`);
+    const selected = root.querySelector(`input[name="${question.id}"]:checked`);
     return { answerValue: selected?.value || "" };
   }
 
   if (question.type === "multi-select") {
-    const selectedIds = Array.from(document.querySelectorAll(`[data-question-checkbox="${question.id}"]:checked`)).map(
+    const selectedIds = Array.from(root.querySelectorAll(`[data-question-checkbox="${question.id}"]:checked`)).map(
       (input) => input.value
     );
     return { selectedIds };
@@ -1249,21 +1304,96 @@ function collectUserInput(question) {
 
   if (question.type === "drag-order") {
     const orderedIds = Array.from(
-      document.querySelectorAll(`[data-drag-question="${question.id}"] [data-drag-item-id]`)
+      root.querySelectorAll(`[data-drag-question="${question.id}"] [data-drag-item-id]`)
     ).map((item) => item.dataset.dragItemId);
     return { orderedIds };
   }
 
-  const textarea = document.querySelector(`[data-question-text="${question.id}"]`);
+  const textarea = root.querySelector(`[data-question-text="${question.id}"]`);
   return { answerText: textarea?.value || "" };
 }
 
-function evaluateAndStore(questionId) {
+function evaluateAndStore(questionId, root = document) {
   const question = getQuestionById(questionId);
   if (!question) return;
-  const userInput = collectUserInput(question);
+  const userInput = collectUserInput(question, root);
   const result = evaluateQuestion(question, userInput);
   setAnswer(questionId, { userInput, result, updatedAt: Date.now() });
+}
+
+function openMiniQuestion(questionId) {
+  state.activeMiniQuestionId = questionId;
+  renderMiniQuestionModal();
+}
+
+function closeMiniQuestion() {
+  state.activeMiniQuestionId = null;
+  renderMiniQuestionModal();
+}
+
+function renderMiniQuestionModal() {
+  if (!elements.miniQuestionModal) return;
+
+  const module = getActiveModule();
+  const miniQuestions = getMiniQuestions(module);
+  const questionIndex = miniQuestions.findIndex((entry) => entry.id === state.activeMiniQuestionId);
+  const question = questionIndex > -1 ? miniQuestions[questionIndex] : null;
+
+  if (!question) {
+    elements.miniQuestionModal.classList.add("hidden");
+    elements.miniQuestionModal.setAttribute("aria-hidden", "true");
+    elements.miniQuestionModal.innerHTML = "";
+    return;
+  }
+
+  const answer = getAnswer(question.id);
+  const resourceMap = getResourceMap(module);
+
+  elements.miniQuestionModal.classList.remove("hidden");
+  elements.miniQuestionModal.setAttribute("aria-hidden", "false");
+  elements.miniQuestionModal.innerHTML = `
+    <div class="mini-question-backdrop" data-close-mini-question="true"></div>
+    <div class="mini-question-dialog" role="dialog" aria-modal="true" aria-labelledby="mini-question-title">
+      <div class="mini-question-header">
+        <div>
+          <p class="eyebrow">Zusatzcheck ${questionIndex + 1}</p>
+          <h3 id="mini-question-title">${escapeHtml(question.title || "Zusatzfrage")}</h3>
+        </div>
+        <button class="btn ghost small mini-question-close" type="button" data-close-mini-question="true">Schließen</button>
+      </div>
+      <div class="mini-question-body">
+        <div class="question-topline mini-question-topline">
+          <div>
+            <span class="question-type">${escapeHtml(question.challenge)}</span>
+            <h4>${escapeHtml(question.prompt)}</h4>
+          </div>
+          <div class="question-score">${escapeHtml(answer?.result ? formatPercent(answer.result.score) : "offen")}</div>
+        </div>
+        <p class="question-help">${escapeHtml(question.help)}</p>
+        <div class="source-row">${renderSourceChips(question, resourceMap)}</div>
+        ${renderAnswerField(question, answer)}
+        <div class="question-actions">
+          <button class="btn primary small" type="button" data-evaluate-mini-question="${escapeHtml(question.id)}">
+            Sofortkorrektur
+          </button>
+        </div>
+        ${renderFeedback(answer?.result)}
+        <details>
+          <summary>Musterlösung anzeigen</summary>
+          <div class="model-answer">${escapeHtml(question.modelAnswer)}</div>
+        </details>
+      </div>
+    </div>
+  `;
+
+  elements.miniQuestionModal.querySelectorAll("[data-close-mini-question]").forEach((button) => {
+    button.addEventListener("click", closeMiniQuestion);
+  });
+
+  elements.miniQuestionModal.querySelector("[data-evaluate-mini-question]")?.addEventListener("click", () => {
+    evaluateAndStore(question.id, elements.miniQuestionModal);
+    renderApp();
+  });
 }
 
 function jumpToFirstOpenQuestion() {
@@ -1407,6 +1537,9 @@ function renderApp() {
 
   const module = getActiveModule();
   if (!module) return;
+  if (state.activeMiniQuestionId && !getMiniQuestions(module).some((question) => question.id === state.activeMiniQuestionId)) {
+    state.activeMiniQuestionId = null;
+  }
   if (!state.teacherAuthorized) {
     state.teacherMode = false;
   }
@@ -1423,6 +1556,7 @@ function renderApp() {
   renderTeacherPanel(module);
   renderResources(module);
   renderQuestions(module);
+  renderMiniQuestionModal();
 }
 
 elements.startRouteButton.addEventListener("click", () => {
@@ -1446,6 +1580,12 @@ elements.teacherModeButton.addEventListener("click", () => {
   state.teacherMode = !state.teacherMode;
   saveStore();
   renderApp();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && state.activeMiniQuestionId) {
+    closeMiniQuestion();
+  }
 });
 
 const persisted = loadStore();

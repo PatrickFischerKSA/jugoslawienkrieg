@@ -41,7 +41,7 @@ const MODULES = [
     },
     visualDossierTitle: "Vier Bilder für die Vorgeschichte des Zerfalls",
     visualDossierIntro:
-      "Jedes Bild markiert einen konkreten historischen Bezugspunkt dieser Station: Sarajevo 1914, Kriegsgewalt im Zweiten Weltkrieg, Titos Herrschaft und Gazimestan 1989.",
+      "Jedes Bild markiert einen konkreten historischen Bezugspunkt dieser Station: Sarajevo 1914, Kriegsgewalt im Zweiten Weltkrieg, der Bruch mit Stalin 1948 und Gazimestan 1989.",
     visualDossier: [
       {
         src: "assets/module-images/assassination-at-sarajevo.jpg",
@@ -60,12 +60,12 @@ const MODULES = [
           "Arbeitsnutzen: Das Bild konkretisiert die Gewaltgeschichte, auf die sich spätere Nationalisten in Serbien, Kroatien und Bosnien immer wieder bezogen."
       },
       {
-        src: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
-        alt: "Josip Broz Tito im Uniformporträt",
-        title: "Tito als Stabilisierungsmacht",
-        caption: "Porträt von Josip Broz Tito als Staatschef des sozialistischen Jugoslawiens.",
+        src: "assets/module-images/joseph-stalin-1943-v2.jpg",
+        alt: "Porträt von Josef Stalin",
+        title: "Bruch mit Stalin 1948",
+        caption: "Porträt von Josef Stalin als Bezugspunkt für den Bruch zwischen Belgrad und Moskau im Jahr 1948.",
         whyItMatters:
-          "Arbeitsnutzen: Nutze das Porträt für Frage 1 und 5, also für Herrschaft, Partei, Repression und Stabilisierung.",
+          "Arbeitsnutzen: Das Bild markiert Jugoslawiens Sonderstellung zwischen Ost und West.",
         imageFit: "contain",
         imagePosition: "center top",
         imageBackground: "rgba(241, 236, 228, 0.95)"
@@ -96,11 +96,115 @@ const MODULES = [
         imagePosition: "center top"
       }
     ],
-    prompts: [
-      "Achte darauf, wie die Doku Stabilitaet und Repression gleichzeitig beschreibt.",
-      "Notiere, welche historischen Altlasten vor 1990 immer wieder aktiviert wurden.",
-      "Unterscheide zwischen föderaler Form, realer Machtverteilung und nationalistischer Mobilisierung.",
-      "Halte fest, warum 1989/90 auf bereits bestehende Konfliktlinien zurückgegriffen werden konnte."
+    miniQuestions: [
+      {
+        id: "mq-vorgeschichte-1",
+        title: "Stabilisierung und Repression",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Welche zwei Herrschaftsmittel Titos müssen zusammen genannt werden, wenn du die Stabilität Jugoslawiens erklärst?",
+        help: "Nenne nicht nur Tito, sondern mindestens zwei konkrete Mittel seiner Herrschaft.",
+        placeholder: "Tito hielt Jugoslawien zusammen durch ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        conceptGroups: [
+          {
+            label: "autoritäre Parteiherrschaft",
+            variants: ["autoritär", "parteiherrschaft", "einparteienstaat", "kommunistische partei", "diktatorisch"]
+          },
+          {
+            label: "Repression oder Überwachung",
+            variants: ["repression", "unterdrückung", "ueberwachung", "überwachung", "geheimdienst", "gegner ausschalten"]
+          },
+          {
+            label: "föderaler Ausgleich zwischen Teilrepubliken",
+            variants: ["föderal", "foederal", "teilrepubliken", "autonomie", "ausgleich", "machtbalance"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Zur Stabilisierung gehörten autoritäre Parteiherrschaft und Repression gegen Gegner. Zugleich balancierte Tito die Teilrepubliken föderal aus."
+      },
+      {
+        id: "mq-vorgeschichte-2",
+        title: "Altlasten vor 1990",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Welche ältere Gewalterfahrung aus dem Zweiten Weltkrieg blieb politisch wirksam und wurde später erneut aufgegriffen?",
+        help: "Nenne ein konkretes Beispiel und den Charakter dieser Erinnerung.",
+        placeholder: "Politisch wirksam blieb vor allem ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        conceptGroups: [
+          {
+            label: "Ustascha-Terror, Jasenovac oder Kriegsgewalt",
+            variants: ["ustascha", "ustascha-terror", "jasenovac", "lager", "zweiter weltkrieg", "kriegsgewalt"]
+          },
+          {
+            label: "Trauma oder Erinnerung blieb erhalten",
+            variants: ["trauma", "erinnerung", "gedaechtnis", "gedächtnis", "verletzung", "nachwirkung"]
+          },
+          {
+            label: "spätere politische Aktivierung",
+            variants: ["mobilisieren", "instrumentalisieren", "später wieder aufgreifen", "nationalisten", "propaganda", "aktivieren"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Vor allem die Gewalterfahrungen aus dem Ustascha-Staat und aus Jasenovac blieben als kollektive Traumata präsent. Diese Erinnerung konnte später politisch mobilisiert und nationalistisch aufgeladen werden."
+      },
+      {
+        id: "mq-vorgeschichte-3",
+        title: "Föderation und reale Macht",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Was ist der Unterschied zwischen föderaler Ordnung auf dem Papier und realer Machtverteilung in Jugoslawien?",
+        help: "Verbinde Staatsaufbau mit tatsächlicher politischer Steuerung.",
+        placeholder: "Auf dem Papier war Jugoslawien föderal, in der Praxis ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-yt-2"],
+        conceptGroups: [
+          {
+            label: "föderale Struktur mit Republiken oder Autonomien",
+            variants: ["föderal", "foederal", "republiken", "autonomie", "teilrepubliken", "bundesstaat"]
+          },
+          {
+            label: "reale Macht bei Partei, Zentrum oder Tito",
+            variants: ["partei", "zentrum", "belgrad", "tito", "führung", "macht lag"]
+          },
+          {
+            label: "Spannungen blieben ungelöst",
+            variants: ["ungelöst", "konflikt", "spannung", "nicht gelöst", "nur kontrolliert", "eingefroren"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Auf dem Papier war Jugoslawien ein föderaler Staat mit Republiken und Autonomien. In der Praxis wurde die Macht stark durch Partei und Führung gesteuert, sodass Konflikte kontrolliert, aber nicht gelöst wurden."
+      },
+      {
+        id: "mq-vorgeschichte-4",
+        title: "Rückgriff 1989/90",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Warum konnten Politiker 1989/90 auf ältere Konfliktlinien und Erinnerungsorte zurückgreifen?",
+        help: "Nenne einen Grund aus der Vorgeschichte und einen aus der Krise der späten 1980er Jahre.",
+        placeholder: "Der Rückgriff gelang, weil ...",
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
+        conceptGroups: [
+          {
+            label: "ältere Konflikte oder Erinnerungen waren nicht verschwunden",
+            variants: ["nicht verschwunden", "alte konflikte", "erinnerung", "traumata", "vergangenheit", "langzeitlinie"]
+          },
+          {
+            label: "Krise nach Tito oder Ende der Stabilisierung",
+            variants: ["nach tito", "1980", "krise", "wirtschaftskrise", "stabilisierung endet", "machtvakuum"]
+          },
+          {
+            label: "Nationalismus oder symbolische Mobilisierung",
+            variants: ["nationalismus", "mobilisierung", "symbolpolitik", "mythen", "amselfeld", "instrumentalisierung"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Der Rückgriff gelang, weil ältere Konflikte und Traumata nie wirklich aufgearbeitet worden waren. In der Krise nach Tito konnten Politiker diese Erinnerungen nationalistisch mobilisieren und für aktuelle Machtpolitik nutzen."
+      }
     ],
     resources: [
       {
@@ -436,29 +540,23 @@ const MODULES = [
     },
     visualDossierTitle: "Bilder der politischen und militärischen Zuspitzung",
     visualDossierIntro:
-      "Die vier Bilder markieren die wichtigsten Ebenen dieser Station: politische Führung, konkurrierende Staatsprojekte, symbolische Eskalationsorte und sichtbare Kriegszerstörung.",
+      "Die vier Bilder markieren die wichtigsten Ebenen dieser Station: Mobilisierung, erster Krieg 1991, symbolische Eskalationsorte und sichtbare Kriegszerstörung.",
     visualDossier: [
       {
-        src: "assets/module-images/milosevic-in-hague.jpg",
-        alt: "Slobodan Milošević im Gerichtssaal in Den Haag",
-        title: "Milošević als politische Zuspitzungsfigur",
-        caption: "Porträt Slobodan Miloševićs während seines Prozesses in Den Haag; gezeigt wird derselbe Politiker, der seit 1989 serbische Machtpolitik prägte.",
+        src: "assets/module-images/gazimestan-monument.jpg",
+        alt: "Gazimestan-Denkmal auf dem Amselfeld",
+        title: "Gazimestan 1989",
+        caption: "Das Gazimestan-Denkmal am Amselfeld wurde 1989 zum Schauplatz einer zentralen Mobilisierungsrede Miloševićs.",
         whyItMatters:
-          "Arbeitsnutzen: Nutze das Porträt für Frage 1 und 4, also für Machtziele, Nationalismus und politische Verantwortung.",
-        imageFit: "contain",
-        imagePosition: "center top",
-        imageBackground: "rgba(241, 236, 228, 0.95)"
+          "Arbeitsnutzen: Das Bild markiert den Übergang von Erinnerungspolitik zu nationalistischer Mobilisierung."
       },
       {
-        src: "assets/module-images/franjo-tudjman-1995.jpg",
-        alt: "Franjo Tuđman im Jahr 1995",
-        title: "Tuđman und das kroatische Staatsprojekt",
-        caption: "Porträt des kroatischen Präsidenten Franjo Tuđman aus dem Jahr 1995.",
+        src: "assets/module-images/slovenian-war-map-cropped.jpg",
+        alt: "Darstellung des Zehn-Tage-Kriegs in Slowenien",
+        title: "Zehn-Tage-Krieg in Slowenien",
+        caption: "Kartendarstellung des kurzen Krieges in Slowenien 1991.",
         whyItMatters:
-          "Arbeitsnutzen: Zusammen mit dem Milošević-Porträt dient es dem direkten Vergleich der politischen Ziele in Frage 1.",
-        imageFit: "contain",
-        imagePosition: "center top",
-        imageBackground: "rgba(241, 236, 228, 0.95)"
+          "Arbeitsnutzen: Das Bild zeigt, dass der Zerfall nicht überall dieselbe Kriegslogik hatte."
       },
       {
         src: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
@@ -504,12 +602,142 @@ const MODULES = [
         imagePosition: "center top"
       }
     ],
-    prompts: [
-      "Achte auf Unterschiede zwischen Milosevics und Tudjmans Politikzielen.",
-      "Notiere Beispiele dafür, wie Fernsehen und Propaganda Feindbilder verdichteten.",
-      "Unterscheide zwischen Slowenien, Kroatien und Bosnien: Nicht jeder Konflikt folgte derselben Logik.",
-      "Halte fest, wo europäische Diplomatie zögerte und wo sie durch Entscheidungen neue Folgen auslöste.",
-      "Nutze die Porträts von Milošević und Tuđman, um Führungsfiguren des Zerfalls konkreter zu verorten."
+    miniQuestions: [
+      {
+        id: "mq-zerfall-1",
+        title: "Milošević und Tuđman",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Worin unterschieden sich die Politikziele von Milošević und Tuđman?",
+        help: "Vergleiche die politischen Projekte, nicht die Biografien.",
+        placeholder: "Milošević zielte auf ..., Tuđman dagegen auf ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        conceptGroups: [
+          {
+            label: "serbische Zentralisierung oder großserbische Politik",
+            variants: ["zentralisierung", "grossserbien", "großserbien", "serbische dominanz", "belgrad", "serbische macht"]
+          },
+          {
+            label: "kroatische Unabhängigkeit oder Staatsgründung",
+            variants: ["unabhängigkeit", "unabhaengigkeit", "eigener staat", "kroatischer staat", "staatsgründung", "abspaltung"]
+          },
+          {
+            label: "nationale Mobilisierung oder Symbolpolitik",
+            variants: ["nationalismus", "symbolpolitik", "geschichte", "vergangenheit", "mobilisierung", "propaganda"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Milošević setzte auf serbische Zentralisierung beziehungsweise großserbische Politik, Tuđman auf kroatische Unabhängigkeit und Staatsgründung. Beide arbeiteten mit nationalistischer Mobilisierung und historischen Symbolen."
+      },
+      {
+        id: "mq-zerfall-2",
+        title: "Fernsehen und Feindbilder",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wie verdichteten Fernsehen und Propaganda die Eskalation des Zerfalls?",
+        help: "Nenne mindestens zwei Wirkungen der Medienpolitik.",
+        placeholder: "Fernsehen und Propaganda wirkten eskalierend, weil ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-yt-4"],
+        conceptGroups: [
+          {
+            label: "Feindbilder oder Angst wurden verstärkt",
+            variants: ["feindbilder", "feindbild", "angst", "hass", "bedrohung", "panik"]
+          },
+          {
+            label: "Mobilisierung der eigenen Bevölkerung",
+            variants: ["mobilisierung", "aufhetzen", "anhänger", "unterstützung", "massen", "nationalistisch"]
+          },
+          {
+            label: "Gewalt oder Krieg wurden legitimiert",
+            variants: ["legitimieren", "rechtfertigen", "krieg", "gewalt", "einsatz", "notwendig darstellen"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Fernsehen und Propaganda verdichteten Feindbilder, erzeugten Angst und mobilisierten die eigene Bevölkerung. Zugleich wurden Gewalt und Krieg als notwendig oder gerechtfertigt dargestellt."
+      },
+      {
+        id: "mq-zerfall-3",
+        title: "Unterschiedliche Konfliktlogiken",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Warum folgten Slowenien, Kroatien und Bosnien nicht derselben Konfliktlogik?",
+        help: "Vergleiche die drei Räume knapp, statt nur eine Chronologie aufzuzählen.",
+        placeholder: "Die Konflikte unterschieden sich, weil ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-yt-3"],
+        conceptGroups: [
+          {
+            label: "Slowenien als kurzer Konflikt",
+            variants: ["slowenien", "kurz", "zehn tage", "kurzer krieg", "begrenzter konflikt"]
+          },
+          {
+            label: "Kroatien mit Frontkrieg und serbischen Gebieten",
+            variants: ["kroatien", "vukovar", "frontkrieg", "krajina", "serbische gebiete", "territorium"]
+          },
+          {
+            label: "Bosnien als multiethnischer Raum mit besonders komplexer Kriegslogik",
+            variants: ["bosnien", "multiethnisch", "dreiseitig", "belagerung", "ethnische säuberung", "komplex"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Slowenien erlebte nur einen kurzen begrenzten Krieg. In Kroatien ging es stärker um Fronten und um serbisch kontrollierte Gebiete, während Bosnien als multiethnischer Raum besonders komplexe und gewaltsame Kriegslogiken entwickelte."
+      },
+      {
+        id: "mq-zerfall-4",
+        title: "Europa und Diplomatie",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wo zögerte die europäische Diplomatie, und wo lösten Entscheidungen neue Folgen aus?",
+        help: "Nenne eine Form des Zögerns und eine Entscheidung mit Folgen.",
+        placeholder: "Europa zögerte bei ..., und Folgen hatte besonders ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
+        conceptGroups: [
+          {
+            label: "Zögern oder Uneinigkeit Europas",
+            variants: ["zögern", "uneinig", "zu spät", "nicht eingreifen", "abwartend", "diplomatie"]
+          },
+          {
+            label: "Anerkennung oder politische Entscheidung mit Folgen",
+            variants: ["anerkennung", "entscheidung", "1991", "deutschland", "europa", "folgen"]
+          },
+          {
+            label: "Konflikt wurde dadurch verschärft oder verändert",
+            variants: ["verschärft", "eskalation", "neue folgen", "krise", "krieg", "druck"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Europa zögerte lange und reagierte uneinheitlich auf die Eskalation. Zugleich hatten Entscheidungen wie die Anerkennungspolitik unmittelbare Folgen, weil sie Konflikte politisch veränderten und teilweise weiter verschärften."
+      },
+      {
+        id: "mq-zerfall-5",
+        title: "Führungsfiguren verorten",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wofür steht Milošević in dieser Station, und wofür steht Tuđman?",
+        help: "Ordne beide Personen ihren politischen Projekten zu.",
+        placeholder: "Milošević steht für ..., Tuđman steht für ...",
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        conceptGroups: [
+          {
+            label: "Milošević als serbische Zentralisierungsfigur",
+            variants: ["milošević", "milosevic", "serbische zentralisierung", "serbischer nationalismus", "belgrad", "kosovo-autonomie"]
+          },
+          {
+            label: "Tuđman als kroatische Staatsgründungsfigur",
+            variants: ["tuđman", "tudjman", "kroatische unabhängigkeit", "kroatischer staat", "souveränität", "staatsprojekt"]
+          },
+          {
+            label: "beide als Akteure nationalistischer Zuspitzung",
+            variants: ["nationalistische zuspitzung", "nationalismus", "mobilisierung", "symbolpolitik", "führungsfiguren", "zuspitzung"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Milošević steht hier für serbische Zentralisierung und nationalistische Zuspitzung aus Belgrad. Tuđman steht für das kroatische Staatsprojekt und die Unabhängigkeitsstrategie Kroatiens."
+      }
     ],
     resources: [
       {
@@ -847,29 +1075,23 @@ const MODULES = [
     },
     visualDossierTitle: "Bosnienkrieg als Bild- und Gewaltraum",
     visualDossierIntro:
-      "Die Bildauswahl deckt die vier Ebenen der Station ab: angegriffener Staat, militärische Führung, zerstörter Stadtraum und spätere Erinnerung an Srebrenica.",
+      "Die Bildauswahl deckt die vier Ebenen der Station ab: Belagerung, zerstörter Stadtraum, Srebrenica und die internationale Kriegswende 1995.",
     visualDossier: [
       {
-        src: "assets/module-images/alija-izetbegovic.jpg",
-        alt: "Alija Izetbegović im Porträt",
-        title: "Izetbegović und der bosnische Staat",
-        caption: "Porträt von Alija Izetbegović, dem Vorsitzenden des Staatspräsidiums von Bosnien-Herzegowina.",
+        src: "assets/module-images/sarajevo-siege-shelling-destruction.jpg",
+        alt: "Zerstörungen in Sarajevo während der Belagerung",
+        title: "Belagerung von Sarajevo",
+        caption: "Zerstörungen in Sarajevo während der Belagerung der Stadt von 1992 bis 1995.",
         whyItMatters:
-          "Arbeitsnutzen: Das Bild hilft bei der Zuordnung der politischen Führung des international anerkannten bosnischen Staates.",
-        imageFit: "contain",
-        imagePosition: "center top",
-        imageBackground: "rgba(241, 236, 228, 0.95)"
+          "Arbeitsnutzen: Das Bild markiert Sarajevo als zentralen Kriegs- und Erinnerungsort."
       },
       {
-        src: "assets/module-images/ratko-mladic-1993.jpg",
-        alt: "Ratko Mladić im Jahr 1993",
-        title: "Militärische Gewaltlogik",
-        caption: "Porträt von Ratko Mladić, dem militärischen Kommandeur der Armee der Republika Srpska.",
+        src: "assets/module-images/bombing-republika-srpska.jpg",
+        alt: "Luftoperationen gegen bosnisch-serbische Stellungen 1995",
+        title: "NATO-Luftangriffe 1995",
+        caption: "Bild aus dem Kontext der NATO-Luftangriffe gegen bosnisch-serbische Stellungen im Jahr 1995.",
         whyItMatters:
-          "Arbeitsnutzen: Das Porträt wird für die Unterscheidung von politischer Führung und militärischer Umsetzung gebraucht.",
-        imageFit: "contain",
-        imagePosition: "center top",
-        imageBackground: "rgba(241, 236, 228, 0.95)"
+          "Arbeitsnutzen: Das Bild gehört in diese Station, weil es die internationale Kriegswende 1995 markiert."
       },
       {
         src: "assets/module-images/sarajevo-grbavica.jpeg",
@@ -935,12 +1157,142 @@ const MODULES = [
         imagePosition: "center top"
       }
     ],
-    prompts: [
-      "Achte auf die Verbindung von militärischer Strategie und Gewalt gegen Zivilisten.",
-      "Notiere, warum Sarajevo weltweit zu einem Symbol des Bosnienkriegs wurde.",
-      "Arbeite heraus, was mit ethnischer Säuberung konkret gemeint ist.",
-      "Halte fest, warum Srebrenica und das Scheitern der UN später politischen Druck auf die NATO erhoehten.",
-      "Ordne die Akteur*innenporträts ihren politischen und militärischen Rollen im Bosnienkrieg zu."
+    miniQuestions: [
+      {
+        id: "mq-bosnien-1",
+        title: "Militär und Zivilbevölkerung",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wie hingen militärische Strategie und Gewalt gegen Zivilistinnen und Zivilisten im Bosnienkrieg zusammen?",
+        help: "Beschreibe nicht nur Gewalt, sondern ihren strategischen Zusammenhang.",
+        placeholder: "Die Gewalt gegen Zivilisten hing mit der Strategie zusammen, weil ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-yt-5"],
+        conceptGroups: [
+          {
+            label: "Belagerung, Beschuss oder militärischer Druck",
+            variants: ["belagerung", "beschuss", "militärisch", "druck", "front", "strategie"]
+          },
+          {
+            label: "Zivilbevölkerung wurde gezielt getroffen",
+            variants: ["zivilisten", "zivilbevölkerung", "gezielt", "terror", "angriffe auf städte", "beschossen"]
+          },
+          {
+            label: "Vertreibung oder Kontrolle von Räumen",
+            variants: ["vertreibung", "territorium", "gebiete", "kontrolle", "ethnische säuberung", "raumgewinn"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Gewalt gegen Zivilisten war nicht bloß Begleiterscheinung, sondern Teil der Strategie. Durch Belagerung, Beschuss und Terror sollten Räume kontrolliert, Menschen vertrieben und politische Ziele militärisch erzwungen werden."
+      },
+      {
+        id: "mq-bosnien-2",
+        title: "Sarajevo als Symbol",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Warum wurde Sarajevo weltweit zu einem Symbol des Bosnienkriegs?",
+        help: "Nenne konkrete Merkmale der Stadt und der Belagerung.",
+        placeholder: "Sarajevo wurde zum Symbol, weil ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-bild-1", "r-bosnien-bild-2"],
+        conceptGroups: [
+          {
+            label: "Belagerung der Hauptstadt",
+            variants: ["belagerung", "hauptstadt", "sarajevo", "eingeschlossen", "jahrelang", "stadt"]
+          },
+          {
+            label: "sichtbare Gewalt gegen Alltagsleben",
+            variants: ["alltag", "zivilisten", "scharfschützen", "beschuss", "märkte", "wohngebiete"]
+          },
+          {
+            label: "internationale Öffentlichkeit",
+            variants: ["weltweit", "medien", "öffentlichkeit", "symbol", "international", "fernsehen"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Sarajevo wurde zum Symbol, weil die belagerte Hauptstadt über Jahre sichtbar machte, wie ziviles Alltagsleben unter Beschuss geriet. Die internationale Medienöffentlichkeit nahm diese Gewalt besonders stark wahr."
+      },
+      {
+        id: "mq-bosnien-3",
+        title: "Ethnische Säuberung konkret",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Was bedeutete 'ethnische Säuberung' im Kriegsalltag konkret?",
+        help: "Nenne konkrete Handlungen, nicht nur den Oberbegriff.",
+        placeholder: "Konkret bedeutete ethnische Säuberung ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki", "r-bosnien-pdf"],
+        conceptGroups: [
+          {
+            label: "Vertreibung oder Deportation",
+            variants: ["vertreibung", "deportation", "verjagen", "zwangsumsiedlung", "entfernen", "aus ihren gebieten"]
+          },
+          {
+            label: "Gewaltmittel wie Lager, Terror, Vergewaltigung oder Mord",
+            variants: ["lager", "terror", "vergewaltigung", "mord", "gewalt", "massaker"]
+          },
+          {
+            label: "Ziel war ethnisch homogene Gebiete",
+            variants: ["homogene gebiete", "ethnisch homogen", "nur eine gruppe", "territorium", "säubern", "gebietskontrolle"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Im Kriegsalltag bedeutete ethnische Säuberung Vertreibung, Deportation und massive Gewalt bis hin zu Lagern, Vergewaltigungen und Mord. Ziel war die Herstellung ethnisch kontrollierter oder homogener Gebiete."
+      },
+      {
+        id: "mq-bosnien-4",
+        title: "Srebrenica und UN-Scheitern",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Warum erhöhten Srebrenica und das Scheitern der UN 1995 den Druck auf die NATO?",
+        help: "Verbinde Massaker, Schutzversprechen und internationale Reaktion.",
+        placeholder: "Der Druck auf die NATO stieg, weil ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-pdf", "r-bosnien-yt-6"],
+        conceptGroups: [
+          {
+            label: "Srebrenica als Massaker oder Genozid",
+            variants: ["srebrenica", "massaker", "genozid", "tausende", "1995", "ermordet"]
+          },
+          {
+            label: "UN-Schutzversprechen scheiterte",
+            variants: ["un", "schutzgebiet", "scheitern", "blauhelme", "nicht geschützt", "versagen"]
+          },
+          {
+            label: "dadurch wuchs Interventionsdruck auf die NATO",
+            variants: ["nato", "interventionsdruck", "luftangriffe", "eingreifen", "reagieren", "internationaler druck"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Nach Srebrenica wurde sichtbar, dass selbst ein von der UN geschützter Raum nicht geschützt wurde. Das Massaker und das UN-Versagen erhöhten deshalb den politischen Druck auf die NATO, militärisch zu reagieren."
+      },
+      {
+        id: "mq-bosnien-5",
+        title: "Akteure einordnen",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Welche Personen dieser Station stehen für den bosnischen Staat, und welche für die bosnisch-serbische politische oder militärische Führung?",
+        help: "Ordne die Personen knapp ihren Rollen zu.",
+        placeholder: "Für den bosnischen Staat steht ..., für die bosnisch-serbische Führung stehen ...",
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki", "r-bosnien-pdf"],
+        conceptGroups: [
+          {
+            label: "Izetbegović als Präsident Bosnien-Herzegowinas",
+            variants: ["izetbegović", "izetbegovic", "präsident", "bosnischer staat", "bosnien-herzegowina", "regierung"]
+          },
+          {
+            label: "Karadžić als politische Führung der Republika Srpska",
+            variants: ["karadžić", "karadzic", "politische führung", "republika srpska", "präsident", "bosnisch-serbisch"]
+          },
+          {
+            label: "Mladić als militärischer Kommandeur",
+            variants: ["mladić", "mladic", "militär", "kommandeur", "armee", "bosnisch-serbische streitkräfte"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Alija Izetbegović steht für den international anerkannten bosnischen Staat. Radovan Karadžić steht für die politische Führung der Republika Srpska, Ratko Mladić für deren militärische Kriegsführung."
+      }
     ],
     resources: [
       {
@@ -1277,11 +1629,11 @@ const MODULES = [
     title: "Dayton, Kosovo und schwieriger Frieden",
     era: "1995 bis heute",
     intro:
-      "Die letzte Station fragt nach dem schwierigen Frieden nach 1995: Dayton beendete den Bosnienkrieg, ließ aber im Kosovo zentrale Konflikte offen. Dort trafen der seit 1989 entzogene Autonomiestatus, serbische Repression, Rugovas gewaltfreie Politik und später die UÇK aufeinander, bevor die NATO 1999 eingriff.",
+      "Die letzte Station fragt nach dem schwierigen Frieden nach 1995: Dayton beendete den Bosnienkrieg, ließ aber im Kosovo zentrale Konflikte offen. Dort trafen der seit 1989 entzogene Autonomiestatus, serbische Repression, Rugovas gewaltfreie Politik und später die UÇK als militärischer Arm vieler Kosovo-Albaner aufeinander, bevor die NATO 1999 eingriff.",
     goal:
-      "Du kannst Frieden als ambivalente Ordnung erklären, den Kosovo-Konflikt in die Zerfallsgeschichte einordnen und langfristige Probleme von Versöhnung, Demokratie und Anerkennung benennen.",
+      "Du kannst Frieden als ambivalente Ordnung erklären, den Kosovo-Konflikt in die Zerfallsgeschichte einordnen, die UÇK als militärischen Akteur benennen und die besondere Rolle der Schweiz bei Diaspora, Aufnahme und SWISSCOY erläutern.",
     route:
-      "Arbeite zuerst die Kette Dayton - offener Kosovo - Rugova - UÇK - serbische Repression - NATO heraus. Sichere danach die Leitbegriffe mit den kurzen Antworten und bewerte erst am Schluss die internationale Intervention.",
+      "Arbeite zuerst die Kette Dayton - offener Kosovo - Rugova - UÇK - serbische Repression - NATO heraus. Sichere danach die Leitbegriffe mit den kurzen Antworten und bewerte erst am Schluss die internationale Intervention sowie die besondere Rolle der Schweiz.",
     teacherNote:
       "Die Station ist besonders geeignet für Urteilsbildung: Frieden beenden, ohne Konflikte wirklich zu lösen, ist hier der zentrale Spannungsbogen.",
     teacherToolkit: {
@@ -1294,7 +1646,8 @@ const MODULES = [
       assessmentFocus: [
         "Dayton als Friedensschluss und Blockadeordnung zugleich erfassen",
         "Kosovo nicht als Nebenschauplatz, sondern als Fortsetzung ungelöster Konflikte verstehen",
-        "internationale Intervention historisch abwaegen statt nur moralisch bewerten"
+        "internationale Intervention historisch abwaegen statt nur moralisch bewerten",
+        "Schweiz-Bezug über Diaspora, Fluchtmigration und SWISSCOY konkret einordnen"
       ],
       misconceptions: [
         "Mit Dayton sei der gesamte Zerfall abgeschlossen gewesen",
@@ -1311,9 +1664,9 @@ const MODULES = [
       alt: "Sarajevo im Mai 1996 als Bild einer brüchigen Nachkriegsordnung",
       sourceLabel: "Sarajevo_may_1996.png"
     },
-    visualDossierTitle: "Bilder des schwierigen Friedens",
+    visualDossierTitle: "Bilder von Krieg, Frieden und Nachkrieg",
     visualDossierIntro:
-      "Die vier Bilder markieren die Stationen des Nachkriegs: Friedensvertrag, gewaltfreie Kosovo-Politik, Eskalation 1998/99 und die Folgen der NATO-Angriffe.",
+      "Die vier Bilder markieren die Stationen des Nachkriegs: Friedensvertrag, Krieg im Kosovo 1998/99, NATO-Angriffe und ihre Folgen.",
     visualDossier: [
       {
         src: "assets/module-images/dayton-agreement.jpg",
@@ -1324,23 +1677,20 @@ const MODULES = [
           "Arbeitsnutzen: Das Bild gehört zu Frage 1 und markiert den Ausgangspunkt der Nachkriegsphase."
       },
       {
-        src: "assets/module-images/ibrahim-rugova.jpg",
-        alt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
-        title: "Rugova und die nichtmilitärische Kosovo-Strategie",
-        caption: "Porträt von Ibrahim Rugova, dem wichtigsten Vertreter der gewaltfreien Kosovo-albanischen Politik in den 1990er Jahren.",
-        whyItMatters:
-          "Arbeitsnutzen: Das Bild wird für Frage 2 und 3 gebraucht, damit die NATO-Intervention nicht ohne Kosovo-Vorgeschichte erklärt wird.",
-        imageFit: "contain",
-        imagePosition: "center top",
-        imageBackground: "rgba(241, 236, 228, 0.95)"
-      },
-      {
         src: "assets/module-images/war-in-kosovo-1999-2.jpg",
         alt: "Kriegsschäden im Kosovo 1999",
-        title: "Kriegsschäden im Kosovo 1999",
+        title: "Krieg im Kosovo 1998/99",
         caption: "Fotografie von Kriegsschäden im Kosovo aus dem Jahr 1999.",
         whyItMatters:
-          "Arbeitsnutzen: Das Bild liefert den Konfliktkontext für Frage 2, 3 und 5 und verhindert, dass die NATO nur als Luftkrieg ohne Vorgeschichte erscheint."
+          "Arbeitsnutzen: Das Bild liefert den Konfliktkontext für die Eskalation vor dem NATO-Einsatz."
+      },
+      {
+        src: "assets/module-images/nato-bombing-yugoslavia-1999.jpg",
+        alt: "Szene aus dem Kontext der NATO-Luftangriffe 1999",
+        title: "NATO-Luftangriffe 1999",
+        caption: "Fotografie aus dem Kontext der NATO-Luftangriffe gegen Ziele in der Bundesrepublik Jugoslawien im Frühjahr 1999.",
+        whyItMatters:
+          "Arbeitsnutzen: Das Bild markiert den militärischen Eingriff der NATO im Kosovokrieg."
       },
       {
         src: "assets/module-images/rts-belgrade-ruins-1999.jpg",
@@ -1354,7 +1704,7 @@ const MODULES = [
     actorFocus: {
       title: "Akteure des schwierigen Friedens",
       intro:
-        "In der Nachkriegsstation geht es nicht mehr um möglichst viele Gesichter, sondern um zwei gegensätzliche politische Logiken: Rugovas gewaltfreie Kosovo-Strategie und Miloševićs fortgesetzte Machtpolitik."
+        "In der Nachkriegsstation stehen drei politische Logiken nebeneinander: Rugovas gewaltfreie Kosovo-Strategie, die UÇK als bewaffneter Akteur und Miloševićs Politik von Repression und Eskalation."
     },
     actors: [
       {
@@ -1368,6 +1718,18 @@ const MODULES = [
         imagePosition: "center top"
       },
       {
+        name: "Hashim Thaçi",
+        role: "politischer Repräsentant der UÇK und später führender Politiker im Kosovo",
+        lens: "Er steht für den Übergang von bewaffnetem Widerstand der UÇK zu politischer Führung nach dem Krieg.",
+        whyHere:
+          "Er gehört in diese Station, weil die UÇK als militärischer Arm vieler Kosovo-Albaner sonst als anonyme Abkürzung ohne Akteure bliebe.",
+        imageSrc: "assets/module-images/hashim-thaci-2020.jpg",
+        imageAlt: "Hashim Thaçi im Porträt",
+        imageFit: "contain",
+        imagePosition: "center top",
+        imageBackground: "rgba(241, 236, 228, 0.95)"
+      },
+      {
         name: "Slobodan Milošević",
         role: "serbischer Machthaber in der späten Zerfallsphase",
         lens: "In dieser Station steht er konkret für die Kosovo-Politik Belgrads, die Repression gegen Kosovo-Albaner und den späteren Machtverlust nach 1999.",
@@ -1378,12 +1740,196 @@ const MODULES = [
         imagePosition: "center top"
       }
     ],
-    prompts: [
-      "Achte auf den Doppelcharakter von Dayton: Frieden schaffen und Spaltung verfestigen.",
-      "Notiere die Kosovo-Kette: offene Statusfrage, Rugovas Parallelpolitik, UÇK, serbische Repression, NATO.",
-      "Unterscheide zwischen legaler, politischer und moralischer Bewertung internationaler Intervention.",
-      "Halte langfristige Herausforderungen fest: Erinnerung, Demokratie, Anerkennung und Versöhnung.",
-      "Nutze Rugovas Porträt ausdrücklich als Vorkontext der NATO-Intervention und nicht nur als spätere Randfigur."
+    miniQuestions: [
+      {
+        id: "mq-nachkrieg-1",
+        title: "Dayton doppelt lesen",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Worin lag der Doppelcharakter des Dayton-Abkommens?",
+        help: "Nenne eine positive und eine problematische Seite.",
+        placeholder: "Dayton beendete ..., verfestigte aber ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
+        conceptGroups: [
+          {
+            label: "Krieg wurde beendet",
+            variants: ["krieg beenden", "waffenstillstand", "frieden", "kämpfe stoppen", "gewalt stoppen", "friedensschluss"]
+          },
+          {
+            label: "ethnische Spaltung oder Entitäten wurden festgeschrieben",
+            variants: ["ethnische spaltung", "entitäten", "republika srpska", "föderation", "zementiert", "teilungslogik"]
+          },
+          {
+            label: "komplizierte Nachkriegsordnung oder Blockaden",
+            variants: ["komplizierte staatsstruktur", "blockade", "reformblockade", "schwacher staat", "kompliziert", "handlungsfähigkeit"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Dayton war doppelt: Es beendete den Krieg und schuf Frieden, schrieb aber zugleich ethnische Teilungen und eine schwerfällige Staatsordnung fest."
+      },
+      {
+        id: "mq-nachkrieg-2",
+        title: "Kosovo-Kette",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wie lautet die zentrale Eskalationskette im Kosovo-Konflikt der 1990er Jahre?",
+        help: "Ordne die Entwicklung als Kette, nicht als Einzelereignisse.",
+        placeholder: "Die Eskalation verlief von ... über ... zu ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        conceptGroups: [
+          {
+            label: "offene Statusfrage oder Verlust der Autonomie",
+            variants: ["autonomieverlust", "statusfrage", "autonomie", "kosovo", "offene frage", "belgrad"]
+          },
+          {
+            label: "Rugovas Parallelpolitik oder gewaltfreier Kurs",
+            variants: ["rugova", "parallelpolitik", "gewaltfrei", "parallelstrukturen", "friedlich", "ziviler widerstand"]
+          },
+          {
+            label: "UÇK, serbische Repression und NATO",
+            variants: ["u ck", "uçek", "uçk", "repression", "serbische gewalt", "nato"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Die Eskalationskette führte vom Autonomieverlust und der offenen Statusfrage über Rugovas gewaltfreie Parallelpolitik zur UÇK, zu verstärkter serbischer Repression und schließlich zur NATO-Intervention 1999."
+      },
+      {
+        id: "mq-nachkrieg-3",
+        title: "Thaçi und die UÇK",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wie müssen Hashim Thaçi und die UÇK in dieser Station korrekt eingeordnet werden?",
+        help: "Benenne sowohl die Person als auch die Funktion der Organisation.",
+        placeholder: "Hashim Thaçi war ..., die UÇK war ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        conceptGroups: [
+          {
+            label: "Thaçi als politischer Repräsentant der UÇK",
+            variants: ["thaçi", "thaci", "politischer repräsentant", "sprecher", "politischer vertreter", "führer"]
+          },
+          {
+            label: "UÇK als bewaffnete oder militärische Organisation",
+            variants: ["militärischer arm", "bewaffnet", "guerilla", "bewaffnete organisation", "kämpfer", "militärisch"]
+          },
+          {
+            label: "Bezug zu vielen Kosovo-Albanern",
+            variants: ["kosovo albaner", "kosovarische albaner", "albanische bevölkerung", "kosovo-albaner", "unterstützung", "vertretung"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Hashim Thaçi erscheint hier als politischer Repräsentant der UÇK. Die UÇK war eine bewaffnete Organisation, die für viele Kosovo-Albaner zum militärischen Arm des Widerstands wurde."
+      },
+      {
+        id: "mq-nachkrieg-4",
+        title: "Intervention unterscheiden",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Was ist der Unterschied zwischen rechtlicher, politischer und moralischer Bewertung der NATO-Intervention?",
+        help: "Unterscheide die drei Ebenen ausdrücklich.",
+        placeholder: "Rechtlich ..., politisch ..., moralisch ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-wiki"],
+        conceptGroups: [
+          {
+            label: "rechtliche Ebene",
+            variants: ["rechtlich", "völkerrecht", "mandat", "uno", "un mandat", "legality"]
+          },
+          {
+            label: "politische Ebene",
+            variants: ["politisch", "machtpolitik", "strategie", "ziel", "intervention", "wirkung"]
+          },
+          {
+            label: "moralische Ebene",
+            variants: ["moralisch", "menschen schützen", "verantwortung", "ethisch", "massengewalt", "humanitär"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Rechtlich geht es um Mandat und Völkerrecht, politisch um Ziele und Folgen der Intervention, moralisch um die Frage, ob Schutz vor weiterer Massengewalt das Eingreifen rechtfertigte."
+      },
+      {
+        id: "mq-nachkrieg-5",
+        title: "Schweiz-Bezug",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Warum hat der Kosovo-Konflikt für die Schweiz eine besondere Bedeutung?",
+        help: "Nenne mindestens zwei konkrete Bezüge.",
+        placeholder: "Für die Schweiz ist der Kosovo-Konflikt besonders, weil ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf"],
+        conceptGroups: [
+          {
+            label: "kosovarische Diaspora oder Migration in die Schweiz",
+            variants: ["diaspora", "migration", "flucht", "geflüchtete", "schweiz", "kosovarische gemeinschaft"]
+          },
+          {
+            label: "SWISSCOY oder KFOR-Einsatz",
+            variants: ["swisscoy", "kfor", "friedenseinsatz", "armee", "seit 1999", "mission"]
+          },
+          {
+            label: "langfristige gesellschaftliche oder politische Verbindung",
+            variants: ["langfristig", "gesellschaft", "familien", "politik", "gegenwart", "verbindung"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Der Kosovo-Konflikt hat für die Schweiz besondere Bedeutung wegen der großen kosovarischen Diaspora und der Fluchtmigration. Hinzu kommt der Schweizer Beitrag über SWISSCOY im KFOR-Kontext seit 1999."
+      },
+      {
+        id: "mq-nachkrieg-6",
+        title: "Langzeitfolgen",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Welche langfristigen Herausforderungen blieben nach den Kriegen bestehen?",
+        help: "Nenne mehr als nur 'Frieden sichern'.",
+        placeholder: "Langfristig blieben vor allem ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-yt-7", "r-nachkrieg-pdf"],
+        conceptGroups: [
+          {
+            label: "Erinnerung oder Aufarbeitung",
+            variants: ["erinnerung", "aufarbeitung", "gedenken", "vergangenheit", "justiz", "verbrechen"]
+          },
+          {
+            label: "Demokratie oder politische Stabilität",
+            variants: ["demokratie", "stabilität", "staatlichkeit", "institutionen", "reformen", "politik"]
+          },
+          {
+            label: "Anerkennung, Versöhnung oder Zusammenleben",
+            variants: ["anerkennung", "versöhnung", "zusammenleben", "misstrauen", "rückkehr", "gesellschaft"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Langfristig blieben Erinnerung und Aufarbeitung, der Aufbau stabiler demokratischer Institutionen sowie Anerkennung und Versöhnung zwischen den Gesellschaften zentrale Herausforderungen."
+      },
+      {
+        id: "mq-nachkrieg-7",
+        title: "Rugova und Thaçi",
+        type: "short-text",
+        challenge: "Zusatzcheck",
+        prompt: "Wie unterscheiden sich Rugovas und Thaçis Strategien im Kosovo-Konflikt?",
+        help: "Vergleiche die beiden Akteure über ihre politischen Wege.",
+        placeholder: "Rugova setzte auf ..., Thaçi dagegen auf ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        conceptGroups: [
+          {
+            label: "Rugova als gewaltfreie oder zivile Strategie",
+            variants: ["rugova", "gewaltfrei", "parallelpolitik", "zivil", "friedlich", "parallelstrukturen"]
+          },
+          {
+            label: "Thaçi mit Bezug zur UÇK oder bewaffnetem Kampf",
+            variants: ["thaçi", "thaci", "uçk", "u ck", "bewaffnet", "militärisch"]
+          },
+          {
+            label: "unterschiedliche Wege zum politischen Ziel Kosovo",
+            variants: ["unterschiedliche strategie", "gleiche frage", "politisches ziel", "unabhängigkeit", "status", "zwei wege"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Rugova steht für gewaltfreie Parallelpolitik und zivilen Widerstand. Thaçi steht für den politischen Arm der UÇK und damit für den bewaffneten Weg, mit dem dieselbe Statusfrage anders verfolgt wurde."
+      }
     ],
     resources: [
       {
@@ -1711,9 +2257,9 @@ const MODULES = [
         type: "open-analysis",
         challenge: "Vertiefung",
         prompt:
-          "Welche langfristigen Herausforderungen bestehen für die Staaten des ehemaligen Jugoslawiens bis heute im Blick auf Erinnerung, Demokratie und internationale Anerkennung? Begründe mit Materialbezügen.",
+          "Welche langfristigen Herausforderungen bestehen für die Staaten des ehemaligen Jugoslawiens bis heute im Blick auf Erinnerung, Demokratie und internationale Anerkennung, und warum spielt die Schweiz im Kosovo-Kontext eine besondere Rolle? Begründe mit Materialbezügen.",
         help:
-          "Eine starke Antwort verbindet Nachkriegspolitik, Erinnerungskonflikte und Gegenwartsprobleme.",
+          "Eine starke Antwort verbindet Nachkriegspolitik, Erinnerungskonflikte, Gegenwartsprobleme und den Schweiz-Bezug über Diaspora und SWISSCOY.",
         placeholder: "Bis heute bestehen Herausforderungen, weil ...",
         sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         minWords: 120,
@@ -1721,16 +2267,17 @@ const MODULES = [
           mandatory: ["thesis", "evidence", "comparison", "conclusion"],
           targetHits: 5
         },
-        sourceHints: ["erinnerung", "anerkennung", "demokratie", "kosovo", "dayton", "versöhnung"],
+        sourceHints: ["erinnerung", "anerkennung", "demokratie", "kosovo", "dayton", "versöhnung", "schweiz", "diaspora", "swisscoy"],
         rubric: [
           { concept: "Erinnerungskonflikte oder Deutungskämpfe", keywords: ["erinnerung", "gedenken", "deutung", "geschichtspolitik", "srebrenica", "vergangenheit"] },
           { concept: "demokratische oder institutionelle Probleme", keywords: ["demokratie", "institutionen", "korruption", "staat", "dayton", "blockade"] },
           { concept: "Fragen internationaler Anerkennung", keywords: ["anerkennung", "kosovo", "international", "eu", "völkerrecht", "status"] },
           { concept: "Versöhnung als unvollendete Aufgabe", keywords: ["versöhnung", "trauma", "vertrauen", "gesellschaft", "nachwirkt", "konfliktfolgen"] },
+          { concept: "besondere Rolle der Schweiz", keywords: ["schweiz", "diaspora", "swisscoy", "kfor", "fluchtmigration", "kosovo-albaner"] },
           { concept: "historisches Urteil", keywords: ["insgesamt", "deshalb", "entscheidend", "zeigt", "schlussendlich"] }
         ],
         modelAnswer:
-          "Die Nachfolgestaaten stehen bis heute vor Erinnerungskonflikten, institutionellen Problemen und offenen Fragen internationaler Anerkennung, besonders im Fall Kosovo. Zugleich bleibt Versöhnung schwierig, weil Kriegserfahrungen, konkurrierende Geschichtsbilder und politische Blockaden weiter nachwirken."
+          "Die Nachfolgestaaten stehen bis heute vor Erinnerungskonflikten, institutionellen Problemen und offenen Fragen internationaler Anerkennung, besonders im Fall Kosovo. Zugleich bleibt Versöhnung schwierig, weil Kriegserfahrungen, konkurrierende Geschichtsbilder und politische Blockaden weiter nachwirken. Für die Schweiz ist der Kosovo-Kontext besonders wichtig, weil hier eine große kosovarische Diaspora lebt und die Schweiz sich seit 1999 mit der SWISSCOY an der KFOR-Mission beteiligt."
       }
     ]
   }
