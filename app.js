@@ -220,6 +220,10 @@ function getIntegratedSources(module) {
   return (module.resources || []).filter((resource) => resource.type !== "PDF");
 }
 
+function getVideoSources(module) {
+  return getIntegratedSources(module).filter((resource) => resource.type === "Video");
+}
+
 function getResourceUsageMap(module) {
   const usageMap = new Map();
   module.questions.forEach((question, index) => {
@@ -231,6 +235,38 @@ function getResourceUsageMap(module) {
     });
   });
   return usageMap;
+}
+
+function getQuestionReference(module, question) {
+  const mainIndex = module.questions.findIndex((entry) => entry.id === question.id);
+  if (mainIndex > -1) {
+    return {
+      kind: "main",
+      label: `Frage ${mainIndex + 1}`,
+      title: question.prompt
+    };
+  }
+
+  const miniQuestions = getMiniQuestions(module);
+  const miniIndex = miniQuestions.findIndex((entry) => entry.id === question.id);
+  if (miniIndex > -1) {
+    return {
+      kind: "mini",
+      label: `Zusatzcheck ${miniIndex + 1}`,
+      title: question.title || question.prompt
+    };
+  }
+
+  return {
+    kind: "main",
+    label: "Frage",
+    title: question.prompt
+  };
+}
+
+function getQuestionsForResource(module, resourceId) {
+  const combined = [...module.questions, ...getMiniQuestions(module)];
+  return combined.filter((question) => (question.sourceIds || []).includes(resourceId));
 }
 
 function formatQuestionTargets(targets = []) {
@@ -603,6 +639,8 @@ function renderModuleNav() {
   elements.moduleNav.querySelectorAll("[data-module-id]").forEach((button) => {
     button.addEventListener("click", () => {
       state.activeModuleId = button.dataset.moduleId;
+      state.sourceModalOpen = false;
+      state.activeMiniQuestionId = null;
       renderApp();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -619,6 +657,7 @@ function renderModuleHeader(module) {
   const visualDossier = module.visualDossier || [];
   const miniQuestions = getMiniQuestions(module);
   const integratedSources = getIntegratedSources(module);
+  const videoSources = getVideoSources(module);
 
   elements.moduleHeader.innerHTML = `
     <div class="module-title-row">
@@ -671,24 +710,6 @@ function renderModuleHeader(module) {
         </p>
       </article>
       ${
-        integratedSources.length
-          ? `
-            <article class="module-box">
-              <h3>Filme und Quellen</h3>
-              <p class="module-copy">
-                Die ausgewählten Filme und Quellen dieser Station öffnen sich gesammelt im
-                Quellenfenster. Die PDF-Fragen sind in Hauptfragen und Zusatzchecks eingearbeitet.
-              </p>
-              <div class="question-actions">
-                <button class="btn ghost small" type="button" data-open-source-modal="true">
-                  Quellenfenster öffnen
-                </button>
-              </div>
-            </article>
-          `
-          : ""
-      }
-      ${
         miniQuestions.length
           ? `
             <article class="module-box module-box-wide mini-checks-box">
@@ -724,6 +745,60 @@ function renderModuleHeader(module) {
             </article>
           `
           : ""
+      }
+      ${
+        videoSources.length
+          ? `
+            <article class="module-box module-box-wide film-module-box">
+              <div class="film-module-head">
+                <div>
+                  <h3>Filmmodul der Station</h3>
+                  <p class="module-copy">
+                    Öffne das Film-und-Fragen-Modul: Dort liegen die Dokumentation, ergänzende
+                    Videos und die direkt dazugehörigen Fragen gesammelt als Popup.
+                  </p>
+                </div>
+                <p class="film-module-status">${videoSources.length} Film${videoSources.length === 1 ? "" : "e"} integriert</p>
+              </div>
+              <div class="film-module-preview">
+                ${videoSources
+                  .map(
+                    (resource) => `
+                      <div class="film-preview-chip">
+                        <strong>${escapeHtml(resource.title)}</strong>
+                        <span>${escapeHtml(resource.focus)}</span>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+              <div class="question-actions">
+                <button class="btn primary" type="button" data-open-source-modal="true">
+                  Film-und-Fragen-Modul öffnen
+                </button>
+              </div>
+            </article>
+          `
+          : integratedSources.length
+            ? `
+              <article class="module-box module-box-wide film-module-box">
+                <div class="film-module-head">
+                  <div>
+                    <h3>Quellenmodul der Station</h3>
+                    <p class="module-copy">
+                      Diese Station arbeitet ohne Film, aber mit integriertem Quellenfenster und
+                      zugehörigen Fragen.
+                    </p>
+                  </div>
+                </div>
+                <div class="question-actions">
+                  <button class="btn primary" type="button" data-open-source-modal="true">
+                    Quellenmodul öffnen
+                  </button>
+                </div>
+              </article>
+            `
+            : ""
       }
     </div>
 
@@ -1437,6 +1512,8 @@ function renderSourceModal() {
 
   const module = getActiveModule();
   const integratedSources = getIntegratedSources(module);
+  const videoSources = integratedSources.filter((resource) => resource.type === "Video");
+  const otherSources = integratedSources.filter((resource) => resource.type !== "Video");
 
   if (!state.sourceModalOpen || !integratedSources.length) {
     elements.sourceModal.classList.add("hidden");
@@ -1452,56 +1529,47 @@ function renderSourceModal() {
     <div class="source-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="source-modal-title">
       <div class="source-modal-header">
         <div>
-          <p class="eyebrow">Quellenfenster</p>
-          <h3 id="source-modal-title">${escapeHtml(module.title)}: Filme und Quellen</h3>
+          <p class="eyebrow">Film-und-Fragen-Modul</p>
+          <h3 id="source-modal-title">${escapeHtml(module.title)}: Filme und Aufgaben</h3>
           <p class="module-copy">
-            Die Filme bleiben direkt zugänglich. Die Fragen aus dem Fragenreader sind bereits in
-            Hauptfragen und Zusatzchecks integriert und werden deshalb nicht separat angezeigt.
+            Die Filme bleiben direkt zugänglich. Unter jedem Film stehen die Hauptfragen und
+            Zusatzchecks, die genau mit diesem Material verknüpft sind. Die PDF-Fragen erscheinen
+            nicht separat, weil sie hier bereits eingearbeitet sind.
           </p>
         </div>
         <button class="btn ghost small" type="button" data-close-source-modal="true">Schließen</button>
       </div>
       <div class="source-modal-body">
-        ${groupResources(integratedSources)
-          .map(
-            ([bucket, resources]) => `
-              <section class="source-modal-group">
-                <h4>${escapeHtml(bucket)}</h4>
-                <div class="source-modal-grid">
-                  ${resources
-                    .map(
-                      (resource) => `
-                        <article class="source-modal-card">
-                          <div class="resource-type-row">
-                            <span class="tag">${escapeHtml(resource.type)}</span>
-                            ${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
-                          </div>
-                          <h5>${escapeHtml(resource.title)}</h5>
-                          <p>${escapeHtml(resource.focus)}</p>
-                          ${
-                            resource.selectionNote
-                              ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
-                              : ""
-                          }
-                          ${
-                            resource.didacticUse
-                              ? `<p class="resource-note"><strong>Einbau:</strong> ${escapeHtml(resource.didacticUse)}</p>`
-                              : ""
-                          }
-                          <div class="resource-actions">
-                            <a class="btn ghost small" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
-                              ${getSourceActionLabel(resource)}
-                            </a>
-                          </div>
-                        </article>
-                      `
-                    )
+        ${
+          videoSources.length
+            ? `
+              <section class="source-modal-group source-modal-group-emphasis">
+                <h4>Filme dieser Station</h4>
+                <div class="film-modal-grid">
+                  ${videoSources
+                    .map((resource) => renderSourceModalCard(module, resource))
                     .join("")}
                 </div>
               </section>
             `
-          )
-          .join("")}
+            : ""
+        }
+        ${
+          otherSources.length
+            ? `
+              <details class="source-modal-details">
+                <summary>Weitere integrierte Quellen anzeigen</summary>
+                <section class="source-modal-group">
+                  <div class="source-modal-grid">
+                    ${otherSources
+                      .map((resource) => renderSourceModalCard(module, resource))
+                      .join("")}
+                  </div>
+                </section>
+              </details>
+            `
+            : ""
+        }
       </div>
     </div>
   `;
@@ -1509,9 +1577,87 @@ function renderSourceModal() {
   elements.sourceModal.querySelectorAll("[data-close-source-modal]").forEach((button) => {
     button.addEventListener("click", closeSourceModal);
   });
+
+  elements.sourceModal.querySelectorAll("[data-jump-question]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const questionId = button.dataset.jumpQuestion;
+      closeSourceModal();
+      requestAnimationFrame(() => {
+        const target = document.getElementById(questionId);
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  });
+
+  elements.sourceModal.querySelectorAll("[data-open-linked-mini]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const questionId = button.dataset.openLinkedMini;
+      closeSourceModal();
+      openMiniQuestion(questionId);
+    });
+  });
+}
+
+function renderSourceModalCard(module, resource) {
+  const linkedQuestions = getQuestionsForResource(module, resource.id);
+  return `
+    <article class="source-modal-card${resource.type === "Video" ? " film-modal-card" : ""}">
+      <div class="resource-type-row">
+        <span class="tag">${escapeHtml(resource.type)}</span>
+        ${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
+      </div>
+      <h5>${escapeHtml(resource.title)}</h5>
+      <p>${escapeHtml(resource.focus)}</p>
+      ${
+        resource.selectionNote
+          ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
+          : ""
+      }
+      ${
+        resource.didacticUse
+          ? `<p class="resource-note"><strong>Einbau:</strong> ${escapeHtml(resource.didacticUse)}</p>`
+          : ""
+      }
+      <div class="resource-actions">
+        <a class="btn ${resource.type === "Video" ? "primary" : "ghost"} small" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
+          ${getSourceActionLabel(resource)}
+        </a>
+      </div>
+      ${
+        resource.type === "Video" && linkedQuestions.length
+          ? `
+            <div class="linked-question-block">
+              <p class="linked-question-title">Direkt dazugehörige Fragen</p>
+              <div class="linked-question-grid">
+                ${linkedQuestions
+                  .map((question) => {
+                    const reference = getQuestionReference(module, question);
+                    return reference.kind === "mini"
+                      ? `
+                          <button class="linked-question-chip" type="button" data-open-linked-mini="${escapeHtml(question.id)}">
+                            <strong>${escapeHtml(reference.label)}</strong>
+                            <span>${escapeHtml(reference.title)}</span>
+                          </button>
+                        `
+                      : `
+                          <button class="linked-question-chip" type="button" data-jump-question="${escapeHtml(question.id)}">
+                            <strong>${escapeHtml(reference.label)}</strong>
+                            <span>${escapeHtml(reference.title)}</span>
+                          </button>
+                        `;
+                  })
+                  .join("")}
+              </div>
+            </div>
+          `
+          : ""
+      }
+    </article>
+  `;
 }
 
 function openSourceModal() {
+  state.activeMiniQuestionId = null;
   state.sourceModalOpen = true;
   renderSourceModal();
 }
@@ -1690,6 +1836,8 @@ function renderApp() {
 
 elements.startRouteButton.addEventListener("click", () => {
   state.activeModuleId = modules[0]?.id || null;
+  state.sourceModalOpen = false;
+  state.activeMiniQuestionId = null;
   renderApp();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
