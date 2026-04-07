@@ -1,39 +1,34 @@
-# kalterkrieg_in_europa
+# jugoslawienkrieg
 
-Interaktive Lernlandschaft zum Kalten Krieg und zur deutschen Teilung.
+Interaktive Lernlandschaft zum Zerfall Jugoslawiens, zum Bosnienkrieg und zu den schwierigen Friedensordnungen danach.
 
-Statische GitHub-Pages-Lernumgebung mit 6 Stationen, Freischaltlogik, Sofortkorrektur und passwortgeschütztem Lehrer*innenzugang.
+Statische Web-App mit 4 Stationen, Freischaltlogik, Sofortkorrektur, Synonymerkennung und passwortgeschuetztem Lehrer*innenzugang.
 
 ## Enthalten
 
-- 6 didaktisch geordnete Stationen
-- eingebundene Dropbox-Videos
-- lokale PDFs, DOCX-Dateien und MP3s im Projekt
+- 4 didaktisch geordnete Stationen
+- eingebundene Dropbox- und YouTube-Videos
+- lokales Fragen-PDF im Projekt
+- Sarajevo-Bildquellen als visuelle Leitmaterialien
 - Lehrpersonenmodus mit Zeitbedarf, Diagnosefokus und Fehlvorstellungen
-- Modulfreischaltung: Das nächste Modul wird erst ab 60 % im vorangehenden Modul geöffnet
-- Lehrer*innenzugang mit Passwort: `kalter_krieg`
-- Sofortkorrektur für:
-  - Single Choice
-  - Mehrfachauswahl
+- Modulfreischaltung: Das naechste Modul wird erst ab 60 % im vorangehenden Modul geoeffnet
+- Lehrer*innenzugang mit Passwort: `jugoslawien`
+- Sofortkorrektur fuer:
   - kurze Freitextantworten mit Synonymerkennung
-  - offene Transferfragen mit strengerer Struktur- und Materialprüfung
+  - offene Transferfragen mit Struktur- und Materialpruefung
+  - Drag-and-drop-Chronologien
+
+## Quellenbasis
+
+- `Balkan in Flammen` Folge 1 bis 3
+- sieben ergaenzende YouTube-Playlist-Videos
+- lokales PDF `assets/materials/balkan-in-flammen-fragen.pdf`
+- [Wikipedia: Bosnienkrieg](https://de.wikipedia.org/wiki/Bosnienkrieg)
+- lokale Bildquellen zu Sarajevo
 
 ## Start
 
-Die Lernlandschaft ist eine statische Web-App. `index.html` direkt im Browser öffnen oder den Ordner über einen einfachen lokalen Server ausliefern.
-
-## GitHub Pages
-
-- Repo-Name: `kalterkrieg_in_europa`
-- Alle lokalen Verweise sind relativ und damit GitHub-Pages-tauglich.
-- Für die Startseite sind `assets/favicon.svg`, `assets/social-preview.svg` und `404.html` angelegt.
-- Es wird kein Backend benötigt.
-- Deployment erfolgt über `.github/workflows/pages.yml`.
-
-## Release-Stand
-
-- Version: `v1.0.0`
-- Stand: erste vollständige Deploy-Version mit Freischaltmechanismus und Lehrer*innenzugang
+Die Lernlandschaft ist eine statische Web-App. `index.html` direkt im Browser oeffnen oder den Ordner ueber einen einfachen lokalen Server ausliefern.
 
 ## Struktur
 
@@ -41,6 +36,5 @@ Die Lernlandschaft ist eine statische Web-App. `index.html` direkt im Browser ö
 - `styles.css`: Gestaltung
 - `data.js`: Module, Materialien und Fragen
 - `app.js`: Navigation, Fortschritt, Sofortkorrektur, Synonymerkennung
-- `.github/workflows/pages.yml`: automatisches GitHub-Pages-Deployment
-- `assets/materials/`: lokale PDFs und DOCX-Dateien
-- `assets/audio/`: lokale MP3-Dateien
+- `assets/materials/`: lokales PDF
+- `assets/module-images/`: Sarajevo-Bildquellen und weitere Visuals

@@ -1,7 +1,7 @@
-const storageKey = "kalterkrieg-in-europa-progress";
-const teacherPassword = "kalter_krieg";
-const teacherPasswordAliases = ["kalter_krieg", "kalter krieg", "kalter-krieg", "kalterkrieg"];
-const modules = window.COLD_WAR_MODULES || [];
+const storageKey = "jugoslawienkrieg-progress";
+const teacherPassword = "jugoslawien";
+const teacherPasswordAliases = ["jugoslawien", "jugoslawia", "jugoslawienkrieg", "zerfall_jugoslawiens", "zerfall jugoslawiens"];
+const modules = window.YUGOSLAVIA_MODULES || [];
 const structureSpec = {
   thesis: ["ich argumentiere", "ich vertrete", "meine these", "entscheidend ist", "zentral ist", "ich bewerte"],
   evidence: ["das video", "das material", "die quelle", "zeigt", "deutlich wird", "im video", "im material"],
@@ -343,7 +343,7 @@ function evaluateOpenAnalysis(question, answer) {
   const wc = wordCount(trimmed);
   const reasoningMarkers = ["weil", "deshalb", "somit", "waehrend", "hingegen", "einerseits", "andererseits"];
   const nuanceMarkers = ["jedoch", "allerdings", "zugleich", "dennoch", "nicht nur", "spannungsfeld", "ambivalent"];
-  const chronologyMarkers = ["1945", "1948", "1949", "1953", "1956", "1961", "1968", "1980", "1981", "1989", "1990"];
+  const chronologyMarkers = ["1914", "1941", "1945", "1948", "1980", "1989", "1990", "1991", "1992", "1994", "1995", "1996", "1999"];
   const reasoningHits = reasoningMarkers.filter((marker) => containsVariant(normalizedAnswer, marker));
   const nuanceHits = nuanceMarkers.filter((marker) => containsVariant(normalizedAnswer, marker));
   const chronologyHits = chronologyMarkers.filter((marker) => containsVariant(normalizedAnswer, marker));
