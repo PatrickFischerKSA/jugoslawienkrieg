@@ -282,8 +282,11 @@ const MODULES = [
             id: "stalin-1948",
             label: "Der Bruch mit Stalin macht Jugoslawien zu einem Sonderfall zwischen Ost und West.",
             detail: "1948 veraendert sich die internationale Stellung des Staates grundlegend.",
-            imageSrc: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
-            imageAlt: "Josip Broz Tito als Symbol des Bruchs mit Stalin"
+            imageSrc: "assets/module-images/joseph-stalin-1943.jpg",
+            imageAlt: "Porträt von Josef Stalin als Bezugspunkt für den Bruch von 1948",
+            imageFit: "contain",
+            imagePosition: "center top",
+            imageBackground: "rgba(241, 236, 228, 0.95)"
           },
           {
             id: "amselfeld-1989",
@@ -296,7 +299,7 @@ const MODULES = [
             id: "zagreb-1990",
             label: "Das Fussballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
             detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um.",
-            imageSrc: "assets/module-images/stadion-maksimir-2011.jpg",
+            imageSrc: "assets/module-images/stadion-maksimir-zagreb.jpg",
             imageAlt: "Stadion Maksimir in Zagreb als Schauplatz des symbolischen Eskalationsmoments"
           }
         ],
@@ -458,7 +461,7 @@ const MODULES = [
         imageBackground: "rgba(241, 236, 228, 0.95)"
       },
       {
-        src: "assets/module-images/stadion-maksimir-2011.jpg",
+        src: "assets/module-images/stadion-maksimir-zagreb.jpg",
         alt: "Stadion Maksimir in Zagreb",
         title: "Maksimir als Erinnerungsort der Eskalation",
         caption: "Panorama des Stadions Maksimir in Zagreb, dem Ort der Ausschreitungen beim Spiel Dinamo Zagreb gegen Roter Stern Belgrad im Mai 1990.",
@@ -667,7 +670,7 @@ const MODULES = [
             id: "zagreb-1990",
             label: "Das Fussballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
             detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar.",
-            imageSrc: "assets/module-images/stadion-maksimir-2011.jpg",
+            imageSrc: "assets/module-images/stadion-maksimir-zagreb.jpg",
             imageAlt: "Stadion Maksimir in Zagreb"
           },
           {
