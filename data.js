@@ -20,23 +20,23 @@ const MODULES = [
         "Transferfrage als Schreibauftrag mit anschließendem Vergleich"
       ],
       assessmentFocus: [
-        "Titos Herrschaft nicht mit echter Konfliktloesung verwechseln",
-        "Foederale Ordnung als spannungsreiche Konstruktion erkennen",
+        "Titos Herrschaft nicht mit echter Konfliktlösung verwechseln",
+        "Föderale Ordnung als spannungsreiche Konstruktion erkennen",
         "Historische Langzeitlinien und aktuelle politische Instrumentalisierung verbinden"
       ],
       misconceptions: [
-        "Jugoslawien sei erst 1991 ploetzlich instabil geworden",
-        "Ethnische Unterschiede allein erklaerten den Krieg",
+        "Jugoslawien sei erst 1991 plötzlich instabil geworden",
+        "Ethnische Unterschiede allein erklärten den Krieg",
         "Titos Staat sei ein harmonischer Vielvölkerstaat gewesen"
       ],
       product:
         "Begriffsnetz zu Stabilisierung und Zerfall oder ein begründeter Kurzkommentar zur Vorgeschichte.",
       extension:
-        "Mit einer Debattenfrage arbeiten: War Jugoslawien unter Tito ein tragfaehiger Staat oder nur ein eingefrorener Konfliktraum?"
+        "Mit einer Debattenfrage arbeiten: War Jugoslawien unter Tito ein tragfähiger Staat oder nur ein eingefrorener Konfliktraum?"
     },
     visual: {
       src: "assets/module-images/sarajevo-may-1996.png",
-      alt: "Skyline von Sarajevo mit sichtbaren Kriegsschaeden im Mai 1996",
+      alt: "Skyline von Sarajevo mit sichtbaren Kriegsschäden im Mai 1996",
       sourceLabel: "Sarajevo_may_1996.png"
     },
     visualDossierTitle: "Vier Bilder für die Vorgeschichte des Zerfalls",
@@ -212,7 +212,7 @@ const MODULES = [
         bucket: "Pflichtquelle: zuerst bearbeiten",
         type: "Video",
         title: "Balkan in Flammen, Folge 1: Pulverfass Jugoslawien",
-        focus: "Vorgeschichte, Tito, föderale Ordnung, Nationalismus und Aufstieg Milosevics",
+        focus: "Vorgeschichte, Tito, föderale Ordnung, Nationalismus und Aufstieg Miloševićs",
         link: "https://www.dropbox.com/scl/fi/mbvt6nif4o3njrb2noijk/Balkan-in-Flammen-Pulverfass-Jugoslawien-Staffel-1-Folge-1.mp4?rlkey=5glwor40fqn3j8hcfpz0yzpwo&st=tj8dx0a7&dl=0",
         tags: ["Dropbox", "Pflicht", "Dokumentation"],
         selectionNote: "Diese Folge deckt die gesamte Station ab und ist die Hauptquelle.",
@@ -314,7 +314,7 @@ const MODULES = [
         sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-2"],
         conceptGroups: [
           {
-            label: "Stabilitaet war teilweise nur politisch erzwungen",
+            label: "Stabilität war teilweise nur politisch erzwungen",
             variants: [
               "erzwungen",
               "nur scheinbar stabil",
@@ -385,7 +385,7 @@ const MODULES = [
           {
             id: "stalin-1948",
             label: "Der Bruch mit Stalin macht Jugoslawien zu einem Sonderfall zwischen Ost und West.",
-            detail: "1948 veraendert sich die internationale Stellung des Staates grundlegend.",
+            detail: "1948 verändert sich die internationale Stellung des Staates grundlegend.",
             imageSrc: "assets/module-images/joseph-stalin-1943-v2.jpg",
             imageAlt: "Porträt von Josef Stalin als Bezugspunkt für den Bruch von 1948",
             imageFit: "contain",
@@ -394,15 +394,15 @@ const MODULES = [
           },
           {
             id: "amselfeld-1989",
-            label: "Milosevic mobilisiert 1989 mit nationaler Symbolpolitik auf dem Amselfeld.",
-            detail: "Geschichte wird offen für gegenwaertige Machtpolitik instrumentalisiert.",
+            label: "Milošević mobilisiert 1989 mit nationaler Symbolpolitik auf dem Amselfeld.",
+            detail: "Geschichte wird offen für gegenwärtige Machtpolitik instrumentalisiert.",
             imageSrc: "assets/module-images/gazimestan-monument.jpg",
             imageAlt: "Gazimestan-Denkmal auf dem Amselfeld"
           },
           {
             id: "zagreb-1990",
-            label: "Das Fussballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
-            detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um.",
+            label: "Das Fußballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
+            detail: "Die gesellschaftliche Polarisierung schlägt sichtbar in offene Konfrontation um.",
             imageSrc: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
             imageAlt: "Stadion Maksimir in Zagreb als Schauplatz des symbolischen Eskalationsmoments"
           }
@@ -425,12 +425,12 @@ const MODULES = [
         prompt:
           "Beurteile, ob die Vorgeschichte Jugoslawiens den Krieg später fast zwangsläufig machte oder ob erst politische Akteure der späten 1980er und frühen 1990er Jahre die Eskalation auslösten. Begründe mit Materialbezügen.",
         help:
-          "Wichtig ist eine klare These: historische Altlasten allein reichen nicht als Erklärung, aber sie duerfen auch nicht ausgeblendet werden.",
+          "Wichtig ist eine klare These: historische Altlasten allein reichen nicht als Erklärung, aber sie dürfen auch nicht ausgeblendet werden.",
         placeholder: "Die Vorgeschichte schuf Voraussetzungen, doch ...",
         teacherPrompt:
           "Achte darauf, dass Lernende zwischen Strukturbedingungen und politischer Zuspitzung unterscheiden.",
         commonPitfall:
-          "Haefig wird nur auf uralte Feindschaften verwiesen, ohne die Rolle von Propaganda, Machtkampf und Krisenpolitik zu gewichten.",
+          "Häufig wird nur auf uralte Feindschaften verwiesen, ohne die Rolle von Propaganda, Machtkampf und Krisenpolitik zu gewichten.",
         sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
         minWords: 120,
         structureExpectations: {
@@ -442,11 +442,11 @@ const MODULES = [
           { concept: "Langzeitkonflikte oder historische Traumata", keywords: ["vorgeschichte", "traumata", "zweiter weltkrieg", "ustascha", "1914", "langfristig"] },
           { concept: "autoritäre Stabilisierung unter Tito", keywords: ["tito", "repression", "unterdrückung", "föderal", "stabilisierung", "kommunistisch"] },
           { concept: "politische Instrumentalisierung durch Eliten", keywords: ["milosevic", "nationalismus", "propaganda", "mobilisierung", "machtkampf", "elite"] },
-          { concept: "Abwaegung zwischen Struktur und Handlung", keywords: ["nicht automatisch", "nicht zwangsläufig", "einerseits", "andererseits", "zugleich", "während"] },
+          { concept: "Abwägung zwischen Struktur und Handlung", keywords: ["nicht automatisch", "nicht zwangsläufig", "einerseits", "andererseits", "zugleich", "während"] },
           { concept: "historisches Urteil", keywords: ["deshalb", "entscheidend", "insgesamt", "meine these", "ich bewerte"] }
         ],
         modelAnswer:
-          "Die Vorgeschichte machte Gewalt moeglich, aber nicht unausweichlich. Titos Staat hielt Konflikte durch Repression und Balancepolitik zusammen, ohne sie zu lösen. Erst als politische Akteure wie Milosevic historische Traumata und nationalistische Symbole bewusst mobilisierten, wurden alte Konfliktlinien in konkrete Kriegspolitik übersetzt."
+          "Die Vorgeschichte machte Gewalt möglich, aber nicht unausweichlich. Titos Staat hielt Konflikte durch Repression und Balancepolitik zusammen, ohne sie zu lösen. Erst als politische Akteure wie Milošević historische Traumata und nationalistische Symbole bewusst mobilisierten, wurden alte Konfliktlinien in konkrete Kriegspolitik übersetzt."
       },
       {
         id: "q-vorgeschichte-5",
@@ -529,7 +529,7 @@ const MODULES = [
         "Anerkennungspolitik und Nichtstun Europas differenziert beurteilen"
       ],
       misconceptions: [
-        "Der Krieg sei ploetzlich ausgebrochen",
+        "Der Krieg sei plötzlich ausgebrochen",
         "Medien seien nur Begleitung und nicht Teil der Eskalation gewesen",
         "Europa habe gar keine Handlungsoptionen gehabt"
       ],
@@ -791,14 +791,14 @@ const MODULES = [
         type: "short-text",
         challenge: "Akteursanalyse",
         prompt:
-          "Erkläre knapp, wie sich Milosevic und Tudjman in Zielen und politischer Strategie unterschieden.",
+          "Erkläre knapp, wie sich Milošević und Tuđman in Zielen und politischer Strategie unterschieden.",
         help:
           "Die Sofortkorrektur erwartet keine Biographien, sondern einen historischen Vergleich ihrer Politik.",
-        placeholder: "Milosevic und Tudjman unterschieden sich vor allem darin, dass ...",
+        placeholder: "Milošević und Tuđman unterschieden sich vor allem darin, dass ...",
         sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
         conceptGroups: [
           {
-            label: "serbische Zentralisierung oder Großserbien bei Milosevic",
+            label: "serbische Zentralisierung oder Großserbien bei Milošević",
             variants: [
               "großserbien",
               "serbischer nationalismus",
@@ -809,7 +809,7 @@ const MODULES = [
             ]
           },
           {
-            label: "kroatische Unabhängigkeit oder Staatsgründung bei Tudjman",
+            label: "kroatische Unabhängigkeit oder Staatsgründung bei Tuđman",
             variants: [
               "unabhaengigkeit",
               "kroatischer nationalismus",
@@ -833,7 +833,7 @@ const MODULES = [
         ],
         successThreshold: 2,
         modelAnswer:
-          "Milosevic verfolgte eine serbisch dominierte Zentralisierung beziehungsweise großserbische Politik, während Tudjman auf einen eigenständigen kroatischen Nationalstaat zielte. Beide arbeiteten mit historischer Symbolpolitik und nationaler Mobilisierung."
+          "Milošević verfolgte eine serbisch dominierte Zentralisierung beziehungsweise großserbische Politik, während Tuđman auf einen eigenständigen kroatischen Nationalstaat zielte. Beide arbeiteten mit historischer Symbolpolitik und nationaler Mobilisierung."
       },
       {
         id: "q-zerfall-2",
@@ -847,7 +847,7 @@ const MODULES = [
         sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
         conceptGroups: [
           {
-            label: "Feindbilder und Angst wurden verstaerkt",
+            label: "Feindbilder und Angst wurden verstärkt",
             variants: [
               "feindbild",
               "angst",
@@ -864,7 +864,7 @@ const MODULES = [
               "mobilisieren",
               "aufhetzen",
               "rechtfertigen",
-              "unterstuetzung für krieg",
+              "Unterstützung für Krieg",
               "gewalt vorbereiten"
             ]
           },
@@ -882,21 +882,21 @@ const MODULES = [
         ],
         successThreshold: 2,
         modelAnswer:
-          "Die Propaganda verstaerkte Angst und Feindbilder, polarisierte die Gesellschaft in nationale Lager und schuf Zustimmung für Gewalt. Fernsehen wirkte dabei nicht nur informierend, sondern mobilisierend und legitimierend."
+          "Die Propaganda verstärkte Angst und Feindbilder, polarisierte die Gesellschaft in nationale Lager und schuf Zustimmung für Gewalt. Fernsehen wirkte dabei nicht nur informierend, sondern mobilisierend und legitimierend."
       },
       {
         id: "q-zerfall-3",
         type: "drag-order",
         challenge: "Chronologie",
         prompt:
-          "Ordne die Zuspitzung des Zerfalls von 1990 bis 1992 in eine schluessige Reihenfolge.",
+          "Ordne die Zuspitzung des Zerfalls von 1990 bis 1992 in eine schlüssige Reihenfolge.",
         help:
-          "Beginne mit dem Fussballspiel von Zagreb und ende mit dem Beginn der Belagerung Sarajevos.",
+          "Beginne mit dem Fußballspiel von Zagreb und ende mit dem Beginn der Belagerung Sarajevos.",
         sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-3"],
         items: [
           {
             id: "zagreb-1990",
-            label: "Das Fussballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
+            label: "Das Fußballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
             detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar.",
             imageSrc: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
             imageAlt: "Stadion Maksimir in Zagreb"
@@ -911,14 +911,14 @@ const MODULES = [
           {
             id: "vukovar-1991",
             label: "Die Belagerung und Zerstörung Vukovars radikalisiert den Kroatienkrieg im Herbst 1991.",
-            detail: "Das Bild des Krieges veraendert sich international deutlich.",
+            detail: "Das Bild des Krieges verändert sich international deutlich.",
             imageSrc: "assets/module-images/vukovar-water-tower.jpg",
             imageAlt: "Wasserturm von Vukovar als Symbol der Zerstörung"
           },
           {
             id: "anerkennung-1991",
             label: "Deutschland und weitere Staaten erkennen Kroatien und Slowenien Ende 1991 beziehungsweise Anfang 1992 an.",
-            detail: "Aussenpolitik greift nun offen in die Zerfallslage ein.",
+            detail: "Außenpolitik greift nun offen in die Zerfallslage ein.",
             imageSrc: "assets/module-images/franjo-tudjman-1995.jpg",
             imageAlt: "Franjo Tuđman als Repräsentant des kroatischen Staatsprojekts"
           },
@@ -1043,7 +1043,7 @@ const MODULES = [
     goal:
       "Du kannst zentrale Formen der Gewalt im Bosnienkrieg erklären, Sarajevo als Symbolraum deuten und Srebrenica als Wendepunkt internationaler Wahrnehmung einordnen.",
     route:
-      "Nutze Folge 3 der Doku als Hauptquelle, arbeite den Wikipedia-Artikel zum Bosnienkrieg gezielt mit und verwende die beiden Sarajevo-Bilder für visuelle Deutungen. Die Transferfrage verbindet Bildanalyse mit Kriegsverlauf und Nachkriegsrealitaet.",
+      "Nutze Folge 3 der Doku als Hauptquelle, arbeite den Wikipedia-Artikel zum Bosnienkrieg gezielt mit und verwende die beiden Sarajevo-Bilder für visuelle Deutungen. Die Transferfrage verbindet Bildanalyse mit Kriegsverlauf und Nachkriegsrealität.",
     teacherNote:
       "Die Station verlangt besonders sorgsame Begleitung, weil sie mit Massengewalt, Belagerung und Genozid arbeitet. Bilddeutung und Begriffssicherung sollten klar voneinander getrennt werden.",
     teacherToolkit: {
@@ -1056,15 +1056,15 @@ const MODULES = [
       assessmentFocus: [
         "ethnische Säuberung als gezielte Kriegsstrategie verstehen",
         "Sarajevo nicht nur als Opferbild, sondern als Symbolraum deuten",
-        "UN-Versagen, Srebrenica und NATO-Intervention miteinander verknuepfen"
+        "UN-Versagen, Srebrenica und NATO-Intervention miteinander verknüpfen"
       ],
       misconceptions: [
-        "Bosnienkrieg sei nur ein chaotischer Buergerkrieg ohne Planung gewesen",
+        "Bosnienkrieg sei nur ein chaotischer Bürgerkrieg ohne Planung gewesen",
         "Srebrenica sei ein isoliertes Einzelereignis",
         "Sarajevo stehe nur für Zerstörung und nicht auch für multiethnisches Zusammenleben"
       ],
       product:
-        "Bildgestuetzte Transferantwort oder kommentierte Chronologie der Eskalation 1992 bis 1995.",
+        "Bildgestützte Transferantwort oder kommentierte Chronologie der Eskalation 1992 bis 1995.",
       extension:
         "Mit einer Zusatzfrage arbeiten: Warum wurde gerade Sarajevo weltweit zu einem Bild des Krieges?"
     },
@@ -1487,7 +1487,7 @@ const MODULES = [
           {
             id: "referendum-1992",
             label: "Bosnien-Herzegowina stimmt 1992 über seine Unabhängigkeit ab.",
-            detail: "Die politische Entscheidung loest eine neue Konfliktphase aus.",
+            detail: "Die politische Entscheidung löst eine neue Konfliktphase aus.",
             imageSrc: "assets/module-images/alija-izetbegovic.jpg",
             imageAlt: "Alija Izetbegović im Kontext der bosnischen Unabhängigkeit"
           },
@@ -1515,7 +1515,7 @@ const MODULES = [
           {
             id: "nato-1995",
             label: "Die NATO greift 1995 mit Luftangriffen gegen bosnisch-serbische Ziele ein.",
-            detail: "Erst jetzt veraendert sich die militärische Dynamik deutlich.",
+            detail: "Erst jetzt verändert sich die militärische Dynamik deutlich.",
             imageSrc: "assets/module-images/bombing-republika-srpska.jpg",
             imageAlt: "Luftoperationen gegen bosnisch-serbische Stellungen 1995"
           },
@@ -1546,7 +1546,7 @@ const MODULES = [
           "Deute die beiden Sarajevo-Bilder im Zusammenhang mit dem Bosnienkrieg: Was zeigen sie über Kriegsverlauf, Belagerung und die schwierige Nachkriegswirklichkeit? Beziehe die Doku und den Artikel zum Bosnienkrieg ein.",
         help:
           "Eine gute Antwort beschreibt nicht nur Zerstörung, sondern verbindet Bilddetails mit historischen Zusammenhängen und der Symbolkraft Sarajevos.",
-        placeholder: "Die beiden Bilder zeigen nicht nur Schaeden, sondern ...",
+        placeholder: "Die beiden Bilder zeigen nicht nur Schäden, sondern ...",
         teacherPrompt:
           "Lernende sollten zwischen Beschreibung, historischer Einordnung und Deutung unterscheiden.",
         commonPitfall:
@@ -1585,7 +1585,7 @@ const MODULES = [
           },
           {
             label: "Friedenslogik traf auf realen Krieg",
-            variants: ["friedensmission", "kein frieden", "kriegsrealitaet", "bürgerkrieg", "gewaltlage", "realer krieg"]
+            variants: ["friedensmission", "kein frieden", "kriegsrealität", "bürgerkrieg", "gewaltlage", "realer krieg"]
           },
           {
             label: "Schutzzonen oder Zivilbevölkerung konnten nicht wirksam geschützt werden",
@@ -1657,7 +1657,7 @@ const MODULES = [
       product:
         "Urteilsorientierter Kurzaufsatz zur Frage, ob internationale Intervention zu spät, aber dennoch entscheidend war.",
       extension:
-        "Anschlussfaehig an Gegenwartsfragen von Erinnerungspolitik, EU-Perspektive und Anerkennung des Kosovo."
+        "Anschlussfähig an Gegenwartsfragen von Erinnerungspolitik, EU-Perspektive und Anerkennung des Kosovo."
     },
     visual: {
       src: "assets/module-images/sarajevo-may-1996.png",
@@ -2105,7 +2105,7 @@ const MODULES = [
             ]
           },
           {
-            label: "Radikalisierung oder Auftreten der UCK",
+            label: "Radikalisierung oder Auftreten der UÇK",
             variants: [
               "uck",
               "radikalisierung",
@@ -2118,7 +2118,7 @@ const MODULES = [
         ],
         successThreshold: 2,
         modelAnswer:
-          "Der Kosovo blieb ein Konfliktraum, weil Dayton die Statusfrage offenließ und Rugovas gewaltfreie Strategie keine politische Lösung erreichte. Zugleich hielten serbische Repression und der seit 1989 beschnittene Autonomiestatus den Druck hoch, sodass sich Teile der Kosovo-Albaner radikalisierten und die UCK an Bedeutung gewann."
+          "Der Kosovo blieb ein Konfliktraum, weil Dayton die Statusfrage offenließ und Rugovas gewaltfreie Strategie keine politische Lösung erreichte. Zugleich hielten serbische Repression und der seit 1989 beschnittene Autonomiestatus den Druck hoch, sodass sich Teile der Kosovo-Albaner radikalisierten und die UÇK an Bedeutung gewann."
       },
       {
         id: "q-nachkrieg-3",
@@ -2149,10 +2149,10 @@ const MODULES = [
           },
           {
             id: "uck",
-            label: "Im Kosovo gewinnt der bewaffnete Widerstand der UCK an Bedeutung.",
+            label: "Im Kosovo gewinnt der bewaffnete Widerstand der UÇK an Bedeutung.",
             detail: "Die Konfliktlogik verschiebt sich in einen neuen Raum.",
             imageSrc: "assets/module-images/flag-kosovo-liberation-army.png",
-            imageAlt: "Flagge der UCK als Symbol des bewaffneten Widerstands im Kosovo"
+            imageAlt: "Flagge der UÇK als Symbol des bewaffneten Widerstands im Kosovo"
           },
           {
             id: "serbische-repression-1998",
@@ -2169,9 +2169,9 @@ const MODULES = [
             imageAlt: "Szene aus dem Kontext der NATO-Luftangriffe 1999"
           },
           {
-            id: "milosevic-geschwaecht",
-            label: "Trotz nationalistischer Mobilisierung wird Milosevic durch Krieg und Bombardierung langfristig geschwaecht.",
-            detail: "Die Herrschaft verliert innenpolitisch an Stabilitaet.",
+            id: "milosevic-geschwächt",
+            label: "Trotz nationalistischer Mobilisierung wird Milošević durch Krieg und Bombardierung langfristig geschwächt.",
+            detail: "Die Herrschaft verliert innenpolitisch an Stabilität.",
             imageSrc: "assets/module-images/milosevic-in-hague.jpg",
             imageAlt: "Slobodan Milošević in Den Haag als Symbol seines späteren Machtverlusts",
             imageFit: "contain",
@@ -2185,19 +2185,19 @@ const MODULES = [
           "uck",
           "serbische-repression-1998",
           "nato-1999",
-          "milosevic-geschwaecht"
+          "milosevic-geschwächt"
         ],
         explanation:
-          "Die Reihenfolge zeigt, dass Dayton den Zerfall nicht abschloss. Im Kosovo führte die offene Statusfrage von Rugovas gewaltfreier Politik über UCK und serbische Repression zur NATO-Intervention und zu einer neuen Schwächung Miloševićs."
+          "Die Reihenfolge zeigt, dass Dayton den Zerfall nicht abschloss. Im Kosovo führte die offene Statusfrage von Rugovas gewaltfreier Politik über UÇK und serbische Repression zur NATO-Intervention und zu einer neuen Schwächung Miloševićs."
       },
       {
         id: "q-nachkrieg-4",
         type: "open-analysis",
         challenge: "Historisches Urteil",
         prompt:
-          "Beurteile die Aussage: Die internationale Intervention kam auf dem Balkan zu spät, veraenderte die Kriegslogik aber dennoch entscheidend. Diskutiere diese These mit Blick auf Srebrenica, NATO und Dayton.",
+          "Beurteile die Aussage: Die internationale Intervention kam auf dem Balkan zu spät, veränderte die Kriegslogik aber dennoch entscheidend. Diskutiere diese These mit Blick auf Srebrenica, NATO und Dayton.",
         help:
-          "Eine tragfaehige Antwort verbindet zeitliche Verspätung, politische Wirkung und bleibende Probleme der Friedensordnung.",
+          "Eine tragfähige Antwort verbindet zeitliche Verspätung, politische Wirkung und bleibende Probleme der Friedensordnung.",
         placeholder: "Die internationale Intervention kam tatsächlich spät, aber ...",
         teacherPrompt:
           "Achte darauf, dass die Lernenden ein begründetes Urteil formulieren und nicht bei moralischer Zustimmung oder Ablehnung stehen bleiben.",
@@ -2212,13 +2212,13 @@ const MODULES = [
         sourceHints: ["srebrenica", "nato", "dayton", "kosovo", "intervention", "sarajevo"],
         rubric: [
           { concept: "Verspätung internationaler Reaktion", keywords: ["spät", "zu spät", "verzögert", "untätig", "srebrenica", "un mandats"] },
-          { concept: "militärische oder politische Wirkung später Intervention", keywords: ["nato", "luftangriffe", "wendepunkt", "druck", "veraenderte", "krieg"] },
+          { concept: "militärische oder politische Wirkung später Intervention", keywords: ["nato", "luftangriffe", "wendepunkt", "druck", "veränderte", "krieg"] },
           { concept: "Dayton als Ergebnis und Begrenzung", keywords: ["dayton", "frieden", "abkommen", "spaltung", "notwendig", "problematisch"] },
-          { concept: "Abwaegung von Nutzen und Kosten", keywords: ["zivile opfer", "ambivalent", "umstritten", "einerseits", "andererseits", "zugleich"] },
+          { concept: "Abwägung von Nutzen und Kosten", keywords: ["zivile opfer", "ambivalent", "umstritten", "einerseits", "andererseits", "zugleich"] },
           { concept: "langfristige Folgen", keywords: ["versöhnung", "demokratie", "anerkennung", "erinnerung", "heute", "nachwirkt"] }
         ],
         modelAnswer:
-          "Die Intervention kam in Bosnien eindeutig zu spät, was sich am Scheitern der UN und an Srebrenica zeigt. Dennoch veraenderten NATO-Druck und Dayton die Kriegslogik entscheidend, weil sie die Kämpfe stoppten und neue Machtverhaeltnisse schufen. Das Ergebnis blieb aber ambivalent, da Frieden erreicht wurde, ohne ethnische Spaltung und langfristige Instabilitaet wirklich zu überwinden."
+          "Die Intervention kam in Bosnien eindeutig zu spät, was sich am Scheitern der UN und an Srebrenica zeigt. Dennoch veränderten NATO-Druck und Dayton die Kriegslogik entscheidend, weil sie die Kämpfe stoppten und neue Machtverhaeltnisse schufen. Das Ergebnis blieb aber ambivalent, da Frieden erreicht wurde, ohne ethnische Spaltung und langfristige Instabilitaet wirklich zu überwinden."
       },
       {
         id: "q-nachkrieg-5",
@@ -2237,7 +2237,7 @@ const MODULES = [
           },
           {
             label: "Schutz von Zivilisten oder humanitäre Begründung",
-            variants: ["humanitaer", "humanitär", "zivilisten schuetzen", "zivilisten schützen", "menschen schuetzen", "menschen schützen"]
+            variants: ["humanitär", "humanitär", "zivilisten schuetzen", "zivilisten schützen", "menschen schuetzen", "menschen schützen"]
           },
           {
             label: "Verhinderung weiterer Gewalt oder Vertreibung",

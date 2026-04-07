@@ -225,14 +225,21 @@ function getVideoSources(module) {
 }
 
 function getAllVideoResources() {
-  return modules.flatMap((module) =>
-    getVideoSources(module).map((resource) => ({
+  return modules.flatMap((module, moduleIndex) =>
+    getVideoSources(module).map((resource, videoIndex) => ({
       ...resource,
       moduleId: module.id,
+      moduleIndex,
       moduleStep: module.step,
-      moduleTitle: module.title
+      moduleTitle: module.title,
+      videoIndex
     }))
-  );
+  ).sort((left, right) => {
+    if (left.moduleIndex !== right.moduleIndex) {
+      return left.moduleIndex - right.moduleIndex;
+    }
+    return left.videoIndex - right.videoIndex;
+  });
 }
 
 function getResourceUsageMap(module) {
@@ -1525,8 +1532,7 @@ function renderSourceModal() {
   const integratedSources = getIntegratedSources(module);
   const videoSources = integratedSources.filter((resource) => resource.type === "Video");
   const otherSources = integratedSources.filter((resource) => resource.type !== "Video");
-  const currentVideoIds = new Set(videoSources.map((resource) => resource.id));
-  const otherUnitVideos = getAllVideoResources().filter((resource) => !currentVideoIds.has(resource.id));
+  const allUnitVideos = getAllVideoResources();
 
   if (!state.sourceModalOpen || !integratedSources.length) {
     elements.sourceModal.classList.add("hidden");
@@ -1554,27 +1560,30 @@ function renderSourceModal() {
       </div>
       <div class="source-modal-body">
         ${
-          videoSources.length
-            ? `
-              <section class="source-modal-group source-modal-group-emphasis">
-                <h4>Filme dieser Station</h4>
-                <div class="film-modal-grid">
-                  ${videoSources
-                    .map((resource) => renderSourceModalCard(module, resource))
-                    .join("")}
-                </div>
-              </section>
-            `
-            : ""
-        }
-        ${
-          otherUnitVideos.length
+          allUnitVideos.length
             ? `
               <section class="source-modal-group">
-                <h4>Weitere Filme der gesamten Einheit</h4>
-                <div class="film-modal-grid">
-                  ${otherUnitVideos
-                    .map((resource) => renderSourceModalCard(module, resource, { showModuleMeta: true }))
+                <h4>Filmreihe in chronologischer Reihenfolge</h4>
+                <div class="source-modal-body-inner">
+                  ${modules
+                    .map((moduleEntry) => {
+                      const moduleVideos = allUnitVideos.filter((resource) => resource.moduleId === moduleEntry.id);
+                      if (!moduleVideos.length) return "";
+                      return `
+                        <section class="source-modal-group${moduleEntry.id === module.id ? " source-modal-group-emphasis" : ""}">
+                          <h4>Station ${escapeHtml(moduleEntry.step)}: ${escapeHtml(moduleEntry.title)}</h4>
+                          <div class="film-modal-grid">
+                            ${moduleVideos
+                              .map((resource) =>
+                                renderSourceModalCard(module, resource, {
+                                  showModuleMeta: moduleEntry.id !== module.id
+                                })
+                              )
+                              .join("")}
+                          </div>
+                        </section>
+                      `;
+                    })
                     .join("")}
                 </div>
               </section>
