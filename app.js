@@ -5,9 +5,9 @@ const modules = window.YUGOSLAVIA_MODULES || [];
 const structureSpec = {
   thesis: ["ich argumentiere", "ich vertrete", "meine these", "entscheidend ist", "zentral ist", "ich bewerte"],
   evidence: ["das video", "das material", "die quelle", "zeigt", "deutlich wird", "im video", "im material"],
-  comparison: ["waehrend", "hingegen", "im unterschied", "gemeinsam", "im vergleich", "andererseits"],
+  comparison: ["während", "hingegen", "im unterschied", "gemeinsam", "im vergleich", "andererseits"],
   nuance: ["jedoch", "allerdings", "zugleich", "nicht nur", "einerseits", "andererseits", "dennoch", "spannungsfeld"],
-  conclusion: ["insgesamt", "daher", "somit", "deshalb", "abschliessend", "fazit"]
+  conclusion: ["insgesamt", "daher", "somit", "deshalb", "abschließend", "fazit"]
 };
 
 const state = {
@@ -341,7 +341,7 @@ function evaluateOpenAnalysis(question, answer) {
 
   const normalizedAnswer = normalizeText(trimmed);
   const wc = wordCount(trimmed);
-  const reasoningMarkers = ["weil", "deshalb", "somit", "waehrend", "hingegen", "einerseits", "andererseits"];
+  const reasoningMarkers = ["weil", "deshalb", "somit", "während", "hingegen", "einerseits", "andererseits"];
   const nuanceMarkers = ["jedoch", "allerdings", "zugleich", "dennoch", "nicht nur", "spannungsfeld", "ambivalent"];
   const chronologyMarkers = ["1914", "1941", "1945", "1948", "1980", "1989", "1990", "1991", "1992", "1994", "1995", "1996", "1999"];
   const reasoningHits = reasoningMarkers.filter((marker) => containsVariant(normalizedAnswer, marker));
