@@ -39,6 +39,22 @@ const MODULES = [
       alt: "Skyline von Sarajevo mit sichtbaren Kriegsschaeden im Mai 1996",
       sourceLabel: "Sarajevo_may_1996.png"
     },
+    actorFocus: {
+      title: "Schlüsselfigur dieser Station",
+      intro:
+        "In der Vorgeschichte steht nicht ein ganzes Personalensemble im Mittelpunkt, sondern Tito als Stabilisierungsmacht. An ihm lässt sich erkennen, wie Jugoslawien zusammengehalten wurde, ohne seine Konflikte wirklich zu lösen."
+    },
+    actors: [
+      {
+        name: "Josip Broz Tito",
+        role: "kommunistischer Staatsführer Jugoslawiens",
+        lens: "Er verkörpert die autoritäre Einheitsformel des Staates.",
+        whyHere:
+          "Diese Station fragt nach der Stabilität vor dem Zerfall. Tito ist deshalb zentral, weil seine Herrschaft Konflikte kontrollierte, aber nicht dauerhaft bearbeitete.",
+        imageSrc: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
+        imageAlt: "Josip Broz Tito im Uniformporträt"
+      }
+    ],
     prompts: [
       "Achte darauf, wie die Doku Stabilitaet und Repression gleichzeitig beschreibt.",
       "Notiere, welche historischen Altlasten vor 1990 immer wieder aktiviert wurden.",
@@ -81,7 +97,7 @@ const MODULES = [
         focus: "ergänzende Perspektive auf Nationalismus, Krise und politische Radikalisierung",
         link: "https://www.youtube.com/watch?v=q8uG0o0b4wQ&list=PL8991DFCF33730589&index=2",
         tags: ["YouTube", "Vertiefung"]
-      }
+      },
     ],
     questions: [
       {
@@ -195,32 +211,44 @@ const MODULES = [
           {
             id: "sarajevo-1914",
             label: "Das Attentat von Sarajevo macht den Balkan zum Auslöser einer gesamteuropäischen Krise.",
-            detail: "1914 wird die Region zum Schauplatz eines weltpolitischen Umbruchs."
+            detail: "1914 wird die Region zum Schauplatz eines weltpolitischen Umbruchs.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Assassination_at_Sarajevo.jpg?width=900",
+            imageAlt: "Historische Aufnahme zum Attentat von Sarajevo 1914"
           },
           {
             id: "ustasa-ww2",
             label: "Im Zweiten Weltkrieg verstaerken Ustascha-Terror und Besatzung die interethnischen Traumata.",
-            detail: "Gewalterfahrungen prägen das kollektive Gedächtnis über Jahrzehnte."
+            detail: "Gewalterfahrungen prägen das kollektive Gedächtnis über Jahrzehnte.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Jasenovac_prisoners_enter_the_camp.jpg?width=900",
+            imageAlt: "Historische Aufnahme aus dem Kontext des Ustascha-Terrors"
           },
           {
             id: "tito-1945",
             label: "Titos Partisanen setzen sich durch und bauen das sozialistische Jugoslawien auf.",
-            detail: "Nach 1945 entsteht ein neuer Vielvölkerstaat unter kommunistischer Führung."
+            detail: "Nach 1945 entsteht ein neuer Vielvölkerstaat unter kommunistischer Führung.",
+            imageSrc: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
+            imageAlt: "Josip Broz Tito als Führungsfigur des neuen Jugoslawiens"
           },
           {
             id: "stalin-1948",
             label: "Der Bruch mit Stalin macht Jugoslawien zu einem Sonderfall zwischen Ost und West.",
-            detail: "1948 veraendert sich die internationale Stellung des Staates grundlegend."
+            detail: "1948 veraendert sich die internationale Stellung des Staates grundlegend.",
+            imageSrc: "assets/module-images/josip-broz-tito-uniform-portrait.jpg",
+            imageAlt: "Josip Broz Tito als Symbol des Bruchs mit Stalin"
           },
           {
             id: "amselfeld-1989",
             label: "Milosevic mobilisiert 1989 mit nationaler Symbolpolitik auf dem Amselfeld.",
-            detail: "Geschichte wird offen für gegenwaertige Machtpolitik instrumentalisiert."
+            detail: "Geschichte wird offen für gegenwaertige Machtpolitik instrumentalisiert.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Gazimestan_Monument.jpg?width=900",
+            imageAlt: "Gazimestan-Denkmal auf dem Amselfeld"
           },
           {
             id: "zagreb-1990",
             label: "Das Fussballspiel Dinamo Zagreb gegen Roter Stern Belgrad wird 1990 zum Symbol der Eskalation.",
-            detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um."
+            detail: "Die gesellschaftliche Polarisierung schlaegt sichtbar in offene Konfrontation um.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=900",
+            imageAlt: "Stadion Maksimir in Zagreb als Schauplatz des symbolischen Eskalationsmoments"
           }
         ],
         correctOrder: [
@@ -301,6 +329,31 @@ const MODULES = [
       extension:
         "Die Station laesst sich gut mit einer Kartenarbeit zu Slowenien, Kroatien und Bosnien verbinden."
     },
+    actorFocus: {
+      title: "Akteurskonstellation dieser Eskalationsphase",
+      intro:
+        "Hier stehen die Führungsfiguren des Zerfalls im Zentrum. Nicht irgendeine Personensammlung ist wichtig, sondern die politische Gegenüberstellung von Milošević und Tuđman als konkurrierende Nationalstaatsprojekte."
+    },
+    actors: [
+      {
+        name: "Slobodan Milošević",
+        role: "serbischer Machtpolitiker und zentraler Akteur der Zentralisierungs- und Nationalismuspolitik",
+        lens: "Er steht in dieser Station für Machtgewinn durch serbische Mobilisierung und historische Symbolpolitik.",
+        whyHere:
+          "Sein Porträt gehört hierher, weil die Station erklärt, wie aus Staatskrise und Medienpropaganda konkrete Eskalationspolitik wurde.",
+        imageSrc: "assets/module-images/milosevic-in-hague.jpg",
+        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag"
+      },
+      {
+        name: "Franjo Tuđman",
+        role: "kroatischer Präsident und Führungsfigur des kroatischen Staatsprojekts",
+        lens: "Er steht für die Gegenlogik einer nationalen Staatsgründung auf kroatischer Seite.",
+        whyHere:
+          "Sein Porträt ist in dieser Station sinnvoll, weil Lernende hier die politische Zuspitzung als Konkurrenz von Projekten und nicht als anonymen 'Ethnienkonflikt' verstehen sollen.",
+        imageSrc: "assets/module-images/franjo-tudjman-1995.jpg",
+        imageAlt: "Franjo Tuđman im Jahr 1995"
+      }
+    ],
     prompts: [
       "Achte auf Unterschiede zwischen Milosevics und Tudjmans Politikzielen.",
       "Notiere Beispiele dafür, wie Fernsehen und Propaganda Feindbilder verdichteten.",
@@ -345,26 +398,6 @@ const MODULES = [
         link: "https://www.youtube.com/watch?v=sT_09hb1kzQ&list=PL8991DFCF33730589&index=4",
         tags: ["YouTube", "Vertiefung"]
       },
-      {
-        id: "r-zerfall-milosevic",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Slobodan Milošević in Den Haag",
-        focus: "Porträt des serbischen Machtpolitikers, dessen Nationalismus und Zentralisierungspolitik den Zerfall entscheidend zuspitzten; das Bild verweist zugleich auf spätere internationale Strafverfolgung.",
-        link: "assets/module-images/milosevic-in-hague.jpg",
-        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      },
-      {
-        id: "r-zerfall-tudjman",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Franjo Tuđman 1995",
-        focus: "Porträt des kroatischen Präsidenten, dessen Politik der Staatsgründung und nationalen Symbolik den Zerfall Jugoslawiens auf kroatischer Seite prägte.",
-        link: "assets/module-images/franjo-tudjman-1995.jpg",
-        imageAlt: "Franjo Tuđman im Jahr 1995",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      }
     ],
     questions: [
       {
@@ -376,7 +409,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erwartet keine Biographien, sondern einen historischen Vergleich ihrer Politik.",
         placeholder: "Milosevic und Tudjman unterschieden sich vor allem darin, dass ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-milosevic", "r-zerfall-tudjman"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
         conceptGroups: [
           {
             label: "serbische Zentralisierung oder Großserbien bei Milosevic",
@@ -478,32 +511,44 @@ const MODULES = [
           {
             id: "zagreb-1990",
             label: "Das Fussballspiel in Zagreb im Mai 1990 wird zum Symbol der eskalierenden Polarisierung.",
-            detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar."
+            detail: "Gesellschaftliche Gewalt ist bereits vor dem offenen Krieg sichtbar.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Stadion_Maksimir_2011.jpg?width=900",
+            imageAlt: "Stadion Maksimir in Zagreb"
           },
           {
             id: "slowenien-1991",
             label: "Der Zehn-Tage-Krieg in Slowenien zeigt 1991 die militärische Krise des Bundesstaats.",
-            detail: "Der schnelle Konflikt legt Schwachstellen der jugoslawischen Volksarmee offen."
+            detail: "Der schnelle Konflikt legt Schwachstellen der jugoslawischen Volksarmee offen.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Slovenian_war_map_(cropped).jpg?width=900",
+            imageAlt: "Darstellung des Zehn-Tage-Kriegs in Slowenien"
           },
           {
             id: "vukovar-1991",
             label: "Die Belagerung und Zerstörung Vukovars radikalisiert den Kroatienkrieg im Herbst 1991.",
-            detail: "Das Bild des Krieges veraendert sich international deutlich."
+            detail: "Das Bild des Krieges veraendert sich international deutlich.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Vukovar_water_tower.jpg?width=900",
+            imageAlt: "Wasserturm von Vukovar als Symbol der Zerstörung"
           },
           {
             id: "anerkennung-1991",
             label: "Deutschland und weitere Staaten erkennen Kroatien und Slowenien Ende 1991 beziehungsweise Anfang 1992 an.",
-            detail: "Aussenpolitik greift nun offen in die Zerfallslage ein."
+            detail: "Aussenpolitik greift nun offen in die Zerfallslage ein.",
+            imageSrc: "assets/module-images/franjo-tudjman-1995.jpg",
+            imageAlt: "Franjo Tuđman als Repräsentant des kroatischen Staatsprojekts"
           },
           {
             id: "referendum-bosnien-1992",
             label: "Bosnien-Herzegowina stimmt 1992 über die Unabhängigkeit ab.",
-            detail: "Damit verschiebt sich der Konfliktschwerpunkt nach Bosnien."
+            detail: "Damit verschiebt sich der Konfliktschwerpunkt nach Bosnien.",
+            imageSrc: "assets/module-images/alija-izetbegovic.jpg",
+            imageAlt: "Alija Izetbegović als Repräsentant des unabhängigen Bosnien-Herzegowina"
           },
           {
             id: "sarajevo-1992",
             label: "Mit dem Beginn der Belagerung Sarajevos wird der Bosnienkrieg weltweit sichtbar.",
-            detail: "Der Krieg trifft nun eine multiethnische Hauptstadt mit voller Härte."
+            detail: "Der Krieg trifft nun eine multiethnische Hauptstadt mit voller Härte.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Sarajevo_Siege_ShellingDestruction.jpg?width=900",
+            imageAlt: "Zerstörungen in Sarajevo während der Belagerung"
           }
         ],
         correctOrder: [
@@ -589,6 +634,49 @@ const MODULES = [
       alt: "Zerstörte Gebäude im Sarajevoer Stadtteil Grbavica nach dem Krieg",
       sourceLabel: "Sarajevo_Grbavica.jpeg"
     },
+    actorFocus: {
+      title: "Akteur*innen des Bosnienkriegs",
+      intro:
+        "In dieser Station werden Porträts nicht als Sammelalbum verwendet, sondern als politische und militärische Rollenkarte. Die Auswahl zeigt, wer Bosnien verteidigte, wer die bosnisch-serbische Politik prägte und wer die Gewalt organisatorisch trug."
+    },
+    actors: [
+      {
+        name: "Alija Izetbegović",
+        role: "Präsident von Bosnien-Herzegowina",
+        lens: "Er steht für den international anerkannten bosnischen Staat und seine politische Selbstbehauptung.",
+        whyHere:
+          "Sein Porträt ist hier sinnvoll, weil diese Station nicht nur Täterperspektiven, sondern auch die politische Führung des angegriffenen Staates sichtbar machen muss.",
+        imageSrc: "assets/module-images/alija-izetbegovic.jpg",
+        imageAlt: "Alija Izetbegović im Porträt"
+      },
+      {
+        name: "Radovan Karadžić",
+        role: "politischer Führer der bosnischen Serben",
+        lens: "Er steht für die politische Planung der Abspaltung und ethnischen Homogenisierung.",
+        whyHere:
+          "Karadžić gehört in diese Station, weil Lernende die Verbindung von politischer Programmatik, Belagerung und ethnischer Säuberung nachvollziehen sollen.",
+        imageSrc: "assets/module-images/radovan-karadzic-1994.jpg",
+        imageAlt: "Radovan Karadžić im März 1994"
+      },
+      {
+        name: "Ratko Mladić",
+        role: "militärischer Kommandeur der bosnisch-serbischen Kräfte",
+        lens: "Er steht für die operative Gewaltlogik des Krieges, von der Belagerung bis zu Srebrenica.",
+        whyHere:
+          "Sein Bild ist hier didaktisch sinnvoll, weil die Station ausdrücklich nach militärischer Strategie, Gewalt gegen Zivilisten und der Rolle von Srebrenica fragt.",
+        imageSrc: "assets/module-images/ratko-mladic-1993.jpg",
+        imageAlt: "Ratko Mladić im Jahr 1993"
+      },
+      {
+        name: "Biljana Plavšić",
+        role: "führende Politikerin der Republika Srpska",
+        lens: "Sie macht sichtbar, dass politische Radikalisierung und Kriegsführung nicht auf einzelne Männer reduziert werden dürfen.",
+        whyHere:
+          "Ihr Porträt bleibt hier, weil es die politische Breite der bosnisch-serbischen Führung zeigt und die Station dadurch differenzierter wird.",
+        imageSrc: "assets/module-images/biljana-plavsic.jpeg",
+        imageAlt: "Biljana Plavšić im Porträt"
+      }
+    ],
     prompts: [
       "Achte auf die Verbindung von militärischer Strategie und Gewalt gegen Zivilisten.",
       "Notiere, warum Sarajevo weltweit zu einem Symbol des Bosnienkriegs wurde.",
@@ -660,46 +748,6 @@ const MODULES = [
         link: "assets/module-images/sarajevo-may-1996.png",
         tags: ["lokal", "Bildquelle"]
       },
-      {
-        id: "r-bosnien-izetbegovic",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Alija Izetbegović",
-        focus: "Porträt des Präsidenten von Bosnien-Herzegowina und zentralen politischen Vertreters des international anerkannten bosnischen Staates.",
-        link: "assets/module-images/alija-izetbegovic.jpg",
-        imageAlt: "Alija Izetbegović im Porträt",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      },
-      {
-        id: "r-bosnien-karadzic",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Radovan Karadžić, März 1994",
-        focus: "Porträt des politischen Führers der bosnischen Serben, der eng mit ethnischer Säuberung, Belagerungspolitik und Srebrenica verbunden ist.",
-        link: "assets/module-images/radovan-karadzic-1994.jpg",
-        imageAlt: "Radovan Karadžić im März 1994",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      },
-      {
-        id: "r-bosnien-mladic",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Ratko Mladić 1993",
-        focus: "Porträt des militärischen Kommandeurs der bosnisch-serbischen Kräfte, der für Belagerung, Kriegsverbrechen und Srebrenica zentral war.",
-        link: "assets/module-images/ratko-mladic-1993.jpg",
-        imageAlt: "Ratko Mladić im Jahr 1993",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      },
-      {
-        id: "r-bosnien-plavsic",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Biljana Plavšić",
-        focus: "Porträt der bosnisch-serbischen Politikerin, die zur politischen Führung der Republika Srpska gehörte und für die politische Dimension des Krieges steht.",
-        link: "assets/module-images/biljana-plavsic.jpeg",
-        imageAlt: "Biljana Plavšić im Porträt",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      }
     ],
     questions: [
       {
@@ -711,15 +759,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erkennt verschiedene Formulierungen. Entscheidend ist, dass du Ziel und Mittel nennst.",
         placeholder: "Mit ethnischer Säuberung ist gemeint, dass ...",
-        sourceIds: [
-          "r-bosnien-doku-3",
-          "r-bosnien-wiki",
-          "r-bosnien-pdf",
-          "r-bosnien-izetbegovic",
-          "r-bosnien-karadzic",
-          "r-bosnien-mladic",
-          "r-bosnien-plavsic"
-        ],
+        sourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki", "r-bosnien-pdf"],
         conceptGroups: [
           {
             label: "gewaltsame Vertreibung oder Entfernung von Bevölkerung",
@@ -821,32 +861,44 @@ const MODULES = [
           {
             id: "referendum-1992",
             label: "Bosnien-Herzegowina stimmt 1992 über seine Unabhängigkeit ab.",
-            detail: "Die politische Entscheidung loest eine neue Konfliktphase aus."
+            detail: "Die politische Entscheidung loest eine neue Konfliktphase aus.",
+            imageSrc: "assets/module-images/alija-izetbegovic.jpg",
+            imageAlt: "Alija Izetbegović im Kontext der bosnischen Unabhängigkeit"
           },
           {
             id: "sarajevo-beginn-1992",
             label: "Kurz darauf beginnt die Belagerung Sarajevos.",
-            detail: "Der Krieg wird an einer Hauptstadt exemplarisch sichtbar."
+            detail: "Der Krieg wird an einer Hauptstadt exemplarisch sichtbar.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Sarajevo_Siege_ShellingDestruction.jpg?width=900",
+            imageAlt: "Zerstörungen in Sarajevo während der Belagerung"
           },
           {
             id: "washington-1994",
             label: "Das Washingtoner Abkommen von 1994 beendet den Krieg zwischen Bosniaken und Kroaten.",
-            detail: "Ein Teilkonflikt wird damit neu geordnet."
+            detail: "Ein Teilkonflikt wird damit neu geordnet.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Bosnian_President_Alija_Izetbegovic_and_Croatian_President_Franjo_Tudjman_sign_the_Croat-Muslim_Federation_Peace_Agreement_-_Flickr_-_The_Central_Intelligence_Agency.jpg?width=900",
+            imageAlt: "Unterzeichnung des Washingtoner Abkommens 1994"
           },
           {
             id: "srebrenica-1995",
             label: "Im Juli 1995 kommt es zum Massaker von Srebrenica.",
-            detail: "Das UN-Schutzversprechen scheitert auf dramatische Weise."
+            detail: "Das UN-Schutzversprechen scheitert auf dramatische Weise.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Srebrenica-memorial.jpg?width=900",
+            imageAlt: "Gedenkstätte von Srebrenica"
           },
           {
             id: "nato-1995",
             label: "Die NATO greift 1995 mit Luftangriffen gegen bosnisch-serbische Ziele ein.",
-            detail: "Erst jetzt veraendert sich die militärische Dynamik deutlich."
+            detail: "Erst jetzt veraendert sich die militärische Dynamik deutlich.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Bombing_republika_srpska.jpg?width=900",
+            imageAlt: "Luftoperationen gegen bosnisch-serbische Stellungen 1995"
           },
           {
             id: "dayton-1995",
             label: "Das Dayton-Abkommen beendet Ende 1995 den Krieg.",
-            detail: "Der Frieden stoppt die Kämpfe, schreibt aber ethnische Trennung fort."
+            detail: "Der Frieden stoppt die Kämpfe, schreibt aber ethnische Trennung fort.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=900",
+            imageAlt: "Unterzeichnung des Dayton-Abkommens 1995"
           }
         ],
         correctOrder: [
@@ -932,6 +984,31 @@ const MODULES = [
       alt: "Sarajevo im Mai 1996 als Bild einer brüchigen Nachkriegsordnung",
       sourceLabel: "Sarajevo_may_1996.png"
     },
+    actorFocus: {
+      title: "Akteure des schwierigen Friedens",
+      intro:
+        "In der Nachkriegsstation geht es nicht mehr um möglichst viele Gesichter, sondern um zwei gegensätzliche politische Logiken: Rugovas gewaltfreie Kosovo-Strategie und Miloševićs fortgesetzte Machtpolitik."
+    },
+    actors: [
+      {
+        name: "Ibrahim Rugova",
+        role: "kosovo-albanischer Politiker und Vertreter einer gewaltfreien Strategie",
+        lens: "Er steht für den Versuch, den Kosovo-Konflikt politisch und diplomatisch statt militärisch zu führen.",
+        whyHere:
+          "Rugova ist für diese Station sinnvoll, weil er zeigt, dass der Weg zur späteren Eskalation im Kosovo nicht von Anfang an militärisch festgelegt war.",
+        imageSrc: "assets/module-images/ibrahim-rugova.jpg",
+        imageAlt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge"
+      },
+      {
+        name: "Slobodan Milošević",
+        role: "serbischer Machthaber in der späten Zerfallsphase",
+        lens: "Er steht hier nicht mehr für den Aufstieg, sondern für Repression, Kriegsausweitung und späteren Machtverlust.",
+        whyHere:
+          "Sein Bild taucht in dieser Station erneut auf, weil sich am Kosovo-Konflikt und an der NATO-Intervention die Spätphase seiner Politik besonders klar lesen lässt.",
+        imageSrc: "assets/module-images/milosevic-in-hague.jpg",
+        imageAlt: "Slobodan Milošević im Gerichtssaal in Den Haag"
+      }
+    ],
     prompts: [
       "Achte auf den Doppelcharakter von Dayton: Frieden schaffen und Spaltung verfestigen.",
       "Notiere, warum Kosovo nach 1995 nicht befriedet war.",
@@ -985,16 +1062,6 @@ const MODULES = [
         link: "assets/module-images/sarajevo-may-1996.png",
         tags: ["lokal", "Bildquelle"]
       },
-      {
-        id: "r-nachkrieg-rugova",
-        bucket: "Akteur*innen im Fokus",
-        type: "Bild",
-        title: "Dr. Ibrahim Rugova",
-        focus: "Porträt des kosovo-albanischen Politikers, der lange eine gewaltfreie und diplomatische Strategie gegen serbische Herrschaft vertrat.",
-        link: "assets/module-images/ibrahim-rugova.jpg",
-        imageAlt: "Ibrahim Rugova vor Bücherregal und Kosovo-Flagge",
-        tags: ["lokal", "Bildquelle", "Akteur"]
-      }
     ],
     questions: [
       {
@@ -1055,7 +1122,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erkennt verschiedene Formulierungen. Verbinde ungeloste politische Fragen mit Repression und Strategiewechsel.",
         placeholder: "Der Kosovo blieb ein Konfliktraum, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7", "r-nachkrieg-rugova"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         conceptGroups: [
           {
             label: "Kosovo war in Dayton nicht wirklich gelöst",
@@ -1108,32 +1175,44 @@ const MODULES = [
           {
             id: "dayton-1995",
             label: "1995 beendet das Dayton-Abkommen den Bosnienkrieg.",
-            detail: "Der Frieden schafft Sicherheit, aber keine einfache Lösung."
+            detail: "Der Frieden schafft Sicherheit, aber keine einfache Lösung.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/DaytonAgreement.jpg?width=900",
+            imageAlt: "Unterzeichnung des Dayton-Abkommens 1995"
           },
           {
             id: "sarajevo-1996",
             label: "1996 zeigt das Nachkriegsbild Sarajevos die sichtbaren Spuren eines formal beendeten Krieges.",
-            detail: "Frieden und Zerstörung existieren nebeneinander."
+            detail: "Frieden und Zerstörung existieren nebeneinander.",
+            imageSrc: "assets/module-images/sarajevo-may-1996.png",
+            imageAlt: "Sarajevo im Mai 1996"
           },
           {
             id: "uck",
             label: "Im Kosovo gewinnt der bewaffnete Widerstand der UCK an Bedeutung.",
-            detail: "Die Konfliktlogik verschiebt sich in einen neuen Raum."
+            detail: "Die Konfliktlogik verschiebt sich in einen neuen Raum.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Kosovo_Liberation_Army.png?width=900",
+            imageAlt: "Flagge der UCK als Symbol des bewaffneten Widerstands im Kosovo"
           },
           {
             id: "nato-1999",
             label: "1999 greift die NATO Serbien und Montenegro ohne UN-Mandat militärisch an.",
-            detail: "Die Intervention bleibt bis heute rechtlich und politisch umstritten."
+            detail: "Die Intervention bleibt bis heute rechtlich und politisch umstritten.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/NATO_bombing_of_Yugoslavia_1999_(13810195285).jpg?width=900",
+            imageAlt: "Szene aus dem Kontext der NATO-Luftangriffe 1999"
           },
           {
             id: "zivile-opfer",
             label: "Die Bombardierung verursacht zivile Opfer und schwere gesellschaftliche Schaeden.",
-            detail: "Intervention bedeutet keinen konfliktfreien Eingriff."
+            detail: "Intervention bedeutet keinen konfliktfreien Eingriff.",
+            imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Ruins_of_the_Radio_Television_of_Serbia,_destroyed_during_1999_NATO_aggression_2007.jpg?width=900",
+            imageAlt: "Zerstörungen an der serbischen Rundfunkanstalt nach den NATO-Angriffen"
           },
           {
             id: "milosevic-geschwaecht",
             label: "Trotz nationalistischer Mobilisierung wird Milosevic durch Krieg und Bombardierung langfristig geschwaecht.",
-            detail: "Die Herrschaft verliert innenpolitisch an Stabilitaet."
+            detail: "Die Herrschaft verliert innenpolitisch an Stabilitaet.",
+            imageSrc: "assets/module-images/milosevic-in-hague.jpg",
+            imageAlt: "Slobodan Milošević in Den Haag als Symbol seines späteren Machtverlusts"
           }
         ],
         correctOrder: [

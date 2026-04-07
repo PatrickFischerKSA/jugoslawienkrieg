@@ -537,6 +537,7 @@ function renderModuleHeader(module) {
   const unlocked = isModuleUnlocked(moduleIndex);
   const moduleScore = getModuleScore(module);
   const visual = module.visual;
+  const actors = module.actors || [];
 
   elements.moduleHeader.innerHTML = `
     <div class="module-title-row">
@@ -591,6 +592,44 @@ function renderModuleHeader(module) {
         </p>
       </article>
     </div>
+
+    ${
+      actors.length
+        ? `
+          <section class="actor-panel">
+            <div class="actor-panel-head">
+              <div>
+                <p class="eyebrow">Akteurskonstellation</p>
+                <h3>${escapeHtml(module.actorFocus?.title || "Akteur*innen dieser Station")}</h3>
+              </div>
+              <p class="module-copy">${escapeHtml(module.actorFocus?.intro || "")}</p>
+            </div>
+            <div class="actor-grid">
+              ${actors
+                .map(
+                  (actor) => `
+                    <article class="actor-card">
+                      <img
+                        class="actor-image"
+                        src="${escapeHtml(actor.imageSrc)}"
+                        alt="${escapeHtml(actor.imageAlt || actor.name)}"
+                        loading="lazy"
+                      />
+                      <div class="actor-copy">
+                        <h4>${escapeHtml(actor.name)}</h4>
+                        <p class="actor-role">${escapeHtml(actor.role)}</p>
+                        <p>${escapeHtml(actor.lens)}</p>
+                        <p>${escapeHtml(actor.whyHere)}</p>
+                      </div>
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          </section>
+        `
+        : ""
+    }
   `;
 }
 
@@ -827,6 +866,18 @@ function renderDragOrderField(question, answer) {
           (item, index) => `
             <div class="drag-card" draggable="true" data-drag-item-id="${escapeHtml(item.id)}">
               <span class="drag-index">${index + 1}</span>
+              ${
+                item.imageSrc
+                  ? `
+                    <img
+                      class="drag-image"
+                      src="${escapeHtml(item.imageSrc)}"
+                      alt="${escapeHtml(item.imageAlt || item.label)}"
+                      loading="lazy"
+                    />
+                  `
+                  : ""
+              }
               <div class="drag-copy">
                 <strong>${escapeHtml(item.label)}</strong>
                 ${item.detail ? `<p>${escapeHtml(item.detail)}</p>` : ""}

@@ -487,6 +487,68 @@ a {
   margin: 0 0 10px;
 }
 
+.actor-panel {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.74), rgba(229, 221, 208, 0.46));
+}
+
+.actor-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.actor-panel-head h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.actor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.actor-card {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line);
+}
+
+.actor-image {
+  width: 116px;
+  height: 146px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(28, 24, 21, 0.08);
+  background: rgba(28, 24, 21, 0.06);
+}
+
+.actor-copy h4 {
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+}
+
+.actor-copy p {
+  margin: 0;
+}
+
+.actor-role {
+  margin-bottom: 10px !important;
+  color: var(--wire);
+  font-weight: 700;
+}
+
 .hidden {
   display: none !important;
 }
@@ -768,7 +830,7 @@ a {
 
 .drag-card {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto 132px minmax(0, 1fr) auto;
   gap: 12px;
   align-items: start;
   padding: 14px 16px;
@@ -776,6 +838,15 @@ a {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.9);
   cursor: grab;
+}
+
+.drag-image {
+  width: 132px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(28, 24, 21, 0.08);
+  background: rgba(28, 24, 21, 0.06);
 }
 
 .drag-card.dragging {
@@ -959,7 +1030,8 @@ summary {
 
   .module-title-row,
   .section-head,
-  .question-topline {
+  .question-topline,
+  .actor-panel-head {
     flex-direction: column;
   }
 }
@@ -987,8 +1059,19 @@ summary {
   .stats-grid,
   .resource-grid,
   .module-grid,
-  .teacher-grid {
+  .teacher-grid,
+  .actor-grid {
     grid-template-columns: 1fr;
+  }
+
+  .actor-card {
+    grid-template-columns: 1fr;
+  }
+
+  .actor-image {
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
   }
 
   .hero-actions,
@@ -1000,5 +1083,29 @@ summary {
 
   .btn {
     width: 100%;
+  }
+
+  .drag-card {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .drag-index {
+    grid-row: 1 / 2;
+  }
+
+  .drag-image {
+    grid-column: 2 / 3;
+    width: 100%;
+    max-width: 220px;
+    height: 118px;
+  }
+
+  .drag-copy {
+    grid-column: 2 / 3;
+  }
+
+  .drag-handle {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
   }
 }
