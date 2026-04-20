@@ -270,7 +270,7 @@ function getQuestionReference(module, question) {
   if (miniIndex > -1) {
     return {
       kind: "mini",
-      label: `Zusatzcheck ${miniIndex + 1}`,
+      label: `Kurzfrage ${miniIndex + 1}`,
       title: question.title || question.prompt
     };
   }
@@ -673,6 +673,7 @@ function renderModuleHeader(module) {
   const visual = module.visual;
   const actors = module.actors || [];
   const visualDossier = module.visualDossier || [];
+  const textDossier = module.textDossier || [];
   const miniQuestions = getMiniQuestions(module);
   const integratedSources = getIntegratedSources(module);
   const videoSources = getVideoSources(module);
@@ -686,7 +687,7 @@ function renderModuleHeader(module) {
         <div class="module-kicker">
           <span class="module-pill">${escapeHtml(module.era)}</span>
           <span class="module-pill">${masteredCount}/${module.questions.length} Fragen gemeistert</span>
-          <span class="module-pill">${formatPercent(moduleScore)} Modulscore</span>
+          <span class="module-pill">${formatPercent(moduleScore)} Stand</span>
           <span class="module-pill">${unlocked ? "freigeschaltet" : "gesperrt"}</span>
         </div>
       </div>
@@ -713,18 +714,18 @@ function renderModuleHeader(module) {
 
     <div class="module-grid">
       <article class="module-box">
-        <h3>Arbeitsroute</h3>
+        <h3>Vorgehen</h3>
         <p class="module-copy">${escapeHtml(module.route)}</p>
       </article>
       <article class="module-box">
-        <h3>${state.teacherMode ? "Lehrpersonenhinweis" : "Arbeitsfokus"}</h3>
+        <h3>${state.teacherMode ? "Hinweis für Lehrpersonen" : "Schwerpunkt"}</h3>
         <p class="module-copy">${escapeHtml(state.teacherMode ? module.teacherNote : module.goal)}</p>
       </article>
       <article class="module-box">
-        <h3>Didaktischer Fokus</h3>
+        <h3>Arbeitsweise</h3>
         <p class="module-copy">
-          Diese Station verbindet Materialerschließung mit sofort rückgemeldeter Begriffsarbeit
-          und einer offenen Transferfrage.
+          Zuerst Material erschließen, dann Begriffe sichern, Entwicklungen ordnen und am Schluss
+          ein Urteil formulieren.
         </p>
       </article>
       ${
@@ -733,10 +734,10 @@ function renderModuleHeader(module) {
             <article class="module-box module-box-wide film-module-box">
               <div class="film-module-head">
                 <div>
-                  <h3>Filmmodul der Station</h3>
+                  <h3>Filme und Texte der Station</h3>
                   <p class="module-copy">
-                    Öffne das Film-und-Fragen-Modul: Dort liegen die Dokumentation, ergänzende
-                    Videos und die direkt dazugehörigen Fragen gesammelt als Popup.
+                    Öffne das Modul. Oben stehen die Filme; darunter folgen die Textquellen und
+                    die dazugehörigen Fragen.
                   </p>
                 </div>
                 <p class="film-module-status">${videoSources.length} Film${videoSources.length === 1 ? "" : "e"} integriert</p>
@@ -755,7 +756,7 @@ function renderModuleHeader(module) {
               </div>
               <div class="question-actions">
                 <button class="btn primary" type="button" data-open-source-modal="true">
-                  Film-und-Fragen-Modul öffnen
+                  Modul öffnen
                 </button>
               </div>
             </article>
@@ -765,16 +766,16 @@ function renderModuleHeader(module) {
               <article class="module-box module-box-wide film-module-box">
                 <div class="film-module-head">
                   <div>
-                    <h3>Quellenmodul der Station</h3>
+                    <h3>Texte und Aufgaben</h3>
                     <p class="module-copy">
-                      Diese Station arbeitet ohne Film, aber mit integriertem Quellenfenster und
-                      zugehörigen Fragen.
+                      Diese Station arbeitet mit Textquellen, Bildern und direkt verknüpften
+                      Fragen.
                     </p>
                   </div>
                 </div>
                 <div class="question-actions">
                   <button class="btn primary" type="button" data-open-source-modal="true">
-                    Quellenmodul öffnen
+                    Modul öffnen
                   </button>
                 </div>
               </article>
@@ -787,13 +788,12 @@ function renderModuleHeader(module) {
             <article class="module-box module-box-wide mini-checks-box">
               <div class="mini-checks-head">
                 <div>
-                  <h3>Zusatzchecks zur Station</h3>
+                  <h3>Kurzfragen</h3>
                   <p class="module-copy">
-                    Die eingebetteten Arbeitsimpulse liegen hier als kurze prüfbare Mini-Fragen
-                    mit Sofortkorrektur vor.
+                    Kurze Zusatzfragen mit Sofortkorrektur.
                   </p>
                 </div>
-                <p class="mini-checks-status">${miniQuestions.filter((question) => isMastered(question.id)).length}/${miniQuestions.length} Zusatzchecks gemeistert</p>
+                <p class="mini-checks-status">${miniQuestions.filter((question) => isMastered(question.id)).length}/${miniQuestions.length} erledigt</p>
               </div>
               <div class="mini-check-grid">
                 ${miniQuestions
@@ -806,8 +806,8 @@ function renderModuleHeader(module) {
                       >
                         <span class="mini-check-index">${index + 1}</span>
                         <span class="mini-check-copy">
-                          <strong>${escapeHtml(question.title || `Zusatzcheck ${index + 1}`)}</strong>
-                          <span>${isMastered(question.id) ? "gemeistert" : "öffnen"}</span>
+                          <strong>${escapeHtml(question.title || `Kurzfrage ${index + 1}`)}</strong>
+                          <span>${isMastered(question.id) ? "erledigt" : "öffnen"}</span>
                         </span>
                       </button>
                     `
@@ -821,13 +821,58 @@ function renderModuleHeader(module) {
     </div>
 
     ${
+      textDossier.length
+        ? `
+          <section class="text-dossier">
+            <div class="text-dossier-head">
+              <div>
+                <p class="eyebrow">Textarbeit</p>
+                <h3>${escapeHtml(module.textDossierTitle || "Texte dieser Station")}</h3>
+              </div>
+              <p class="module-copy">${escapeHtml(module.textDossierIntro || "")}</p>
+            </div>
+            <div class="text-dossier-grid">
+              ${textDossier
+                .map(
+                  (entry) => `
+                    <article class="text-card">
+                      <p class="text-card-context">${escapeHtml(entry.context || "")}</p>
+                      <h4>${escapeHtml(entry.title || "Textauszug")}</h4>
+                      <blockquote class="text-card-quote">${escapeHtml(entry.quote || "")}</blockquote>
+                      <p class="text-card-source">${escapeHtml(entry.source || "")}</p>
+                      ${
+                        entry.task || entry.questionId
+                          ? `
+                            <div class="text-card-task">
+                              ${entry.task ? `<p><strong>Arbeitsauftrag:</strong> ${escapeHtml(entry.task)}</p>` : ""}
+                              ${
+                                entry.questionId
+                                  ? `<button class="btn ghost small" type="button" data-open-mini-question="${escapeHtml(entry.questionId)}">Kurzfrage öffnen</button>`
+                                  : ""
+                              }
+                            </div>
+                          `
+                          : ""
+                      }
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          </section>
+        `
+        : ""
+    }
+
+
+    ${
       visualDossier.length
         ? `
           <section class="focus-gallery">
             <div class="focus-gallery-head">
               <div>
-                <p class="eyebrow">Bilddossier</p>
-                <h3>${escapeHtml(module.visualDossierTitle || "Bilder, die diese Station tragen")}</h3>
+                <p class="eyebrow">Bildquellen</p>
+                <h3>${escapeHtml(module.visualDossierTitle || "Bilder dieser Station")}</h3>
               </div>
               <p class="module-copy">${escapeHtml(module.visualDossierIntro || "")}</p>
             </div>
@@ -864,8 +909,8 @@ function renderModuleHeader(module) {
           <section class="actor-panel">
             <div class="actor-panel-head">
               <div>
-                <p class="eyebrow">Akteurskonstellation</p>
-                <h3>${escapeHtml(module.actorFocus?.title || "Akteur*innen dieser Station")}</h3>
+                <p class="eyebrow">Akteure</p>
+                <h3>${escapeHtml(module.actorFocus?.title || "Akteure dieser Station")}</h3>
               </div>
               <p class="module-copy">${escapeHtml(module.actorFocus?.intro || "")}</p>
             </div>
@@ -981,7 +1026,7 @@ function renderTeacherPanel(module) {
                   <p>${escapeHtml(getTeacherSummary(question))}</p>
                   ${
                     question.teacherPrompt
-                      ? `<p><strong>Impuls:</strong> ${escapeHtml(question.teacherPrompt)}</p>`
+                      ? `<p><strong>Hinweis:</strong> ${escapeHtml(question.teacherPrompt)}</p>`
                       : ""
                   }
                   ${
@@ -1091,7 +1136,7 @@ function renderResources(module) {
                     <p>${escapeHtml(resource.focus)}</p>
                     ${
                       resource.selectionNote
-                        ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
+                        ? `<p class="resource-note"><strong>Hinweis:</strong> ${escapeHtml(resource.selectionNote)}</p>`
                         : ""
                     }
                     ${
@@ -1233,7 +1278,7 @@ function renderQuestionCard(question, index, resourceMap) {
         <div class="question-score">${escapeHtml(answer?.result ? formatPercent(answer.result.score) : "offen")}</div>
       </div>
       <p class="question-help">${escapeHtml(question.help)}</p>
-      <div class="source-row">${sourceChips}</div>
+      ${sourceChips ? `<div class="source-row">${sourceChips}</div>` : ""}
       ${answerField}
       <div class="question-actions">
         <button class="btn primary small" type="button" data-evaluate-question="${escapeHtml(question.id)}">
@@ -1478,7 +1523,7 @@ function renderMiniQuestionModal() {
     <div class="mini-question-dialog" role="dialog" aria-modal="true" aria-labelledby="mini-question-title">
       <div class="mini-question-header">
         <div>
-          <p class="eyebrow">Zusatzcheck ${questionIndex + 1}</p>
+          <p class="eyebrow">Kurzfrage ${questionIndex + 1}</p>
           <h3 id="mini-question-title">${escapeHtml(question.title || "Zusatzfrage")}</h3>
         </div>
         <button class="btn ghost small mini-question-close" type="button" data-close-mini-question="true">Schließen</button>
@@ -1492,7 +1537,7 @@ function renderMiniQuestionModal() {
           <div class="question-score">${escapeHtml(answer?.result ? formatPercent(answer.result.score) : "offen")}</div>
         </div>
         <p class="question-help">${escapeHtml(question.help)}</p>
-        <div class="source-row">${renderSourceChips(question, resourceMap)}</div>
+        ${renderSourceChips(question, resourceMap) ? `<div class="source-row">${renderSourceChips(question, resourceMap)}</div>` : ""}
         ${renderAnswerField(question, answer)}
         <div class="question-actions">
           <button class="btn primary small" type="button" data-evaluate-mini-question="${escapeHtml(question.id)}">
@@ -1548,12 +1593,11 @@ function renderSourceModal() {
     <div class="source-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="source-modal-title">
       <div class="source-modal-header">
         <div>
-          <p class="eyebrow">Film-und-Fragen-Modul</p>
-          <h3 id="source-modal-title">${escapeHtml(module.title)}: Filme und Aufgaben</h3>
+          <p class="eyebrow">Quellenmodul</p>
+          <h3 id="source-modal-title">${escapeHtml(module.title)}: Filme, Texte und Fragen</h3>
           <p class="module-copy">
-            Die Filme bleiben direkt zugänglich. Unter jedem Film stehen die Hauptfragen und
-            Zusatzchecks, die genau mit diesem Material verknüpft sind. Die PDF-Fragen erscheinen
-            nicht separat, weil sie hier bereits eingearbeitet sind.
+            Die Filme stehen oben. Darunter folgen ausgewählte Textquellen und die Fragen, die
+            direkt damit verknüpft sind. Arbeitsblätter erscheinen nicht separat.
           </p>
         </div>
         <button class="btn ghost small" type="button" data-close-source-modal="true">Schließen</button>
@@ -1563,7 +1607,7 @@ function renderSourceModal() {
           allUnitVideos.length
             ? `
               <section class="source-modal-group">
-                <h4>Filmreihe in chronologischer Reihenfolge</h4>
+                <h4>Filme in chronologischer Reihenfolge</h4>
                 <div class="source-modal-body-inner">
                   ${modules
                     .map((moduleEntry) => {
@@ -1661,12 +1705,12 @@ function renderSourceModalCard(module, resource, options = {}) {
       <p>${escapeHtml(resource.focus)}</p>
       ${
         resource.selectionNote
-          ? `<p class="resource-note"><strong>Auswahl:</strong> ${escapeHtml(resource.selectionNote)}</p>`
+          ? `<p class="resource-note"><strong>Hinweis:</strong> ${escapeHtml(resource.selectionNote)}</p>`
           : ""
       }
       ${
         resource.didacticUse
-          ? `<p class="resource-note"><strong>Einbau:</strong> ${escapeHtml(resource.didacticUse)}</p>`
+          ? `<p class="resource-note"><strong>Für die Arbeit:</strong> ${escapeHtml(resource.didacticUse)}</p>`
           : ""
       }
       <div class="resource-actions">
@@ -1684,10 +1728,10 @@ function renderSourceModalCard(module, resource, options = {}) {
         }
       </div>
       ${
-        resource.type === "Video" && linkedQuestions.length
+        linkedQuestions.length
           ? `
             <div class="linked-question-block">
-              <p class="linked-question-title">Direkt dazugehörige Fragen</p>
+              <p class="linked-question-title">Zugehörige Fragen</p>
               <div class="linked-question-grid">
                 ${linkedQuestions
                   .map((question) => {

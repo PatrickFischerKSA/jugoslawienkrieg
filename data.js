@@ -5,11 +5,11 @@ const MODULES = [
     title: "Pulverfass Jugoslawien",
     era: "1914 bis 1989",
     intro:
-      "Diese Auftaktstation rekonstruiert die langen historischen Linien des späteren Zerfalls: imperiale Altlasten, Gewalt im Zweiten Weltkrieg, Titos Herrschaft, föderale Spannungen und den Aufstieg nationalistischer Politik.",
+      "Die Station behandelt die Voraussetzungen des Zerfalls: Staatsgründung, Gewalt im Zweiten Weltkrieg, Tito-Herrschaft, Föderalismus und die Krise der 1980er Jahre.",
     goal:
-      "Du kannst erklären, warum Jugoslawien unter Tito stabil wirkte, aber zugleich innere Konflikte, regionale Ungleichheit und unterdrückte Nationalismen weitertrug.",
+      "Du kannst erklären, warum Jugoslawien unter Tito stabil blieb und warum diese Stabilität nach 1980 rasch brüchig wurde.",
     route:
-      "Sieh zuerst die erste Dokumentationsfolge, arbeite dann mit dem PDF-Fragenkatalog und nutze die beiden Playlist-Videos für Wiederholung oder Verdichtung. Sichere zunächst Begriffe, dann Ursachenketten, dann Deutungen.",
+      "Sieh zuerst Folge 1. Arbeite danach mit den Fragen und nutze die Textquellen gezielt für Tito, Föderalismus und die Krise der 1980er Jahre. Die Playlist-Videos dienen als Ergänzung.",
     teacherNote:
       "Die Station eignet sich als gemeinsamer Einstieg in die Vorgeschichte des Zerfalls oder als vorbereitender Hausauftrag vor der Kriegsphase.",
     teacherToolkit: {
@@ -39,9 +39,9 @@ const MODULES = [
       alt: "Skyline von Sarajevo mit sichtbaren Kriegsschäden im Mai 1996",
       sourceLabel: "Sarajevo_may_1996.png"
     },
-    visualDossierTitle: "Vier Bilder für die Vorgeschichte des Zerfalls",
+    visualDossierTitle: "Bildquellen zur Vorgeschichte",
     visualDossierIntro:
-      "Jedes Bild markiert einen konkreten historischen Bezugspunkt dieser Station: Sarajevo 1914, Kriegsgewalt im Zweiten Weltkrieg, der Bruch mit Stalin 1948 und Gazimestan 1989.",
+      "Die Bilder zeigen Sarajevo 1914, Gewalt im Zweiten Weltkrieg, den Bruch mit Stalin und Gazimestan 1989.",
     visualDossier: [
       {
         src: "assets/module-images/assassination-at-sarajevo.jpg",
@@ -79,10 +79,46 @@ const MODULES = [
           "Arbeitsnutzen: Es verbindet Vorgeschichte und Zerfallsphase und hilft bei Frage 3, den Schritt von Erinnerung zu Mobilisierung zu erklären."
       }
     ],
+
+    textDossierTitle: "Altaras lesen: Familiengeschichte als Quelle",
+    textDossierIntro:
+      "Die Auszüge aus Adriana Altaras' Erinnerungsbuch zeigen keine Gesamtgeschichte Jugoslawiens, sondern die Erfahrungen einer jüdischen Familie zwischen Vorkriegszeit, Verfolgung und Partisanenkampf.",
+    textDossier: [
+      {
+        title: "Split vor der deutschen Besatzung",
+        context:
+          "Der Vater erinnert sich an Split als Zufluchtsort und an Hilfe bei Flucht und Versteck.",
+        quote:
+          "„Split! Das war eine Perle an der Adria. Die Dalmatier? Wie Italiener! Laut, fröhlich und vor allem keine Antisemiten. Man hat uns geholfen auszureisen, hat uns versteckt, und wir sind gemeinsam in die Berge.“",
+        source: "Adriana Altaras, Titos Brille, Erinnerung des Vaters an Split.",
+        task: "Halte fest, welche Informationen das Zitat über Ort, Hilfe und den späteren Bruch enthält.",
+        questionId: "mq-vorgeschichte-5"
+      },
+      {
+        title: "Lebenslauf und Zäsur",
+        context:
+          "Im Lebenslauf des Vaters stehen Studium, Flucht und Widerstand unmittelbar nebeneinander.",
+        quote:
+          "„Am 12. Oktober 1918 wurde ich ... in Split (Jugoslawien) geboren. ... Im selben Jahr Immatrikulation an der medizinischen Fakultät in Zagreb. Am 5. April gelingt es mir, nach Split zu fliehen, einen Tag vor der deutschen Okkupation. ... Gleichzeitig schließe ich mich Titos Partisanenarmee an.“",
+        source: "Adriana Altaras, Titos Brille, Lebenslauf des Vaters.",
+        task: "Ordne die genannten Orte und Rollenwechsel der historischen Lage zwischen 1936 und 1944 zu.",
+        questionId: "mq-vorgeschichte-6"
+      },
+      {
+        title: "Jüdischer Arzt im Widerstand",
+        context:
+          "Die Passage verbindet Verfolgung, Krieg und improvisierten Alltag bei den Partisanen.",
+        quote:
+          "„Bei den Partisanen natürlich schon. Ärzte, auch so unerfahrene wie ich, bekamen sofort zu tun!“",
+        source: "Adriana Altaras, Titos Brille, Erinnerung an den Partisaneneinsatz.",
+        task: "Arbeite heraus, was der Satz über die Lage jüdischer Ärzte und über die Kriegsbedingungen zeigt.",
+        questionId: "mq-vorgeschichte-7"
+      }
+    ],
     actorFocus: {
-      title: "Schlüsselfigur dieser Station",
+      title: "Tito",
       intro:
-        "In der Vorgeschichte steht nicht ein ganzes Personalensemble im Mittelpunkt, sondern Tito als Stabilisierungsmacht. An ihm lässt sich erkennen, wie Jugoslawien zusammengehalten wurde, ohne seine Konflikte wirklich zu lösen."
+        "In dieser Station steht Tito im Mittelpunkt."
     },
     actors: [
       {
@@ -105,7 +141,7 @@ const MODULES = [
         prompt: "Welche zwei Herrschaftsmittel Titos müssen zusammen genannt werden, wenn du die Stabilität Jugoslawiens erklärst?",
         help: "Nenne nicht nur Tito, sondern mindestens zwei konkrete Mittel seiner Herrschaft.",
         placeholder: "Tito hielt Jugoslawien zusammen durch ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf"],
         conceptGroups: [
           {
             label: "autoritäre Parteiherrschaft",
@@ -132,7 +168,7 @@ const MODULES = [
         prompt: "Welche ältere Gewalterfahrung aus dem Zweiten Weltkrieg blieb politisch wirksam und wurde später erneut aufgegriffen?",
         help: "Nenne ein konkretes Beispiel und den Charakter dieser Erinnerung.",
         placeholder: "Politisch wirksam blieb vor allem ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf"],
         conceptGroups: [
           {
             label: "Ustascha-Terror, Jasenovac oder Kriegsgewalt",
@@ -159,7 +195,7 @@ const MODULES = [
         prompt: "Was ist der Unterschied zwischen föderaler Ordnung auf dem Papier und realer Machtverteilung in Jugoslawien?",
         help: "Verbinde Staatsaufbau mit tatsächlicher politischer Steuerung.",
         placeholder: "Auf dem Papier war Jugoslawien föderal, in der Praxis ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-yt-2"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-yt-2"],
         conceptGroups: [
           {
             label: "föderale Struktur mit Republiken oder Autonomien",
@@ -186,7 +222,7 @@ const MODULES = [
         prompt: "Warum konnten Politiker 1989/90 auf ältere Konfliktlinien und Erinnerungsorte zurückgreifen?",
         help: "Nenne einen Grund aus der Vorgeschichte und einen aus der Krise der späten 1980er Jahre.",
         placeholder: "Der Rückgriff gelang, weil ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
         conceptGroups: [
           {
             label: "ältere Konflikte oder Erinnerungen waren nicht verschwunden",
@@ -204,6 +240,84 @@ const MODULES = [
         successThreshold: 2,
         modelAnswer:
           "Der Rückgriff gelang, weil ältere Konflikte und Traumata nie wirklich aufgearbeitet worden waren. In der Krise nach Tito konnten Politiker diese Erinnerungen nationalistisch mobilisieren und für aktuelle Machtpolitik nutzen."
+      },
+      {
+        id: "mq-vorgeschichte-5",
+        title: "Split im Erinnerungsbuch",
+        type: "short-text",
+        challenge: "Textarbeit",
+        prompt: "Nenne zwei konkrete Aussagen aus dem Altaras-Zitat zu Split vor dem deutschen Einmarsch.",
+        help: "Arbeite direkt am Zitat. Gesucht sind Informationen aus dem Text, keine freie Deutung.",
+        placeholder: "Im Zitat wird Split als ... beschrieben, außerdem ...",
+        conceptGroups: [
+          {
+            label: "Split erscheint als Ort an der Adria oder in Dalmatien",
+            variants: ["split", "adria", "dalmatien", "meer", "hafen"]
+          },
+          {
+            label: "Hilfe bei Flucht oder Verstecken",
+            variants: ["geholfen", "auszureisen", "versteckt", "hilfe", "flucht", "verstecken"]
+          },
+          {
+            label: "Bruch mit dem Kommen der Deutschen",
+            variants: ["deutschen kamen", "deutsche", "einmarsch", "besatzung", "danach änderte sich", "bruch"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Im Zitat erscheint Split als dalmatinische Stadt an der Adria. Zugleich sagt der Vater, dass Juden Hilfe bei Flucht und Verstecken erhielten, bevor sich die Lage mit dem Kommen der Deutschen grundlegend änderte."
+      },
+      {
+        id: "mq-vorgeschichte-6",
+        title: "Lebenslauf und Zäsur",
+        type: "short-text",
+        challenge: "Textarbeit",
+        prompt: "Welche drei Stationen nennt der Lebenslauf des Vaters zwischen 1936 und 1944?",
+        help: "Nenne Orte oder Rollenwechsel aus dem Zitat.",
+        placeholder: "Genannt werden ...",
+        conceptGroups: [
+          {
+            label: "Studium in Zagreb",
+            variants: ["zagreb", "medizinische fakultät", "studium", "immatrikulation"]
+          },
+          {
+            label: "Flucht nach Split kurz vor der deutschen Okkupation",
+            variants: ["split", "flucht", "okkupation", "deutsche", "5. april"]
+          },
+          {
+            label: "Partisanen oder Promotion in Bari",
+            variants: ["partisanen", "partisanenarmee", "bari", "promotion", "promovieren"]
+          }
+        ],
+        successThreshold: 3,
+        modelAnswer:
+          "Genannt werden das Studium in Zagreb, die Flucht nach Split kurz vor der deutschen Okkupation und der Anschluss an Titos Partisanen; 1944 folgt die Promotion in Bari."
+      },
+      {
+        id: "mq-vorgeschichte-7",
+        title: "Arzt bei den Partisanen",
+        type: "short-text",
+        challenge: "Textarbeit",
+        prompt: "Was zeigt der Satz über den Einsatz \"bei den Partisanen\" über die Lage jüdischer Ärzte im Krieg?",
+        help: "Verbinde Ausgrenzung im Verfolgungssystem mit der neuen Rolle im Widerstand.",
+        placeholder: "Der Satz zeigt, dass ...",
+        conceptGroups: [
+          {
+            label: "im regulären System ausgeschlossen oder verfolgt",
+            variants: ["nicht im krankenhaus", "durfte nicht arbeiten", "ausgeschlossen", "als jude", "verfolgt", "verboten"]
+          },
+          {
+            label: "bei den Partisanen sofort gebraucht",
+            variants: ["partisanen", "sofort zu tun", "gebraucht", "widerstand", "arzt"]
+          },
+          {
+            label: "Kriegslage war improvisiert und von Mangel geprägt",
+            variants: ["unerfahren", "not", "improvisiert", "kriegsalltag", "mangel", "notlage"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Der Satz zeigt, dass jüdische Ärzte im Verfolgungssystem ausgeschlossen waren, im Widerstand aber sofort gebraucht wurden. Zugleich macht er die improvisierte Notlage des Krieges sichtbar."
       }
     ],
     resources: [
@@ -215,8 +329,8 @@ const MODULES = [
         focus: "Vorgeschichte, Tito, föderale Ordnung, Nationalismus und Aufstieg Miloševićs",
         link: "https://www.dropbox.com/scl/fi/mbvt6nif4o3njrb2noijk/Balkan-in-Flammen-Pulverfass-Jugoslawien-Staffel-1-Folge-1.mp4?rlkey=5glwor40fqn3j8hcfpz0yzpwo&st=tj8dx0a7&dl=0",
         tags: ["Dropbox", "Pflicht", "Dokumentation"],
-        selectionNote: "Diese Folge deckt die gesamte Station ab und ist die Hauptquelle.",
-        didacticUse: "Zuerst anschauen, dann mit ihr Frage 1 bis 4 bearbeiten."
+        selectionNote: "Hauptquelle der Station.",
+        didacticUse: "Für Frage 1 bis 4."
       },
       {
         id: "r-vorgeschichte-pdf",
@@ -226,15 +340,15 @@ const MODULES = [
         focus: "Dreiteiliger Fragenreader mit Leitfragen zu Vorgeschichte, Krieg und Nachordnung",
         link: "assets/materials/balkan-in-flammen-fragen.pdf",
         tags: ["lokal", "Reader", "Fragen"],
-        selectionNote: "Hier stehen die Zusatzfragen, die in die Station eingebaut wurden.",
-        didacticUse: "Vor allem für Frage 5 und 6 sowie zum Nacharbeiten von Begriffen."
+        selectionNote: "Die Aufgaben aus dem Reader sind in die Fragen übernommen.",
+        didacticUse: "Für Frage 5 und 6 sowie zum Wiederholen von Begriffen."
       },
       {
         id: "r-vorgeschichte-yt-1",
         bucket: "Vertiefung: Chronologie und Kontext",
         type: "Video",
         title: "YouTube-Playlist, Video 1",
-        focus: "zusätzlicher Impuls zur historischen Einordnung des Zerfalls",
+        focus: "Überblick zur Vorgeschichte des Zerfalls",
         link: "https://www.youtube.com/watch?v=_HGCHTueg-Q&list=PL8991DFCF33730589",
         tags: ["YouTube", "Vertiefung"],
         selectionNote: "Nur nötig, wenn die lange Vorgeschichte noch unscharf bleibt.",
@@ -245,11 +359,33 @@ const MODULES = [
         bucket: "Vertiefung: Struktur des Vielvölkerstaats",
         type: "Video",
         title: "YouTube-Playlist, Video 2",
-        focus: "ergänzende Perspektive auf Nationalismus, Krise und politische Radikalisierung",
+        focus: "Ergänzung zu Nationalismus, Krise und Radikalisierung",
         link: "https://www.youtube.com/watch?v=q8uG0o0b4wQ&list=PL8991DFCF33730589&index=2",
         tags: ["YouTube", "Vertiefung"],
         selectionNote: "Ergänzung, wenn föderale Struktur und Nationalismus noch nicht klar genug sind.",
         didacticUse: "Vor allem für Frage 2 und die Abwägung in Frage 4."
+      },
+      {
+        id: "r-vorgeschichte-bpb-history",
+        bucket: "Textquelle: Überblick",
+        type: "Website",
+        title: "bpb: Kleine Geschichte Jugoslawiens",
+        focus: "Überblick von der Staatsgründung 1918 bis zur Krise der 1980er Jahre",
+        link: "https://www.bpb.de/shop/zeitschriften/apuz/256921/kleine-geschichte-jugoslawiens/",
+        tags: ["bpb", "Text"],
+        selectionNote: "Geeignet für Fragen zu Föderalismus, Tito und Zerfall.",
+        didacticUse: "Vor allem für Frage 1, 2, 4 und 6."
+      },
+      {
+        id: "r-vorgeschichte-bpb-tito",
+        bucket: "Textquelle: Tito",
+        type: "Website",
+        title: "bpb: Mythos Tito",
+        focus: "Personenkult, Herrschaft und Nachwirkung Titos",
+        link: "https://www.bpb.de/shop/zeitschriften/apuz/256927/mythos-tito/?p=all",
+        tags: ["bpb", "Text"],
+        selectionNote: "Ergänzt die Station um die Frage nach Titos Rolle.",
+        didacticUse: "Vor allem für Frage 1, 5 und 6."
       },
     ],
     questions: [
@@ -262,7 +398,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur sucht mehrere Sinnschichten. Nenne nicht nur Tito als Person, sondern auch Mittel seiner Herrschaft.",
         placeholder: "Tito stabilisierte Jugoslawien, indem ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf"],
         conceptGroups: [
           {
             label: "autoritäre Führung oder Parteiherrschaft",
@@ -311,7 +447,7 @@ const MODULES = [
         help:
           "Sofortkorrektur erkennt auch Synonyme. Verbinde Staatsaufbau mit wirtschaftlichen und nationalen Spannungen.",
         placeholder: "Die föderale Struktur wirkte stabil, weil ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-2"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-2"],
         conceptGroups: [
           {
             label: "Stabilität war teilweise nur politisch erzwungen",
@@ -359,7 +495,7 @@ const MODULES = [
           "Ordne die Entwicklungsschritte so, dass die lange Vorgeschichte des Zerfalls sichtbar wird.",
         help:
           "Beginne mit dem Attentat von Sarajevo und ende mit dem Symboljahr 1990.",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1"],
         items: [
           {
             id: "sarajevo-1914",
@@ -431,7 +567,7 @@ const MODULES = [
           "Achte darauf, dass Lernende zwischen Strukturbedingungen und politischer Zuspitzung unterscheiden.",
         commonPitfall:
           "Häufig wird nur auf uralte Feindschaften verwiesen, ohne die Rolle von Propaganda, Machtkampf und Krisenpolitik zu gewichten.",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
         minWords: 120,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "nuance"],
@@ -457,7 +593,7 @@ const MODULES = [
         help:
           "Gesucht ist keine Lagergeschichte im Detail, sondern die politische Aussage dieses Beispiels über Herrschaft und Abschreckung.",
         placeholder: "Goli Otok zeigt, dass ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf"],
         conceptGroups: [
           {
             label: "politische Gegner oder Abweichler wurden verfolgt",
@@ -485,7 +621,7 @@ const MODULES = [
         help:
           "Eine gute Antwort verbindet den Ost-West-Konflikt mit der besonderen internationalen Stellung Jugoslawiens.",
         placeholder: "Der Bruch mit Stalin war weltpolitisch bedeutsam, weil ...",
-        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1"],
+        sourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history", "r-vorgeschichte-bpb-tito", "r-vorgeschichte-pdf", "r-vorgeschichte-yt-1"],
         minWords: 100,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "nuance"],
@@ -509,11 +645,11 @@ const MODULES = [
     title: "Vom Nationalismus zum Krieg",
     era: "1989 bis 1992",
     intro:
-      "Diese Station verfolgt den Übergang von Krise zu offener Gewalt. Im Zentrum stehen Machtpolitik, Medienpropaganda, die Kriege in Slowenien und Kroatien sowie die Frage, warum Europa so spät und so uneinheitlich reagierte.",
+      "Die Station behandelt die Zuspitzung von der Staatskrise zum Krieg: Nationalismus, Propaganda, Slowenien, Kroatien und die Reaktion Europas.",
     goal:
-      "Du kannst erklären, wie politische Führungen, mediale Feindbilder und militärische Entscheidungen aus einer Staatskrise bewaffnete Konflikte machten.",
+      "Du kannst erklären, wie politische Entscheidungen, Medien und militärische Gewalt den Zerfall 1989 bis 1992 beschleunigten.",
     route:
-      "Arbeite zuerst mit Folge 2 der Doku, sichere dann die Kernbegriffe mit den kurzen Antworten und ordne anschließend die Zuspitzung 1990 bis 1992. Die Transferfrage verlangt eine Gewichtung der internationalen Reaktion.",
+      "Arbeite zuerst mit Folge 2. Nutze danach die Fragen und die APuZ-Texte zu Kriegsursachen und internationaler Politik. Die Playlist-Videos dienen zur Wiederholung.",
     teacherNote:
       "Didaktisch stark ist hier der Wechsel zwischen politischer Akteursanalyse und der Frage nach dem Versagen europäischer Krisenprävention.",
     teacherToolkit: {
@@ -538,9 +674,9 @@ const MODULES = [
       extension:
         "Die Station laesst sich gut mit einer Kartenarbeit zu Slowenien, Kroatien und Bosnien verbinden."
     },
-    visualDossierTitle: "Bilder der politischen und militärischen Zuspitzung",
+    visualDossierTitle: "Bildquellen zur Zuspitzung",
     visualDossierIntro:
-      "Die vier Bilder markieren die wichtigsten Ebenen dieser Station: Mobilisierung, erster Krieg 1991, symbolische Eskalationsorte und sichtbare Kriegszerstörung.",
+      "Die Bilder zeigen Gazimestan 1989, den Krieg in Slowenien, die Ausschreitungen von Zagreb und die Zerstörung Vukovars.",
     visualDossier: [
       {
         src: "assets/module-images/gazimestan-monument.jpg",
@@ -561,7 +697,7 @@ const MODULES = [
       {
         src: "assets/module-images/stadion-maksimir-zagreb-v2.jpg",
         alt: "Stadion Maksimir in Zagreb",
-        title: "Maksimir als Erinnerungsort der Eskalation",
+        title: "Stadion Maksimir, Zagreb",
         caption: "Panorama des Stadions Maksimir in Zagreb, dem Ort der Ausschreitungen beim Spiel Dinamo Zagreb gegen Roter Stern Belgrad im Mai 1990.",
         whyItMatters:
           "Arbeitsnutzen: Das Bild gehört zur Chronologiefrage und markiert einen symbolischen Eskalationsort vor dem offenen Krieg."
@@ -569,16 +705,16 @@ const MODULES = [
       {
         src: "assets/module-images/vukovar-water-tower.jpg",
         alt: "Wasserturm von Vukovar",
-        title: "Vukovar als Bild des Krieges",
+        title: "Vukovar 1991",
         caption: "Der beschädigte Wasserturm von Vukovar steht für die Belagerung und Zerstörung der Stadt im Herbst 1991.",
         whyItMatters:
           "Arbeitsnutzen: Das Bild ist zentral für Frage 6, also für die internationale Wahrnehmung des Kroatienkriegs."
       }
     ],
     actorFocus: {
-      title: "Akteurskonstellation dieser Eskalationsphase",
+      title: "Akteure 1989 bis 1992",
       intro:
-        "Hier stehen die Führungsfiguren des Zerfalls im Zentrum. Nicht irgendeine Personensammlung ist wichtig, sondern die politische Gegenüberstellung von Milošević und Tuđman als konkurrierende Nationalstaatsprojekte."
+        "Im Mittelpunkt stehen Milošević und Tuđman."
     },
     actors: [
       {
@@ -611,7 +747,7 @@ const MODULES = [
         prompt: "Worin unterschieden sich die Politikziele von Milošević und Tuđman?",
         help: "Vergleiche die politischen Projekte, nicht die Biografien.",
         placeholder: "Milošević zielte auf ..., Tuđman dagegen auf ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf"],
         conceptGroups: [
           {
             label: "serbische Zentralisierung oder großserbische Politik",
@@ -638,7 +774,7 @@ const MODULES = [
         prompt: "Wie verdichteten Fernsehen und Propaganda die Eskalation des Zerfalls?",
         help: "Nenne mindestens zwei Wirkungen der Medienpolitik.",
         placeholder: "Fernsehen und Propaganda wirkten eskalierend, weil ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-yt-4"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-yt-4"],
         conceptGroups: [
           {
             label: "Feindbilder oder Angst wurden verstärkt",
@@ -665,7 +801,7 @@ const MODULES = [
         prompt: "Warum folgten Slowenien, Kroatien und Bosnien nicht derselben Konfliktlogik?",
         help: "Vergleiche die drei Räume knapp, statt nur eine Chronologie aufzuzählen.",
         placeholder: "Die Konflikte unterschieden sich, weil ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-yt-3"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-yt-3"],
         conceptGroups: [
           {
             label: "Slowenien als kurzer Konflikt",
@@ -692,7 +828,7 @@ const MODULES = [
         prompt: "Wo zögerte die europäische Diplomatie, und wo lösten Entscheidungen neue Folgen aus?",
         help: "Nenne eine Form des Zögerns und eine Entscheidung mit Folgen.",
         placeholder: "Europa zögerte bei ..., und Folgen hatte besonders ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf", "r-zerfall-yt-4"],
         conceptGroups: [
           {
             label: "Zögern oder Uneinigkeit Europas",
@@ -719,7 +855,7 @@ const MODULES = [
         prompt: "Wofür steht Milošević in dieser Station, und wofür steht Tuđman?",
         help: "Ordne beide Personen ihren politischen Projekten zu.",
         placeholder: "Milošević steht für ..., Tuđman steht für ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf"],
         conceptGroups: [
           {
             label: "Milošević als serbische Zentralisierungsfigur",
@@ -748,8 +884,8 @@ const MODULES = [
         focus: "Nationalismus, Propaganda, Kroatienkrieg, Bosnien und internationale Reaktionen",
         link: "https://www.dropbox.com/scl/fi/euklg1q25mcmsqurroa9n/Balkan-in-Flammen-Ein-Land-zerf-llt-Staffel-1-Folge-2.mp4?rlkey=480olq20vrdtf0g3a5fnomrmr&st=69p85xwk&dl=0",
         tags: ["Dropbox", "Pflicht", "Dokumentation"],
-        selectionNote: "Die Folge ist die Hauptquelle für Politik, Propaganda und Kriegsbeginn.",
-        didacticUse: "Zuerst damit Frage 1 bis 4 bearbeiten."
+        selectionNote: "Hauptquelle der Station.",
+        didacticUse: "Für Frage 1 bis 4."
       },
       {
         id: "r-zerfall-pdf",
@@ -767,7 +903,7 @@ const MODULES = [
         bucket: "Vertiefung: Chronologie 1990 bis 1992",
         type: "Video",
         title: "YouTube-Playlist, Video 3",
-        focus: "ergänzender Erklärimpuls zur Staatskrise 1990/91",
+        focus: "Überblick zur Staatskrise 1990/91",
         link: "https://www.youtube.com/watch?v=Fm-pdnVz8EY&list=PL8991DFCF33730589&index=3",
         tags: ["YouTube", "Vertiefung"],
         selectionNote: "Nur nötig, wenn die Abfolge von Zagreb, Slowenien, Vukovar und Bosnien noch unscharf ist.",
@@ -778,11 +914,33 @@ const MODULES = [
         bucket: "Vertiefung: Propaganda und Europa",
         type: "Video",
         title: "YouTube-Playlist, Video 4",
-        focus: "zusätzliche Perspektive auf Kriegsausbruch und internationale Politik",
+        focus: "Ergänzung zu Kriegsausbruch und internationaler Politik",
         link: "https://www.youtube.com/watch?v=sT_09hb1kzQ&list=PL8991DFCF33730589&index=4",
         tags: ["YouTube", "Vertiefung"],
         selectionNote: "Ergänzung, wenn Propaganda und europäische Reaktionen genauer gewichtet werden sollen.",
         didacticUse: "Hilft vor allem bei Frage 2, 4 und 5."
+      },
+      {
+        id: "r-zerfall-apuz-causes",
+        bucket: "Textquelle: Ursachen",
+        type: "Website",
+        title: "APuZ 37/1993: Ursachen des Krieges in Ex-Jugoslawien",
+        focus: "APuZ-Text zu Vorgeschichte und Ursachen des Krieges in Ex-Jugoslawien",
+        link: "https://www.bpb.de/shop/zeitschriften/apuz/archiv/536642/ursachen-des-krieges-in-ex-jugoslawien/",
+        tags: ["APuZ", "Text"],
+        selectionNote: "Für die Frage nach Ursachen und politischen Konfliktlinien.",
+        didacticUse: "Vor allem für Frage 1 bis 3."
+      },
+      {
+        id: "r-zerfall-apuz-policy",
+        bucket: "Textquelle: internationale Politik",
+        type: "Website",
+        title: "APuZ 37/1993: Jugoslawienpolitik am Wendepunkt",
+        focus: "APuZ-Text zur internationalen Jugoslawienpolitik 1993",
+        link: "https://www.bpb.de/shop/zeitschriften/apuz/archiv/536643/jugoslawienpolitik-am-wendepunkt/",
+        tags: ["APuZ", "Text"],
+        selectionNote: "Für die Frage nach Zögern, Fehleinschätzungen und europäischer Politik.",
+        didacticUse: "Vor allem für Frage 4 und 5."
       },
     ],
     questions: [
@@ -795,7 +953,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erwartet keine Biographien, sondern einen historischen Vergleich ihrer Politik.",
         placeholder: "Milošević und Tuđman unterschieden sich vor allem darin, dass ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf"],
         conceptGroups: [
           {
             label: "serbische Zentralisierung oder Großserbien bei Milošević",
@@ -844,7 +1002,7 @@ const MODULES = [
         help:
           "Nenne mindestens zwei Wirkungen. Synonyme für Feindbild, Angst, Mobilisierung und Legitimierung werden erkannt.",
         placeholder: "Propaganda war zentral, weil ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf", "r-zerfall-yt-4"],
         conceptGroups: [
           {
             label: "Feindbilder und Angst wurden verstärkt",
@@ -892,7 +1050,7 @@ const MODULES = [
           "Ordne die Zuspitzung des Zerfalls von 1990 bis 1992 in eine schlüssige Reihenfolge.",
         help:
           "Beginne mit dem Fußballspiel von Zagreb und ende mit dem Beginn der Belagerung Sarajevos.",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-3"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf", "r-zerfall-yt-3"],
         items: [
           {
             id: "zagreb-1990",
@@ -961,7 +1119,7 @@ const MODULES = [
           "Die Antwort sollte nicht monokausal sein. Beides kann zugleich gelten: zu spät reagieren und dann mit riskanten Entscheidungen handeln.",
         commonPitfall:
           "Häufig wird nur verurteilt oder entschuldigt, ohne die unterschiedlichen Phasen europäischer Politik zu unterscheiden.",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-3", "r-zerfall-yt-4"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf", "r-zerfall-yt-3", "r-zerfall-yt-4"],
         minWords: 130,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "nuance"],
@@ -987,7 +1145,7 @@ const MODULES = [
         help:
           "Gesucht sind politische Gründe, nicht bloß ein moralisches Urteil. Synonyme für Uneinigkeit, Fehleinschätzung und fehlende Eingriffsbereitschaft werden erkannt.",
         placeholder: "Europa blieb zunächst untätig, weil ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf", "r-zerfall-yt-4"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf", "r-zerfall-yt-4"],
         conceptGroups: [
           {
             label: "Uneinigkeit oder fehlende gemeinsame Linie",
@@ -1015,7 +1173,7 @@ const MODULES = [
         help:
           "Verbinde militärische Gewalt, mediale Wirkung und internationale Wahrnehmung.",
         placeholder: "Vukovar wurde zum Symbol, weil ...",
-        sourceIds: ["r-zerfall-doku-2", "r-zerfall-pdf"],
+        sourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes", "r-zerfall-apuz-policy", "r-zerfall-pdf"],
         minWords: 100,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "nuance"],
@@ -1039,11 +1197,11 @@ const MODULES = [
     title: "Bosnienkrieg, Sarajevo und Srebrenica",
     era: "1992 bis 1995",
     intro:
-      "Im Zentrum dieser Station steht der Bosnienkrieg als radikalste Phase des Zerfalls. Behandelt werden ethnische Säuberungen, die Belagerung Sarajevos, das Versagen der UN und der Einschnitt von Srebrenica.",
+      "Die Station behandelt den Bosnienkrieg: ethnische Säuberungen, Sarajevo, das UN-Scheitern und Srebrenica.",
     goal:
-      "Du kannst zentrale Formen der Gewalt im Bosnienkrieg erklären, Sarajevo als Symbolraum deuten und Srebrenica als Wendepunkt internationaler Wahrnehmung einordnen.",
+      "Du kannst zentrale Formen der Gewalt im Bosnienkrieg erklären und Sarajevo, Srebrenica sowie die internationale Reaktion einordnen.",
     route:
-      "Nutze Folge 3 der Doku als Hauptquelle, arbeite den Wikipedia-Artikel zum Bosnienkrieg gezielt mit und verwende die beiden Sarajevo-Bilder für visuelle Deutungen. Die Transferfrage verbindet Bildanalyse mit Kriegsverlauf und Nachkriegsrealität.",
+      "Nutze Folge 3 als Hauptquelle. Arbeite den Überblickstext zum Bosnienkrieg gezielt mit und verwende die Sarajevo-Bilder für die Bildfragen.",
     teacherNote:
       "Die Station verlangt besonders sorgsame Begleitung, weil sie mit Massengewalt, Belagerung und Genozid arbeitet. Bilddeutung und Begriffssicherung sollten klar voneinander getrennt werden.",
     teacherToolkit: {
@@ -1073,9 +1231,9 @@ const MODULES = [
       alt: "Zerstörte Gebäude im Sarajevoer Stadtteil Grbavica nach dem Krieg",
       sourceLabel: "Sarajevo_Grbavica.jpeg"
     },
-    visualDossierTitle: "Bosnienkrieg als Bild- und Gewaltraum",
+    visualDossierTitle: "Bildquellen zum Bosnienkrieg",
     visualDossierIntro:
-      "Die Bildauswahl deckt die vier Ebenen der Station ab: Belagerung, zerstörter Stadtraum, Srebrenica und die internationale Kriegswende 1995.",
+      "Die Bilder zeigen Belagerung, zerstörten Stadtraum, Srebrenica und die militärische Wende von 1995.",
     visualDossier: [
       {
         src: "assets/module-images/sarajevo-siege-shelling-destruction.jpg",
@@ -1111,9 +1269,9 @@ const MODULES = [
       }
     ],
     actorFocus: {
-      title: "Akteur*innen des Bosnienkriegs",
+      title: "Akteure des Bosnienkriegs",
       intro:
-        "In dieser Station werden Porträts nicht als Sammelalbum verwendet, sondern als politische und militärische Rollenkarte. Die Auswahl zeigt, wer Bosnien verteidigte, wer die bosnisch-serbische Politik prägte und wer die Gewalt organisatorisch trug."
+        "Die Porträts ordnen die wichtigsten politischen und militärischen Akteure."
     },
     actors: [
       {
@@ -1303,8 +1461,8 @@ const MODULES = [
         focus: "Bosnienkrieg, Srebrenica, NATO, Dayton, Kosovo und Langzeitfolgen",
         link: "https://www.dropbox.com/scl/fi/zsqgssv5j9utgjbosmyjb/Balkan-in-Flammen-Jugoslawien-in-Tr-mmern-Staffel-1-Folge-3.mp4?rlkey=xcgmhvo7qf3x0kx0u3zxpg1pu&st=txldgppw&dl=0",
         tags: ["Dropbox", "Pflicht", "Dokumentation"],
-        selectionNote: "Diese Folge ist die Hauptquelle für Bosnienkrieg, Srebrenica und Dayton.",
-        didacticUse: "Zuerst für Frage 1 bis 3 und danach für die Transferaufgaben nutzen."
+        selectionNote: "Hauptquelle der Station.",
+        didacticUse: "Für Frage 1 bis 3 und die Transferaufgaben."
       },
       {
         id: "r-bosnien-wiki",
@@ -1629,11 +1787,11 @@ const MODULES = [
     title: "Dayton, Kosovo und schwieriger Frieden",
     era: "1995 bis heute",
     intro:
-      "Die letzte Station fragt nach dem schwierigen Frieden nach 1995: Dayton beendete den Bosnienkrieg, ließ aber im Kosovo zentrale Konflikte offen. Dort trafen der seit 1989 entzogene Autonomiestatus, serbische Repression, Rugovas gewaltfreie Politik und später die UÇK als militärischer Arm vieler Kosovo-Albaner aufeinander, bevor die NATO 1999 eingriff.",
+      "Die Station behandelt die Nachkriegsordnung seit 1995: Dayton, den Kosovo-Konflikt, die NATO-Intervention und offene Folgen bis heute.",
     goal:
-      "Du kannst Frieden als ambivalente Ordnung erklären, den Kosovo-Konflikt in die Zerfallsgeschichte einordnen, die UÇK als militärischen Akteur benennen und die besondere Rolle der Schweiz bei Diaspora, Aufnahme und SWISSCOY erläutern.",
+      "Du kannst Dayton als Friedensschluss und Blockadeordnung erklären, den Kosovo-Konflikt einordnen und den Bezug zur Schweiz erläutern.",
     route:
-      "Arbeite zuerst die Kette Dayton - offener Kosovo - Rugova - UÇK - serbische Repression - NATO heraus. Sichere danach die Leitbegriffe mit den kurzen Antworten und bewerte erst am Schluss die internationale Intervention sowie die besondere Rolle der Schweiz.",
+      "Arbeite zuerst die Abfolge Dayton, Kosovo, UÇK, Repression und NATO heraus. Nutze danach die Fragen und die Textquellen zu Nachkrieg, Erinnerung und Schweiz-Bezug.",
     teacherNote:
       "Die Station ist besonders geeignet für Urteilsbildung: Frieden beenden, ohne Konflikte wirklich zu lösen, ist hier der zentrale Spannungsbogen.",
     teacherToolkit: {
@@ -1664,14 +1822,14 @@ const MODULES = [
       alt: "Sarajevo im Mai 1996 als Bild einer brüchigen Nachkriegsordnung",
       sourceLabel: "Sarajevo_may_1996.png"
     },
-    visualDossierTitle: "Bilder von Krieg, Frieden und Nachkrieg",
+    visualDossierTitle: "Bildquellen zu Nachkrieg und Kosovo",
     visualDossierIntro:
-      "Die vier Bilder markieren die Stationen des Nachkriegs: Friedensvertrag, Krieg im Kosovo 1998/99, NATO-Angriffe und ihre Folgen.",
+      "Die Bilder zeigen Dayton, Krieg im Kosovo, NATO-Angriffe und Folgen in Belgrad.",
     visualDossier: [
       {
         src: "assets/module-images/dayton-agreement.jpg",
         alt: "Unterzeichnung des Dayton-Abkommens 1995",
-        title: "Dayton als notwendiger Friedensschluss",
+        title: "Unterzeichnung des Dayton-Abkommens",
         caption: "Fotografie der Unterzeichnung des Dayton-Abkommens im November 1995.",
         whyItMatters:
           "Arbeitsnutzen: Das Bild gehört zu Frage 1 und markiert den Ausgangspunkt der Nachkriegsphase."
@@ -1695,16 +1853,32 @@ const MODULES = [
       {
         src: "assets/module-images/rts-belgrade-ruins-1999.jpg",
         alt: "Ruinen der serbischen Rundfunkanstalt nach den NATO-Angriffen",
-        title: "Kosten des Eingriffs",
+        title: "RTS-Gebäude in Belgrad nach dem Angriff",
         caption: "Ruinen der serbischen Rundfunkanstalt RTS nach den NATO-Angriffen von 1999 in Belgrad.",
         whyItMatters:
           "Arbeitsnutzen: Das Bild wird für die Abwägung von Wirkung, Kosten und Legitimation der Intervention gebraucht."
       }
     ],
+
+    textDossierTitle: "Altaras lesen: Erinnerung nach 1991",
+    textDossierIntro:
+      "Der Auszug aus Zagreb zeigt konkret, wie im postjugoslawischen Kroatien mit Tito und dem sozialistischen Erbe umgegangen wurde.",
+    textDossier: [
+      {
+        title: "Der Tito-Platz in Zagreb",
+        context:
+          "Altaras beschreibt einen offiziellen Besuch in Zagreb in den 1990er Jahren.",
+        quote:
+          "„Trg Jossipa Broza Tita“. Als wir am Tito-Platz halten, malen drei uniformierte Staatskünstler auf ein großes farbiges Schild: „Trg Sveta Democracija“.",
+        source: "Adriana Altaras, Titos Brille, Erinnerung an einen Zagreb-Besuch.",
+        task: "Halte fest, welche Umbenennung beschrieben wird und welche politische Aussage darin steckt.",
+        questionId: "mq-nachkrieg-8"
+      }
+    ],
     actorFocus: {
-      title: "Akteure des schwierigen Friedens",
+      title: "Akteure seit 1995",
       intro:
-        "In der Nachkriegsstation stehen drei politische Logiken nebeneinander: Rugovas gewaltfreie Kosovo-Strategie, die UÇK als bewaffneter Akteur und Miloševićs Politik von Repression und Eskalation."
+        "Im Mittelpunkt stehen Rugova, Thaçi und Milošević."
     },
     actors: [
       {
@@ -1749,7 +1923,7 @@ const MODULES = [
         prompt: "Worin lag der Doppelcharakter des Dayton-Abkommens?",
         help: "Nenne eine positive und eine problematische Seite.",
         placeholder: "Dayton beendete ..., verfestigte aber ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Krieg wurde beendet",
@@ -1776,7 +1950,7 @@ const MODULES = [
         prompt: "Wie lautet die zentrale Eskalationskette im Kosovo-Konflikt der 1990er Jahre?",
         help: "Ordne die Entwicklung als Kette, nicht als Einzelereignisse.",
         placeholder: "Die Eskalation verlief von ... über ... zu ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast"],
         conceptGroups: [
           {
             label: "offene Statusfrage oder Verlust der Autonomie",
@@ -1803,7 +1977,7 @@ const MODULES = [
         prompt: "Wie müssen Hashim Thaçi und die UÇK in dieser Station korrekt eingeordnet werden?",
         help: "Benenne sowohl die Person als auch die Funktion der Organisation.",
         placeholder: "Hashim Thaçi war ..., die UÇK war ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast"],
         conceptGroups: [
           {
             label: "Thaçi als politischer Repräsentant der UÇK",
@@ -1830,7 +2004,7 @@ const MODULES = [
         prompt: "Was ist der Unterschied zwischen rechtlicher, politischer und moralischer Bewertung der NATO-Intervention?",
         help: "Unterscheide die drei Ebenen ausdrücklich.",
         placeholder: "Rechtlich ..., politisch ..., moralisch ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-pdf", "r-nachkrieg-wiki"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-pdf", "r-nachkrieg-wiki"],
         conceptGroups: [
           {
             label: "rechtliche Ebene",
@@ -1857,7 +2031,7 @@ const MODULES = [
         prompt: "Warum hat der Kosovo-Konflikt für die Schweiz eine besondere Bedeutung?",
         help: "Nenne mindestens zwei konkrete Bezüge.",
         placeholder: "Für die Schweiz ist der Kosovo-Konflikt besonders, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "kosovarische Diaspora oder Migration in die Schweiz",
@@ -1884,7 +2058,7 @@ const MODULES = [
         prompt: "Welche langfristigen Herausforderungen blieben nach den Kriegen bestehen?",
         help: "Nenne mehr als nur 'Frieden sichern'.",
         placeholder: "Langfristig blieben vor allem ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-yt-7", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-yt-7", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Erinnerung oder Aufarbeitung",
@@ -1911,7 +2085,7 @@ const MODULES = [
         prompt: "Wie unterscheiden sich Rugovas und Thaçis Strategien im Kosovo-Konflikt?",
         help: "Vergleiche die beiden Akteure über ihre politischen Wege.",
         placeholder: "Rugova setzte auf ..., Thaçi dagegen auf ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki"],
         conceptGroups: [
           {
             label: "Rugova als gewaltfreie oder zivile Strategie",
@@ -1929,6 +2103,59 @@ const MODULES = [
         successThreshold: 2,
         modelAnswer:
           "Rugova steht für gewaltfreie Parallelpolitik und zivilen Widerstand. Thaçi steht für den politischen Arm der UÇK und damit für den bewaffneten Weg, mit dem dieselbe Statusfrage anders verfolgt wurde."
+      },
+      {
+        id: "mq-nachkrieg-8",
+        title: "Umbenennung in Zagreb",
+        type: "short-text",
+        challenge: "Textarbeit",
+        prompt: "Welche symbolische Änderung beschreibt Altaras in Zagreb, und wofür steht sie?",
+        help: "Nenne zuerst die konkrete Änderung und dann ihre politische Aussage.",
+        placeholder: "Beschrieben wird ..., das steht für ...",
+        conceptGroups: [
+          {
+            label: "Der Tito-Platz wird umbenannt",
+            variants: ["tito platz", "umbenannt", "trg jossipa broza tita", "sveta democracja", "platz"]
+          },
+          {
+            label: "Distanzierung von Tito oder vom sozialistischen Jugoslawien",
+            variants: ["distanzierung", "tito", "sozialistisches jugoslawien", "bruch mit jugoslawien", "abgrenzung", "postjugoslawisch"]
+          },
+          {
+            label: "neue nationale oder politische Erinnerungspolitik",
+            variants: ["erinnerungspolitik", "neue symbolik", "umdeutung", "neue politische ordnung", "kroatien", "national"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Altaras beschreibt die Umbenennung des Tito-Platzes in Zagreb. Das steht für die Distanzierung vom sozialistischen Jugoslawien und für eine neue nationale Erinnerungspolitik im postjugoslawischen Kroatien."
+      },
+      {
+        id: "mq-nachkrieg-9",
+        title: "Kosovokrieg im Podcast",
+        type: "short-text",
+        challenge: "Textarbeit",
+        prompt: "Welche drei Elemente müssen zusammen genannt werden, wenn du den Kosovokrieg knapp einordnest?",
+        help: "Verbinde Vorgeschichte, bewaffnete Eskalation und internationale Reaktion.",
+        placeholder: "Zum Kosovokrieg gehören ...",
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-yt-kosovo-podcast", "r-nachkrieg-wiki"],
+        conceptGroups: [
+          {
+            label: "Autonomieverlust oder serbische Herrschaft über Kosovo",
+            variants: ["autonomieverlust", "autonomie", "serbische herrschaft", "belgrad", "milosevic", "kosovo"]
+          },
+          {
+            label: "UÇK und serbische Repression oder Vertreibung",
+            variants: ["uck", "u ck", "uçk", "repression", "vertreibung", "gewalt gegen kosovo-albaner"]
+          },
+          {
+            label: "NATO-Intervention 1999",
+            variants: ["nato", "luftangriffe", "1999", "intervention", "bombardierung", "eingriff"]
+          }
+        ],
+        successThreshold: 2,
+        modelAnswer:
+          "Zum Kosovokrieg gehören der Entzug der Autonomie und die serbische Kontrolle über Kosovo, die Eskalation mit UÇK und serbischer Repression sowie die NATO-Intervention von 1999."
       }
     ],
     resources: [
@@ -1940,8 +2167,8 @@ const MODULES = [
         focus: "Dayton, Operation Sturm, Kosovo, NATO-Intervention und Langzeitfolgen",
         link: "https://www.dropbox.com/scl/fi/zsqgssv5j9utgjbosmyjb/Balkan-in-Flammen-Jugoslawien-in-Tr-mmern-Staffel-1-Folge-3.mp4?rlkey=xcgmhvo7qf3x0kx0u3zxpg1pu&st=txldgppw&dl=0",
         tags: ["Dropbox", "Pflicht", "Dokumentation"],
-        selectionNote: "Diese Folge ist die Hauptquelle für Dayton, Kosovo und NATO 1999.",
-        didacticUse: "Zuerst für Frage 1 bis 5, danach für das Urteil in Frage 6."
+        selectionNote: "Hauptquelle der Station.",
+        didacticUse: "Für Frage 1 bis 5, danach für Frage 6."
       },
       {
         id: "r-nachkrieg-wiki",
@@ -1981,11 +2208,44 @@ const MODULES = [
         bucket: "Vertiefung: Nachgeschichte und Erinnerung",
         type: "Video",
         title: "YouTube-Playlist, Video 7",
-        focus: "zusätzlicher Impuls zu Nachgeschichte, Erinnerung und offenen Konfliktfolgen",
+        focus: "Ergänzung zu Erinnerung und offenen Nachwirkungen",
         link: "https://www.youtube.com/watch?v=l1bSS3EkWyg&list=PL8991DFCF33730589&index=7",
         tags: ["YouTube", "Vertiefung"],
         selectionNote: "Ergänzung für Erinnerung, Anerkennung und Langzeitfolgen nach 1999.",
         didacticUse: "Hilft vor allem bei Frage 4 und 6."
+      },
+      {
+        id: "r-nachkrieg-yt-kosovo-podcast",
+        bucket: "Vertiefung: Kosovokrieg",
+        type: "Video",
+        title: "Damals Podcast: Folge 98 - Der Kosovokrieg",
+        focus: "Podcastfolge zum Verlauf des Kosovokriegs, zu UÇK, serbischer Repression und NATO-Einsatz 1999",
+        link: "https://www.youtube.com/watch?v=BtZbNiT46_E",
+        tags: ["YouTube", "Podcast", "Kosovo"],
+        selectionNote: "Geeignet zur gezielten Sicherung des Kosovo-Blocks der Station.",
+        didacticUse: "Vor allem für Frage 2, 3, 5 und Kurzfrage 9."
+      },
+      {
+        id: "r-nachkrieg-bpb-afterwar",
+        bucket: "Textquelle: Nachkrieg",
+        type: "Website",
+        title: "bpb: Der bosnisch-herzegowinische Nachkrieg",
+        focus: "Text zu Erinnerungskonflikten und Opferkonkurrenz im bosnischen Nachkrieg",
+        link: "https://www.bpb.de/shop/zeitschriften/apuz/256923/der-bosnisch-herzegowinische-nachkrieg/",
+        tags: ["bpb", "Text"],
+        selectionNote: "Für Fragen zu Dayton und Langzeitfolgen.",
+        didacticUse: "Vor allem für Frage 1, 4 und 6."
+      },
+      {
+        id: "r-nachkrieg-republik-memory",
+        bucket: "Textquelle: Schweiz und Erinnerung",
+        type: "Website",
+        title: "Republik: Die eine Geschichte gibt es nicht",
+        focus: "Artikel aus der Schweiz zu Erinnerung, Diaspora und dem Blick auf die postjugoslawische Region",
+        link: "https://www.republik.ch/2025/10/24/die-eine-geschichte-gibt-es-nicht",
+        tags: ["Republik", "Text"],
+        selectionNote: "Für die Schlussfrage mit Schweiz-Bezug.",
+        didacticUse: "Vor allem für Frage 6."
       },
       {
         id: "r-nachkrieg-bild",
@@ -2020,7 +2280,7 @@ const MODULES = [
         help:
           "Nenne mindestens zwei Seiten des Abkommens. Synonyme für Kriegsende, Friedensschluss, Spaltung und Blockade werden erkannt.",
         placeholder: "Dayton war notwendig, weil ..., aber problematisch, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Dayton beendete den Krieg",
@@ -2069,7 +2329,7 @@ const MODULES = [
         help:
           "Die Sofortkorrektur erkennt verschiedene Formulierungen. Verbinde offene Statusfrage, serbische Repression, Rugovas Politik und den späteren Strategiewechsel.",
         placeholder: "Der Kosovo blieb ein Konfliktraum, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Kosovo war in Dayton nicht wirklich gelöst",
@@ -2128,7 +2388,7 @@ const MODULES = [
           "Ordne die Kosovo-Eskalation von Dayton bis zur Schwächung Miloševićs.",
         help:
           "Beginne mit Dayton und ende mit den politischen Folgen nach dem NATO-Krieg.",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         items: [
           {
             id: "dayton-1995",
@@ -2203,7 +2463,7 @@ const MODULES = [
           "Achte darauf, dass die Lernenden ein begründetes Urteil formulieren und nicht bei moralischer Zustimmung oder Ablehnung stehen bleiben.",
         commonPitfall:
           "Oft wird entweder nur die Verspätung betont oder nur die Wirksamkeit später Intervention. Historisch relevant ist gerade die Spannung zwischen beidem.",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         minWords: 140,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "nuance", "conclusion"],
@@ -2229,7 +2489,7 @@ const MODULES = [
         help:
           "Gesucht ist der Zusammenhang aus Kosovo-Gewalt und politischer Begründung, nicht dein eigenes Urteil. Synonyme für Repression, Vertreibung, humanitären Schutz und fehlendes Mandat werden erkannt.",
         placeholder: "Die NATO-Staaten rechtfertigten den Einsatz damit, dass ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki", "r-nachkrieg-bild-kosovo", "r-nachkrieg-pdf"],
         conceptGroups: [
           {
             label: "Gewalt, Repression oder Vertreibung im Kosovo",
@@ -2261,7 +2521,7 @@ const MODULES = [
         help:
           "Eine starke Antwort verbindet Nachkriegspolitik, Erinnerungskonflikte, Gegenwartsprobleme und den Schweiz-Bezug über Diaspora und SWISSCOY.",
         placeholder: "Bis heute bestehen Herausforderungen, weil ...",
-        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
+        sourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-bpb-afterwar", "r-nachkrieg-republik-memory", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-wiki", "r-nachkrieg-pdf", "r-nachkrieg-yt-7"],
         minWords: 120,
         structureExpectations: {
           mandatory: ["thesis", "evidence", "comparison", "conclusion"],

@@ -619,6 +619,78 @@ a {
   overflow-wrap: anywhere;
 }
 
+
+.text-dossier {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.82), rgba(221, 213, 199, 0.36));
+}
+
+.text-dossier-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.text-dossier-head h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.text-dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.text-card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.text-card h4 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.text-card-context,
+.text-card-source,
+.text-card-task p {
+  margin: 0;
+}
+
+.text-card-context {
+  color: var(--wire);
+  font-weight: 700;
+}
+
+.text-card-quote {
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-left: 4px solid rgba(106, 52, 40, 0.22);
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.68;
+}
+
+.text-card-source {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.text-card-task {
+  display: grid;
+  gap: 10px;
+}
+
 .focus-gallery {
   margin-top: 22px;
   padding: 20px;
@@ -1441,6 +1513,7 @@ summary {
   .module-title-row,
   .section-head,
   .question-topline,
+  .text-dossier-head,
   .focus-gallery-head,
   .actor-panel-head,
   .mini-checks-head,
@@ -1474,6 +1547,7 @@ summary {
   .stats-grid,
   .resource-grid,
   .module-grid,
+  .text-dossier-grid,
   .focus-gallery-grid,
   .teacher-grid,
   .actor-grid,
