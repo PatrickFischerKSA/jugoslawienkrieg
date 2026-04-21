@@ -34,6 +34,37 @@ const MODULES = [
       extension:
         "Mit einer Debattenfrage arbeiten: War Jugoslawien unter Tito ein tragfähiger Staat oder nur ein eingefrorener Konfliktraum?"
     },
+    contentSections: [
+      {
+        title: "1914 bis 1945: Gewalt, Flucht und Familiengeschichte",
+        body:
+          "Der Einstieg verbindet die lange Gewaltgeschichte mit konkreten Erfahrungen aus Altaras' Familienerinnerung.",
+        resourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-history"],
+        imageRefs: ["Sarajevo 1914", "Ustascha-Terror und Kriegsgewalt"],
+        textRefs: ["Split vor der deutschen Besatzung", "Lebenslauf und Zäsur", "Jüdischer Arzt im Widerstand"],
+        questionIds: ["q-vorgeschichte-3"],
+        miniQuestionIds: ["mq-vorgeschichte-2", "mq-vorgeschichte-5", "mq-vorgeschichte-6", "mq-vorgeschichte-7"]
+      },
+      {
+        title: "Titos Staat: Ausgleich, Repression und Sonderweg",
+        body:
+          "Hier geht es darum, warum Jugoslawien nach 1945 stabil wirkte und welche Herrschaftsmittel diese Stabilität absicherten.",
+        resourceIds: ["r-vorgeschichte-doku-1", "r-vorgeschichte-bpb-tito"],
+        imageRefs: ["Bruch mit Stalin 1948"],
+        actorRefs: ["Josip Broz Tito"],
+        questionIds: ["q-vorgeschichte-1", "q-vorgeschichte-2", "q-vorgeschichte-5", "q-vorgeschichte-6"],
+        miniQuestionIds: ["mq-vorgeschichte-1", "mq-vorgeschichte-3"]
+      },
+      {
+        title: "1989/90: Erinnerung wird Politik",
+        body:
+          "Zum Schluss wird sichtbar, wie ältere Konfliktlinien in der Krise der 1980er Jahre politisch aktiviert wurden.",
+        resourceIds: ["r-vorgeschichte-yt-1", "r-vorgeschichte-yt-2"],
+        imageRefs: ["Amselfeld als politischer Erinnerungsort"],
+        questionIds: ["q-vorgeschichte-4"],
+        miniQuestionIds: ["mq-vorgeschichte-4"]
+      }
+    ],
     visual: {
       src: "assets/module-images/sarajevo-may-1996.png",
       alt: "Skyline von Sarajevo mit sichtbaren Kriegsschäden im Mai 1996",
@@ -674,6 +705,36 @@ const MODULES = [
       extension:
         "Die Station laesst sich gut mit einer Kartenarbeit zu Slowenien, Kroatien und Bosnien verbinden."
     },
+    contentSections: [
+      {
+        title: "Machtpolitik und Nationalismus",
+        body:
+          "Milošević und Tuđman stehen hier nicht als Porträts nebeneinander, sondern als politische Projekte in der Zerfallsphase.",
+        resourceIds: ["r-zerfall-doku-2", "r-zerfall-apuz-causes"],
+        imageRefs: ["Gazimestan 1989"],
+        actorRefs: ["Slobodan Milošević", "Franjo Tuđman"],
+        questionIds: ["q-zerfall-1", "q-zerfall-2"],
+        miniQuestionIds: ["mq-zerfall-1", "mq-zerfall-2", "mq-zerfall-5"]
+      },
+      {
+        title: "Vom Staatskonflikt zum Krieg",
+        body:
+          "Slowenien, Kroatien und Bosnien folgten unterschiedlichen Konfliktlogiken. Die Chronologie macht diese Unterschiede sichtbar.",
+        resourceIds: ["r-zerfall-doku-2", "r-zerfall-yt-3"],
+        imageRefs: ["Zehn-Tage-Krieg in Slowenien", "Stadion Maksimir, Zagreb"],
+        questionIds: ["q-zerfall-3"],
+        miniQuestionIds: ["mq-zerfall-3"]
+      },
+      {
+        title: "Europa, Vukovar und internationale Wahrnehmung",
+        body:
+          "Der Abschnitt verbindet europäische Diplomatie, Anerkennungspolitik und die sichtbare Gewalt des Kroatienkriegs.",
+        resourceIds: ["r-zerfall-apuz-policy", "r-zerfall-yt-4"],
+        imageRefs: ["Vukovar 1991"],
+        questionIds: ["q-zerfall-4", "q-zerfall-5", "q-zerfall-6"],
+        miniQuestionIds: ["mq-zerfall-4"]
+      }
+    ],
     visualDossierTitle: "Bildquellen zur Zuspitzung",
     visualDossierIntro:
       "Die Bilder zeigen Gazimestan 1989, den Krieg in Slowenien, die Ausschreitungen von Zagreb und die Zerstörung Vukovars.",
@@ -1226,6 +1287,37 @@ const MODULES = [
       extension:
         "Mit einer Zusatzfrage arbeiten: Warum wurde gerade Sarajevo weltweit zu einem Bild des Krieges?"
     },
+    contentSections: [
+      {
+        title: "Bosnien als Kriegsraum",
+        body:
+          "Der Einstieg klärt, warum Bosnien nach 1992 nicht einfach ein weiterer Teilkonflikt war, sondern eine besonders komplexe Kriegszone.",
+        resourceIds: ["r-bosnien-doku-3", "r-bosnien-wiki"],
+        imageRefs: ["Belagerung von Sarajevo"],
+        actorRefs: ["Alija Izetbegović", "Radovan Karadžić"],
+        questionIds: ["q-bosnien-1", "q-bosnien-2"],
+        miniQuestionIds: ["mq-bosnien-1", "mq-bosnien-2"]
+      },
+      {
+        title: "Sarajevo und Gewalt gegen Zivilbevölkerung",
+        body:
+          "Sarajevo wird als belagerte Stadt, als zerstörter Raum und als Symbol des Bosnienkriegs bearbeitet.",
+        resourceIds: ["r-bosnien-doku-3", "r-bosnien-bild-1", "r-bosnien-bild-2"],
+        imageRefs: ["Sarajevo als zerstörter Stadtraum"],
+        questionIds: ["q-bosnien-4"],
+        miniQuestionIds: ["mq-bosnien-2", "mq-bosnien-3"]
+      },
+      {
+        title: "Srebrenica, UN-Scheitern und militärische Verantwortung",
+        body:
+          "Der Abschnitt unterscheidet politische Verantwortung, militärische Umsetzung und internationale Reaktion.",
+        resourceIds: ["r-bosnien-doku-3", "r-bosnien-yt-5", "r-bosnien-yt-6"],
+        imageRefs: ["Srebrenica als Erinnerungsort", "NATO-Luftangriffe 1995"],
+        actorRefs: ["Ratko Mladić", "Biljana Plavšić"],
+        questionIds: ["q-bosnien-3", "q-bosnien-5", "q-bosnien-6"],
+        miniQuestionIds: ["mq-bosnien-4", "mq-bosnien-5"]
+      }
+    ],
     visual: {
       src: "assets/module-images/sarajevo-grbavica.jpeg",
       alt: "Zerstörte Gebäude im Sarajevoer Stadtteil Grbavica nach dem Krieg",
@@ -1817,6 +1909,37 @@ const MODULES = [
       extension:
         "Anschlussfähig an Gegenwartsfragen von Erinnerungspolitik, EU-Perspektive und Anerkennung des Kosovo."
     },
+    contentSections: [
+      {
+        title: "Dayton: Krieg beenden, Konflikte festschreiben",
+        body:
+          "Dayton wird als notwendiger Friedensschluss und zugleich als schwierige Nachkriegsordnung gelesen.",
+        resourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki-bosnien", "r-nachkrieg-bpb-afterwar"],
+        imageRefs: ["Unterzeichnung des Dayton-Abkommens"],
+        questionIds: ["q-nachkrieg-1"],
+        miniQuestionIds: ["mq-nachkrieg-1"]
+      },
+      {
+        title: "Kosovo: Statusfrage, UÇK und Repression",
+        body:
+          "Der Kosovo-Teil folgt der Kette von Autonomieverlust über Rugova und UÇK bis zur serbischen Repression.",
+        resourceIds: ["r-nachkrieg-doku-3", "r-nachkrieg-wiki", "r-nachkrieg-yt-kosovo-podcast"],
+        imageRefs: ["Krieg im Kosovo 1998/99"],
+        actorRefs: ["Ibrahim Rugova", "Hashim Thaçi", "Slobodan Milošević"],
+        questionIds: ["q-nachkrieg-2", "q-nachkrieg-3", "q-nachkrieg-5"],
+        miniQuestionIds: ["mq-nachkrieg-2", "mq-nachkrieg-3", "mq-nachkrieg-5", "mq-nachkrieg-7", "mq-nachkrieg-9"]
+      },
+      {
+        title: "NATO, Erinnerung und Nachwirkungen",
+        body:
+          "Am Ende stehen die NATO-Intervention, Erinnerungspolitik und die langfristigen Folgen, auch mit Schweiz-Bezug.",
+        resourceIds: ["r-nachkrieg-yt-7", "r-nachkrieg-republik-memory"],
+        imageRefs: ["NATO-Luftangriffe 1999", "RTS-Gebäude in Belgrad nach dem Angriff"],
+        textRefs: ["Der Tito-Platz in Zagreb"],
+        questionIds: ["q-nachkrieg-4", "q-nachkrieg-6"],
+        miniQuestionIds: ["mq-nachkrieg-4", "mq-nachkrieg-6", "mq-nachkrieg-8"]
+      }
+    ],
     visual: {
       src: "assets/module-images/sarajevo-may-1996.png",
       alt: "Sarajevo im Mai 1996 als Bild einer brüchigen Nachkriegsordnung",

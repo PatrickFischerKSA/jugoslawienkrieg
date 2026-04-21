@@ -110,7 +110,7 @@ function handleImageError(image, mode = "card") {
     return;
   }
 
-  image.closest(".drag-card, .focus-card, .actor-card")?.classList.add("image-missing");
+  image.closest(".drag-card, .focus-card, .actor-card, .content-evidence-card")?.classList.add("image-missing");
   image.remove();
 }
 
@@ -674,6 +674,8 @@ function renderModuleHeader(module) {
   const actors = module.actors || [];
   const visualDossier = module.visualDossier || [];
   const textDossier = module.textDossier || [];
+  const contentSections = module.contentSections || [];
+  const resourceMap = getResourceMap(module);
   const miniQuestions = getMiniQuestions(module);
   const integratedSources = getIntegratedSources(module);
   const videoSources = getVideoSources(module);
@@ -729,7 +731,7 @@ function renderModuleHeader(module) {
         </p>
       </article>
       ${
-        videoSources.length
+        !contentSections.length && videoSources.length
           ? `
             <article class="module-box module-box-wide film-module-box">
               <div class="film-module-head">
@@ -783,7 +785,7 @@ function renderModuleHeader(module) {
             : ""
       }
       ${
-        miniQuestions.length
+        !contentSections.length && miniQuestions.length
           ? `
             <article class="module-box module-box-wide mini-checks-box">
               <div class="mini-checks-head">
@@ -820,8 +822,10 @@ function renderModuleHeader(module) {
       }
     </div>
 
+    ${renderContentSections(module, contentSections, resourceMap, visualDossier, textDossier, actors)}
+
     ${
-      textDossier.length
+      !contentSections.length && textDossier.length
         ? `
           <section class="text-dossier">
             <div class="text-dossier-head">
@@ -866,7 +870,7 @@ function renderModuleHeader(module) {
 
 
     ${
-      visualDossier.length
+      !contentSections.length && visualDossier.length
         ? `
           <section class="focus-gallery">
             <div class="focus-gallery-head">
@@ -904,7 +908,7 @@ function renderModuleHeader(module) {
     }
 
     ${
-      actors.length
+      !contentSections.length && actors.length
         ? `
           <section class="actor-panel">
             <div class="actor-panel-head">
@@ -956,9 +960,164 @@ function renderModuleHeader(module) {
     });
   });
 
+  elements.moduleHeader.querySelectorAll("[data-jump-question]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const questionId = button.dataset.jumpQuestion;
+      const target = document.getElementById(questionId);
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
   elements.moduleHeader.querySelector("[data-open-source-modal]")?.addEventListener("click", () => {
     openSourceModal();
   });
+}
+
+function renderContentSections(module, contentSections, resourceMap, visualDossier, textDossier, actors) {
+  if (!contentSections.length) return "";
+
+  const imageMap = new Map((visualDossier || []).map((entry) => [entry.title, entry]));
+  const textMap = new Map((textDossier || []).map((entry) => [entry.title, entry]));
+  const actorMap = new Map((actors || []).map((entry) => [entry.name, entry]));
+
+  return `
+    <section class="content-path">
+      <div class="content-path-head">
+        <div>
+          <p class="eyebrow">Lernpfad</p>
+          <h3>Inhaltlicher Ablauf</h3>
+        </div>
+        <p class="module-copy">Materialien und Fragen sind nach historischen Teilproblemen geordnet.</p>
+      </div>
+      <div class="content-section-list">
+        ${contentSections
+          .map((section, index) => {
+            const resources = (section.resourceIds || []).map((id) => resourceMap.get(id)).filter(Boolean);
+            const images = (section.imageRefs || []).map((title) => imageMap.get(title)).filter(Boolean);
+            const texts = (section.textRefs || []).map((title) => textMap.get(title)).filter(Boolean);
+            const sectionActors = (section.actorRefs || []).map((name) => actorMap.get(name)).filter(Boolean);
+            const questionIds = [...(section.questionIds || []), ...(section.miniQuestionIds || [])];
+            return `
+              <article class="content-section-card">
+                <div class="content-section-topline">
+                  <span class="content-section-index">${index + 1}</span>
+                  <div>
+                    <h4>${escapeHtml(section.title)}</h4>
+                    <p>${escapeHtml(section.body || "")}</p>
+                  </div>
+                </div>
+                ${
+                  resources.length
+                    ? `
+                      <div class="content-material-row">
+                        ${resources
+                          .map(
+                            (resource) => `
+                              <a class="content-resource-chip" href="${escapeHtml(resource.link)}" target="_blank" rel="noreferrer">
+                                <span>${escapeHtml(resource.type)}</span>
+                                <strong>${escapeHtml(resource.title)}</strong>
+                              </a>
+                            `
+                          )
+                          .join("")}
+                      </div>
+                    `
+                    : ""
+                }
+                ${
+                  images.length || texts.length || sectionActors.length
+                    ? `
+                      <div class="content-evidence-grid">
+                        ${images
+                          .map(
+                            (entry) => `
+                              <figure class="content-evidence-card">
+                                <img
+                                  src="${escapeHtml(entry.src)}"
+                                  alt="${escapeHtml(entry.alt || entry.title)}"
+                                  loading="lazy"
+                                  ${getImageErrorAttributes("card")}
+                                  ${getImageStyleAttribute(entry)}
+                                />
+                                <figcaption>
+                                  <strong>${escapeHtml(entry.title)}</strong>
+                                  <span>${escapeHtml(entry.caption || "")}</span>
+                                </figcaption>
+                              </figure>
+                            `
+                          )
+                          .join("")}
+                        ${texts
+                          .map(
+                            (entry) => `
+                              <article class="content-evidence-card content-text-card">
+                                <strong>${escapeHtml(entry.title || "Textauszug")}</strong>
+                                <p>${escapeHtml(entry.context || "")}</p>
+                                <blockquote>${escapeHtml(entry.quote || "")}</blockquote>
+                                <span>${escapeHtml(entry.source || "")}</span>
+                                ${
+                                  entry.questionId
+                                    ? `<button class="btn ghost small" type="button" data-open-mini-question="${escapeHtml(entry.questionId)}">Kurzfrage öffnen</button>`
+                                    : ""
+                                }
+                              </article>
+                            `
+                          )
+                          .join("")}
+                        ${sectionActors
+                          .map(
+                            (actor) => `
+                              <article class="content-evidence-card content-actor-card">
+                                <img
+                                  src="${escapeHtml(actor.imageSrc)}"
+                                  alt="${escapeHtml(actor.imageAlt || actor.name)}"
+                                  loading="lazy"
+                                  ${getImageErrorAttributes("card")}
+                                  ${getImageStyleAttribute(actor)}
+                                />
+                                <div>
+                                  <strong>${escapeHtml(actor.name)}</strong>
+                                  <span>${escapeHtml(actor.role)}</span>
+                                </div>
+                              </article>
+                            `
+                          )
+                          .join("")}
+                      </div>
+                    `
+                    : ""
+                }
+                ${
+                  questionIds.length
+                    ? `
+                      <div class="content-question-row">
+                        ${questionIds.map((questionId) => renderContentQuestionButton(module, questionId)).join("")}
+                      </div>
+                    `
+                    : ""
+                }
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderContentQuestionButton(module, questionId) {
+  const mainIndex = module.questions.findIndex((entry) => entry.id === questionId);
+  if (mainIndex > -1) {
+    return `<button class="content-question-chip" type="button" data-jump-question="${escapeHtml(questionId)}">Frage ${mainIndex + 1}</button>`;
+  }
+
+  const miniQuestions = getMiniQuestions(module);
+  const miniIndex = miniQuestions.findIndex((entry) => entry.id === questionId);
+  if (miniIndex > -1) {
+    return `<button class="content-question-chip" type="button" data-open-mini-question="${escapeHtml(questionId)}">Kurzfrage ${miniIndex + 1}</button>`;
+  }
+
+  return "";
 }
 
 function renderTeacherPanel(module) {
